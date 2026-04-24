@@ -30,16 +30,6 @@
     body.insertBefore(mapDiv, body.firstChild);
   }
 
-  // ── 2. Wrap .bar elements inside .bar-area for correct height scaling ─────
-  document.querySelectorAll(".bar-group").forEach(function (group) {
-    var bar = group.querySelector(":scope > .bar");
-    if (!bar || bar.parentElement.classList.contains("bar-area")) return;
-    var wrap = document.createElement("div");
-    wrap.className = "bar-area";
-    group.insertBefore(wrap, bar);
-    wrap.appendChild(bar);
-  });
-
   // ── 3. Navigation ─────────────────────────────────────────────────────────
   const slideshow = document.getElementById("slideshow");
   const slides = document.querySelectorAll(".slide");

@@ -521,8 +521,9 @@
       .bar-area {
         flex: 1;
         width: 100%;
-        display: flex;
-        align-items: flex-end;
+        /* position:relative permite que .bar use bottom:0 para crecer hacia arriba */
+        /* height:X% dentro de flex anidado no se resuelve bien → absolute es fiable */
+        position: relative;
         min-height: 0;
       }
       .bar-value {
@@ -537,7 +538,11 @@
         border-radius: 3px 3px 0 0;
         min-height: 4px;
         transition: opacity 0.2s;
-        position: relative;
+        /* Absoluto desde el fondo: height:X% ahora es X% del .bar-area, sin ambigüedad */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
       .bar:hover {
         opacity: 0.85;
