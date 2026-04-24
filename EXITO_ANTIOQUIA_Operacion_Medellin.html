@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUICK · ÉXITO ANTIOQUIA · Operación Medellín</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --exito-red: #E31837;
+    --exito-yellow: #F5A800;
+    --exito-dark: #1A1A2E;
+    --exito-charcoal: #2D2D2D;
+    --exito-slate: #4A5568;
+    --exito-light: #F8F9FB;
+    --exito-white: #FFFFFF;
+    --exito-border: #E2E8F0;
+    --exito-muted: #718096;
+    --exito-red-soft: rgba(227, 24, 55, 0.08);
+    --exito-yellow-soft: rgba(245, 168, 0, 0.12);
+    --risk-critical: #C0392B;
+    --risk-high: #E67E22;
+    --risk-moderate: #F39C12;
+    --risk-low: #27AE60;
+    --risk-extreme: #8E44AD;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #0F1117;
+    color: var(--exito-charcoal);
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ─── NAVIGATION ─── */
+  #nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(26,26,46,0.95);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 10px 24px;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  #nav button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+  }
+  #nav button:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  #slide-counter {
+    color: rgba(255,255,255,0.9);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    min-width: 70px;
+    text-align: center;
+  }
+  #dot-nav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .dot.active { background: var(--exito-yellow); width: 18px; border-radius: 3px; }
+  .dot:hover { background: rgba(255,255,255,0.6); }
+
+  /* ─── SLIDE WRAPPER ─── */
+  #slideshow {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0F1117;
+  }
+
+  .slide {
+    display: none;
+    width: 1280px;
+    height: 720px;
+    background: var(--exito-white);
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+    border-radius: 4px;
+  }
+  .slide.active { display: flex; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SHARED COMPONENTS ─── */
+  .slide-header-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--exito-red) 0%, var(--exito-yellow) 100%);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .badge-red { background: var(--exito-red); color: white; }
+  .badge-yellow { background: var(--exito-yellow); color: #1A1A2E; }
+  .badge-slate { background: var(--exito-light); color: var(--exito-slate); border: 1px solid var(--exito-border); }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--exito-red);
+    margin-bottom: 8px;
+  }
+
+  .slide-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    color: var(--exito-dark);
+    line-height: 1.05;
+  }
+
+  .kpi-card {
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .kpi-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--exito-muted);
+    margin-bottom: 4px;
+  }
+  .kpi-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--exito-dark);
+    line-height: 1;
+  }
+  .kpi-sub {
+    font-size: 10px;
+    color: var(--exito-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th {
+    background: var(--exito-dark);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    text-align: left;
+  }
+  .data-table td {
+    padding: 7px 10px;
+    font-size: 11px;
+    border-bottom: 1px solid var(--exito-border);
+    color: var(--exito-charcoal);
+  }
+  .data-table tr:hover td { background: var(--exito-red-soft); }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .footer-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 36px;
+    background: var(--exito-dark);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    justify-content: space-between;
+  }
+  .footer-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+  .footer-right {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── SLIDE 1: COVER ─── */
+  #slide-1 {
+    flex-direction: column;
+    background: var(--exito-dark);
+    color: white;
+  }
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 80% 20%, rgba(227,24,55,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(245,168,0,0.15) 0%, transparent 50%),
+      linear-gradient(135deg, #0F1117 0%, #1A1A2E 60%, #14142B 100%);
+  }
+  .cover-geo {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 420px;
+    background: linear-gradient(135deg, rgba(227,24,55,0.18) 0%, rgba(245,168,0,0.1) 100%);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .exito-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--exito-yellow);
+    padding: 4px 14px;
+    border: 1.5px solid var(--exito-yellow);
+    border-radius: 3px;
+  }
+  .quick-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+  }
+  .cover-title-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 0.95;
+    color: white;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .cover-title-accent {
+    color: var(--exito-red);
+  }
+  .cover-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 36px;
+  }
+  .cover-meta-item { }
+  .cover-meta-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--exito-yellow);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.03em;
+  }
+  .cover-tags {
+    position: absolute;
+    bottom: 55px;
+    right: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    z-index: 3;
+  }
+  .cover-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.08em;
+  }
+  .cover-tag-dot { width: 5px; height: 5px; border-radius: 50%; }
+
+  /* ─── SLIDE 2: COLOCACIÓN COVER ─── */
+  #slide-2 { background: var(--exito-light); }
+  .section-cover {
+    width: 100%;
+    display: flex;
+  }
+  .section-cover-left {
+    width: 420px;
+    background: var(--exito-dark);
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .section-cover-left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -28px; bottom: 0;
+    width: 56px;
+    background: var(--exito-dark);
+    clip-path: polygon(0 0, 100% 20%, 100% 80%, 0 100%);
+  }
+  .section-cover-right {
+    flex: 1;
+    padding: 60px 48px 60px 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .big-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--exito-red);
+  }
+  .big-number-unit {
+    font-size: 40px;
+  }
+
+  /* ─── SLIDE 3: TABLE ─── */
+  .slide-content-full {
+    width: 100%;
+    padding: 40px 52px 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .obs-box {
+    background: var(--exito-dark);
+    color: white;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+  .obs-box-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--exito-yellow);
+    margin-bottom: 6px;
+  }
+  .obs-box-text {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.55;
+  }
+
+  /* ─── SLIDE 4: CHART ─── */
+  .chart-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+  }
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 200px;
+    padding: 0 4px;
+    position: relative;
+  }
+  .bar-chart::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    border-top: 1px dashed rgba(227,24,55,0.6);
+  }
+  .bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+  .bar-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--exito-slate);
+    text-align: center;
+  }
+  .bar {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    transition: opacity 0.2s;
+    position: relative;
+  }
+  .bar:hover { opacity: 0.85; }
+  .bar-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--exito-muted);
+    text-align: center;
+    line-height: 1.2;
+  }
+  .bar-date {
+    font-size: 8px;
+    color: #aaa;
+  }
+  .target-line-label {
+    position: absolute;
+    top: -2px;
+    right: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--exito-red);
+    letter-spacing: 0.08em;
+  }
+  .quiebre-marker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 8px 14px;
+    background: rgba(227,24,55,0.06);
+    border-left: 3px solid var(--exito-red);
+    border-radius: 0 6px 6px 0;
+  }
+  .quiebre-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--exito-red);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .quiebre-text {
+    font-size: 11px;
+    color: var(--exito-slate);
+  }
+  .chart-reading {
+    font-size: 10.5px;
+    color: var(--exito-slate);
+    line-height: 1.55;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--exito-light);
+    border-radius: 6px;
+    border: 1px solid var(--exito-border);
+  }
+
+  /* ─── LOYALTY CATEGORIES ─── */
+  .loyalty-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .loyalty-card {
+    border-radius: 10px;
+    padding: 14px;
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .loyalty-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .lc-1::before { background: #1A1A2E; }
+  .lc-2::before { background: var(--exito-red); }
+  .lc-3::before { background: var(--exito-yellow); }
+  .lc-4::before { background: #718096; }
+  .lc-5::before { background: #CBD5E0; }
+  .loyalty-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--exito-muted);
+    margin-bottom: 6px;
+  }
+  .loyalty-cat-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--exito-dark);
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+  .loyalty-stat {
+    margin-bottom: 4px;
+  }
+  .loyalty-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--exito-red);
+  }
+  .loyalty-stat-unit {
+    font-size: 11px;
+    color: var(--exito-muted);
+    margin-left: 2px;
+  }
+  .loyalty-stat-label {
+    font-size: 9px;
+    color: var(--exito-muted);
+    letter-spacing: 0.06em;
+  }
+  .loyalty-pct {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--exito-dark);
+    margin-top: 6px;
+  }
+  .loyalty-pct-label {
+    font-size: 9px;
+    color: var(--exito-muted);
+  }
+  .loyalty-criterio {
+    font-size: 8.5px;
+    color: var(--exito-muted);
+    margin-top: 8px;
+    line-height: 1.4;
+    border-top: 1px solid var(--exito-border);
+    padding-top: 6px;
+  }
+  .loyalty-nota {
+    font-size: 9.5px;
+    color: var(--exito-slate);
+    margin-top: 12px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    background: var(--exito-yellow-soft);
+    border-radius: 6px;
+    border-left: 3px solid var(--exito-yellow);
+  }
+
+  /* ─── RETENTION TABLE ─── */
+  .retention-kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .ret-card {
+    border-radius: 10px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ret-card-green {
+    background: linear-gradient(135deg, #1A1A2E 0%, #2D2D2D 100%);
+    color: white;
+  }
+  .ret-card-red {
+    background: linear-gradient(135deg, var(--exito-red) 0%, #C0392B 100%);
+    color: white;
+  }
+  .ret-card-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .ret-card-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .ret-card-sub {
+    font-size: 10px;
+    opacity: 0.7;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ─── PLACA TABLE ─── */
+  .placa-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .cat-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .cat-hist { background: #1A1A2E; color: white; }
+  .cat-nueva { background: var(--exito-red); color: white; }
+  .cat-recur { background: var(--exito-yellow); color: #1A1A2E; }
+  .cat-interm { background: #718096; color: white; }
+  .cat-espor { background: #E2E8F0; color: #4A5568; }
+
+  /* ─── LOGRO GESTIÓN ─── */
+  .logro-hero {
+    display: flex;
+    gap: 20px;
+    margin: 16px 0;
+  }
+  .placa-card {
+    flex: 1;
+    background: var(--exito-dark);
+    color: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .placa-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--exito-yellow);
+  }
+  .placa-card-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--exito-yellow);
+    margin-bottom: 6px;
+  }
+  .placa-card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .placa-card-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+  }
+  .flota-total-card {
+    background: var(--exito-red);
+    color: white;
+    border-radius: 12px;
+    padding: 22px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 200px;
+    text-align: center;
+  }
+  .flota-total-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .flota-total-label {
+    font-size: 11px;
+    opacity: 0.85;
+    margin-top: 4px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .narrativa-box {
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .narrativa-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--exito-muted);
+    margin-bottom: 6px;
+  }
+  .narrativa-quote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--exito-dark);
+    font-style: italic;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .narrativa-text {
+    font-size: 11px;
+    color: var(--exito-slate);
+    line-height: 1.55;
+  }
+
+  /* ─── RIESGO COVER ─── */
+  #slide-12 { background: var(--exito-dark); color: white; flex-direction: column; }
+  #slide-28 { background: var(--exito-dark); color: white; flex-direction: column; }
+
+  .dark-cover-content {
+    width: 100%;
+    display: flex;
+    height: 100%;
+  }
+  .dark-cover-left {
+    flex: 1;
+    padding: 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dark-cover-right {
+    width: 360px;
+    padding: 48px 44px;
+    background: rgba(255,255,255,0.03);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .dark-kpi {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .dark-kpi:last-child { border-bottom: none; }
+  .dark-kpi-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--exito-yellow);
+    margin-bottom: 4px;
+  }
+  .dark-kpi-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+  }
+  .dark-kpi-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .dark-cover-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 16px;
+  }
+  .dark-cover-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    max-width: 520px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── RIESGO RESUMEN ─── */
+  .riesgo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .riesgo-card {
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid var(--exito-border);
+  }
+  .riesgo-card.highlight {
+    background: var(--exito-dark);
+    color: white;
+    border-color: transparent;
+  }
+  .riesgo-card.warn {
+    background: rgba(227,24,55,0.06);
+    border-color: rgba(227,24,55,0.2);
+  }
+
+  /* ─── DISTRIBUCIÓN RIESGO ─── */
+  .risk-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+  }
+  .risk-level-badge {
+    width: 80px;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .risk-range {
+    width: 120px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--exito-dark);
+    flex-shrink: 0;
+  }
+  .risk-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: var(--exito-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .risk-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+  }
+  .risk-stats {
+    display: flex;
+    gap: 20px;
+    min-width: 200px;
+  }
+  .risk-stat { text-align: right; }
+  .risk-stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--exito-dark);
+  }
+  .risk-stat-label {
+    font-size: 8px;
+    color: var(--exito-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ─── ZONAS FICHAS ─── */
+  .zona-slide { width: 100%; }
+  .zona-header {
+    background: var(--exito-dark);
+    padding: 20px 36px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .zona-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.03em;
+  }
+  .zona-ficha {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .zona-body {
+    padding: 20px 36px;
+    display: grid;
+    grid-template-columns: 250px 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .zona-map {
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 0;
+  }
+  .zona-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .zona-kpi-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .zona-card {
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .zona-card-red {
+    background: var(--exito-red);
+    border-color: transparent;
+    color: white;
+  }
+  .zona-card-yellow {
+    background: var(--exito-yellow);
+    border-color: transparent;
+  }
+  .zona-card-label {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--exito-muted);
+    margin-bottom: 4px;
+  }
+  .zona-card-red .zona-card-label { color: rgba(255,255,255,0.7); }
+  .zona-card-yellow .zona-card-label { color: rgba(26,26,46,0.7); }
+  .zona-card-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--exito-dark);
+    line-height: 1;
+  }
+  .zona-card-red .zona-card-value { color: white; font-size: 22px; }
+  .zona-card-yellow .zona-card-value { color: #1A1A2E; }
+  .zona-card-sub {
+    font-size: 10px;
+    color: var(--exito-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .zona-card-red .zona-card-sub { color: rgba(255,255,255,0.7); }
+  .zona-card-yellow .zona-card-sub { color: rgba(26,26,46,0.6); }
+  .distrib-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0 4px;
+  }
+  .distrib-bar-a { background: var(--exito-red); }
+  .distrib-bar-b { background: var(--exito-yellow); }
+  .distrib-legend {
+    display: flex;
+    gap: 12px;
+    margin-top: 2px;
+  }
+  .distrib-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .distrib-legend-text {
+    font-size: 9px;
+    color: var(--exito-muted);
+  }
+  .top3-list { list-style: none; }
+  .top3-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--exito-border);
+  }
+  .top3-item:last-child { border-bottom: none; }
+  .top3-rank {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--exito-red);
+    width: 16px;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+  .top3-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--exito-dark);
+    line-height: 1.35;
+    flex: 1;
+    text-transform: capitalize;
+  }
+  .top3-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--exito-slate);
+    flex-shrink: 0;
+  }
+
+  /* ─── OVERVIEW MAP (slide-13) ─── */
+  .overview-map-wrap {
+    padding: 8px 36px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 0;
+  }
+  .overview-map-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--exito-border);
+    box-shadow: 0 4px 18px rgba(26,26,46,0.08);
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ─── CHART DETAIL STACK (slide-5) ─── */
+  .charts-stack {
+    padding: 6px 36px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+    min-height: 0;
+  }
+  .chart-panel {
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+  .chart-panel img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ─── CONCLUSIONES ─── */
+  .conclusiones-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 14px;
+  }
+  .conclusion-list { list-style: none; }
+  .conclusion-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--exito-border);
+  }
+  .conclusion-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--exito-red);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 22px;
+  }
+  .conclusion-text {
+    font-size: 11.5px;
+    color: var(--exito-charcoal);
+    line-height: 1.6;
+  }
+  .siguientes-list { list-style: none; }
+  .siguiente-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    align-items: flex-start;
+  }
+  .siguiente-letter {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--exito-yellow);
+    background: var(--exito-dark);
+    width: 24px; height: 24px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .siguiente-text {
+    font-size: 11px;
+    color: var(--exito-charcoal);
+    line-height: 1.55;
+  }
+  .cita-box {
+    background: var(--exito-dark);
+    color: white;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 10px;
+  }
+  .cita-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 8px;
+  }
+  .cita-followup {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* ─── PLAN ESTRATÉGICO ─── */
+  .plan-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .plan-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .plan-col-title.quick { background: var(--exito-dark); color: white; }
+  .plan-col-title.cliente { background: var(--exito-red); color: white; }
+  .eje-card {
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-left: 3px solid var(--exito-dark);
+  }
+  .eje-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--exito-muted);
+    margin-bottom: 3px;
+  }
+  .eje-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--exito-dark);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .eje-bullets {
+    list-style: none;
+  }
+  .eje-bullet {
+    font-size: 10px;
+    color: var(--exito-slate);
+    line-height: 1.5;
+    padding: 2px 0;
+    padding-left: 10px;
+    position: relative;
+  }
+  .eje-bullet::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--exito-red);
+    font-weight: 700;
+  }
+  .eje-bullet.done { color: var(--exito-dark); font-weight: 600; }
+  .eje-bullet.done::before { content: '✓'; color: #27AE60; }
+  .agenda-item {
+    display: flex;
+    gap: 10px;
+    padding: 9px 12px;
+    background: var(--exito-light);
+    border: 1px solid var(--exito-border);
+    border-radius: 7px;
+    margin-bottom: 6px;
+    align-items: flex-start;
+  }
+  .agenda-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    color: white;
+    background: var(--exito-red);
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .agenda-content { flex: 1; }
+  .agenda-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--exito-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .agenda-desc {
+    font-size: 10px;
+    color: var(--exito-slate);
+    line-height: 1.4;
+  }
+  .transversal-box {
+    background: linear-gradient(135deg, var(--exito-yellow) 0%, #F0A000 100%);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .transversal-star {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .transversal-text {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #1A1A2E;
+    line-height: 1.4;
+  }
+  .plan-kpis {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .plan-kpi {
+    flex: 1;
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .plan-kpi.dark-bg { background: var(--exito-dark); color: white; }
+  .plan-kpi.red-bg { background: var(--exito-red); color: white; }
+  .plan-kpi.light-bg { background: var(--exito-light); border: 1px solid var(--exito-border); }
+  .plan-kpi-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .plan-kpi-light-label { color: var(--exito-muted); }
+  .plan-kpi-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .plan-kpi-light-value { color: var(--exito-dark); }
+
+  /* ─── ESCOLTAS ─── */
+  .escolta-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .escolta-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .escolta-zona-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--exito-charcoal);
+    width: 240px;
+    flex-shrink: 0;
+  }
+  .escolta-bar-outer {
+    flex: 1;
+    height: 20px;
+    background: var(--exito-light);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--exito-border);
+  }
+  .escolta-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--exito-red) 0%, #C0392B 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-right: 6px;
+    justify-content: flex-end;
+  }
+  .escolta-bar-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+  }
+  .escolta-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--exito-dark);
+    width: 90px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ─── SLIDE 5/6/7 EMPTY → use chart section ─── */
+  .slide-empty {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--exito-light);
+  }
+
+  /* ─── CLASSIFICATION TABLE ─── */
+  .risk-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .risk-critico { background: #C0392B; color: white; }
+  .risk-alto { background: #E67E22; color: white; }
+  .risk-moderado { background: #F39C12; color: white; }
+
+  /* scrollable tables */
+  .table-scroll {
+    overflow-y: auto;
+    max-height: 340px;
+    border-radius: 6px;
+    border: 1px solid var(--exito-border);
+  }
+  .table-scroll::-webkit-scrollbar { width: 4px; }
+  .table-scroll::-webkit-scrollbar-track { background: var(--exito-light); }
+  .table-scroll::-webkit-scrollbar-thumb { background: var(--exito-border); border-radius: 2px; }
+
+  /* brecha alert */
+  .brecha-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(227,24,55,0.08);
+    border: 1px solid rgba(227,24,55,0.25);
+    border-radius: 8px;
+    margin-top: 12px;
+  }
+  .brecha-icon { font-size: 16px; }
+  .brecha-text {
+    font-size: 11px;
+    color: var(--exito-charcoal);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+</style>
+</head>
+<body>
+
+<div id="slideshow">
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 1 · COVER PRINCIPAL
+════════════════════════════════════════════════ -->
+<div class="slide active" id="slide-1">
+  <div class="cover-bg"></div>
+  <div class="cover-geo"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">
+      <span class="exito-logo-text">Éxito Antioquia</span>
+      <span style="color:rgba(255,255,255,0.2);font-size:18px;">·</span>
+      <span class="quick-logo-text">Quick Logistics</span>
+    </div>
+    <div class="cover-title-main">
+      OPERACIÓN<br><span class="cover-title-accent">MEDELLÍN</span>
+    </div>
+    <div class="cover-subtitle">Análisis operativo y plan de acción · Fidelización de flota</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Período</div>
+        <div class="cover-meta-value">2 ene – 21 abr 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Tipo de documento</div>
+        <div class="cover-meta-value">Análisis operativo</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Estado</div>
+        <div class="cover-meta-value" style="color:var(--exito-yellow);">Versión aprobada</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-tags">
+    <div class="cover-tag"><span class="cover-tag-dot" style="background:var(--exito-yellow);"></span>Colocación de flota</div>
+    <div class="cover-tag"><span class="cover-tag-dot" style="background:var(--exito-red);"></span>Indicador Loyalty</div>
+    <div class="cover-tag"><span class="cover-tag-dot" style="background:#6B7280;"></span>Riesgo de recaudo</div>
+    <div class="cover-tag"><span class="cover-tag-dot" style="background:rgba(255,255,255,0.3);"></span>Plan estratégico</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 2 · COLOCACIÓN COVER
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-2">
+  <div class="slide-header-bar"></div>
+  <div class="section-cover" style="height:100%;">
+    <div class="section-cover-left">
+      <div class="section-label" style="color:var(--exito-yellow);margin-bottom:20px;">Módulo 1 · Colocación</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:white;line-height:1;text-transform:uppercase;margin-bottom:12px;">Posicionamiento<br>de Flota</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:28px;">Análisis de colocación trimestral Q1 2026 · Desglose mensual y semanal</div>
+      <div class="badge badge-yellow" style="align-self:flex-start;">2 ene – 21 abr 2026</div>
+    </div>
+    <div class="section-cover-right">
+      <div class="section-label">Indicadores clave</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--exito-dark);margin-bottom:28px;">Solicitados / Colocados · Q1 2026</div>
+      <div style="display:flex;gap:24px;margin-bottom:28px;">
+        <div>
+          <div class="kpi-label">Solicitados</div>
+          <div class="big-number">611 <span style="font-size:28px;color:var(--exito-slate);">veh</span></div>
+        </div>
+        <div style="width:2px;background:var(--exito-border);"></div>
+        <div>
+          <div class="kpi-label">Colocados</div>
+          <div class="big-number" style="color:var(--exito-dark);">405 <span style="font-size:28px;color:var(--exito-slate);">placas</span></div>
+        </div>
+      </div>
+      <div class="kpi-card" style="border-left:4px solid var(--exito-yellow);">
+        <div class="kpi-label">Colocación promedio Q1</div>
+        <div class="kpi-value" style="font-size:48px;color:var(--exito-red);">66,3%</div>
+        <div class="kpi-sub">Brecha de −28,7 pp vs. target 95%</div>
+      </div>
+      <div style="margin-top:14px;font-size:10px;color:var(--exito-muted);line-height:1.5;padding:10px 14px;background:var(--exito-red-soft);border-radius:6px;border-left:3px solid var(--exito-red);">
+        <strong style="color:var(--exito-red);">Documento de trabajo · Versión aprobada 22-abr-2026</strong><br>
+        Reemplaza la metodología anterior basada en listado maestro estático
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 3 · TABLA MENSUAL
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-3">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;">
+      <div>
+        <div class="section-label">Indicador Colocación · Desglose Mensual</div>
+        <div class="slide-title" style="font-size:26px;">De 87,3% en enero a 38,9% en abril</div>
+        <div style="font-size:12px;color:var(--exito-muted);margin-top:4px;">Cuatro meses, cuatro niveles de deterioro</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div class="kpi-card" style="text-align:center;padding:12px 20px;">
+          <div class="kpi-label">Total período</div>
+          <div class="kpi-value" style="color:var(--exito-red);">66,3%</div>
+          <div class="kpi-sub">−28,7pp vs. target 95%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th>Solicitados</th>
+            <th>Puestos</th>
+            <th>Sin cubrir</th>
+            <th>% Cumpl.</th>
+            <th>Lectura</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Enero</strong></td>
+            <td>142</td>
+            <td>124</td>
+            <td style="color:#27AE60;font-weight:700;">−18</td>
+            <td><span style="background:#FFF3CD;color:#856404;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">87,3%</span></td>
+            <td style="color:var(--exito-slate);font-size:10px;">Aceptable · cerca del target</td>
+          </tr>
+          <tr>
+            <td><strong>Febrero</strong></td>
+            <td>118</td>
+            <td>102</td>
+            <td style="color:#E67E22;font-weight:700;">−16</td>
+            <td><span style="background:#FFF3CD;color:#856404;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">86,4%</span></td>
+            <td style="color:var(--exito-slate);font-size:10px;">Mantiene zona amarilla</td>
+          </tr>
+          <tr>
+            <td><strong>Marzo</strong></td>
+            <td>143</td>
+            <td>98</td>
+            <td style="color:var(--exito-red);font-weight:700;">−45</td>
+            <td><span style="background:#FFE0E3;color:#C0392B;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">68,5%</span></td>
+            <td style="color:var(--exito-red);font-size:10px;font-weight:600;">Punto de quiebre · S12 colapsa</td>
+          </tr>
+          <tr>
+            <td><strong>Abril (al 21)</strong></td>
+            <td>208</td>
+            <td>81</td>
+            <td style="color:#8E44AD;font-weight:700;">−127</td>
+            <td><span style="background:#FFE0E3;color:#C0392B;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">38,9%</span></td>
+            <td style="color:#8E44AD;font-size:10px;font-weight:600;">Crisis · demanda ×2, capacidad cae</td>
+          </tr>
+          <tr style="background:var(--exito-dark);">
+            <td style="color:white;font-weight:700;border:none;">TOTAL</td>
+            <td style="color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;">611</td>
+            <td style="color:white;border:none;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;">405</td>
+            <td style="color:var(--exito-yellow);border:none;font-weight:700;">−206</td>
+            <td style="border:none;"><span style="background:var(--exito-red);color:white;padding:2px 10px;border-radius:10px;font-weight:800;font-size:12px;">66,3%</span></td>
+            <td style="color:rgba(255,255,255,0.6);border:none;font-size:10px;">Brecha −28,7 pp vs. target 95%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="obs-box">
+      <div class="obs-box-title">Observación Estructural</div>
+      <div class="obs-box-text">Las semanas S01–S11 (88,6% promedio) y las semanas S12–S17 (43,9% promedio) manejan prácticamente el mismo volumen solicitado (306 vs. 305 unidades). Lo que cambia no es la demanda, es la capacidad de colocación. Por eso el diagnóstico es <strong style="color:var(--exito-yellow);">estructural, no estacional.</strong></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Análisis consolidado Q1 2026</span>
+    <span class="footer-right">5 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 · GRÁFICO SEMANAL
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-4">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:14px;">
+      <div class="section-label">Indicador Colocación · Desglose Semanal</div>
+      <div class="slide-title" style="font-size:26px;">El quiebre de la S12 es nítido</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">17 semanas operativas · línea de target 95% · semana 12 (16 mar) marca el inicio del colapso</div>
+    </div>
+
+    <div class="chart-container">
+      <div class="bar-chart" style="height:220px;">
+        <div class="target-line-label">TARGET 95%</div>
+        <!-- Bars S01–S17 -->
+        <div class="bar-group"><div class="bar-value">100%</div><div class="bar" style="height:100%;background:#27AE60;"></div><div class="bar-label">S01<div class="bar-date">29 dic</div></div></div>
+        <div class="bar-group"><div class="bar-value">93%</div><div class="bar" style="height:93%;background:#27AE60;"></div><div class="bar-label">S02<div class="bar-date">05 ene</div></div></div>
+        <div class="bar-group"><div class="bar-value">—</div><div class="bar" style="height:0%;background:#27AE60;"></div><div class="bar-label">S03<div class="bar-date">12 ene</div></div></div>
+        <div class="bar-group"><div class="bar-value">80%</div><div class="bar" style="height:80%;background:#F5A800;"></div><div class="bar-label">S04<div class="bar-date">19 ene</div></div></div>
+        <div class="bar-group"><div class="bar-value">80%</div><div class="bar" style="height:80%;background:#F5A800;"></div><div class="bar-label">S05<div class="bar-date">26 ene</div></div></div>
+        <div class="bar-group"><div class="bar-value">93%</div><div class="bar" style="height:93%;background:#27AE60;"></div><div class="bar-label">S06<div class="bar-date">02 feb</div></div></div>
+        <div class="bar-group"><div class="bar-value">100%</div><div class="bar" style="height:100%;background:#27AE60;"></div><div class="bar-label">S07<div class="bar-date">09 feb</div></div></div>
+        <div class="bar-group"><div class="bar-value">76%</div><div class="bar" style="height:76%;background:#F5A800;"></div><div class="bar-label">S08<div class="bar-date">16 feb</div></div></div>
+        <div class="bar-group"><div class="bar-value">80%</div><div class="bar" style="height:80%;background:#F5A800;"></div><div class="bar-label">S09<div class="bar-date">23 feb</div></div></div>
+        <div class="bar-group"><div class="bar-value">100%</div><div class="bar" style="height:100%;background:#27AE60;"></div><div class="bar-label">S10<div class="bar-date">02 mar</div></div></div>
+        <div class="bar-group"><div class="bar-value">96%</div><div class="bar" style="height:96%;background:#27AE60;"></div><div class="bar-label">S11<div class="bar-date">09 mar</div></div></div>
+        <div class="bar-group"><div class="bar-value">77%</div><div class="bar" style="height:77%;background:#F5A800;"></div><div class="bar-label">S12<div class="bar-date">16 mar</div></div></div>
+        <div class="bar-group"><div class="bar-value">42%</div><div class="bar" style="height:42%;background:var(--exito-red);border:2px solid #8B0000;"></div><div class="bar-label" style="color:var(--exito-red);font-weight:700;">S13<div class="bar-date">23 mar</div></div></div>
+        <div class="bar-group"><div class="bar-value">32%</div><div class="bar" style="height:32%;background:var(--exito-red);"></div><div class="bar-label" style="color:var(--exito-red);font-weight:700;">S14<div class="bar-date">30 mar</div></div></div>
+        <div class="bar-group"><div class="bar-value">30%</div><div class="bar" style="height:30%;background:var(--exito-red);"></div><div class="bar-label" style="color:var(--exito-red);font-weight:700;">S15<div class="bar-date">06 abr</div></div></div>
+        <div class="bar-group"><div class="bar-value">40%</div><div class="bar" style="height:40%;background:#E67E22;"></div><div class="bar-label">S16<div class="bar-date">13 abr</div></div></div>
+        <div class="bar-group"><div class="bar-value">62%</div><div class="bar" style="height:62%;background:#E67E22;"></div><div class="bar-label">S17<div class="bar-date">20 abr</div></div></div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:14px;align-items:flex-start;">
+        <div class="quiebre-marker" style="flex:1;">
+          <div>
+            <div class="quiebre-label">⚡ Punto de quiebre · S12 · 16 mar</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span style="display:inline-block;width:10px;height:10px;background:#27AE60;border-radius:2px;"></span><span style="font-size:9px;color:var(--exito-muted);">Verde ≥95%</span>
+          <span style="display:inline-block;width:10px;height:10px;background:#F5A800;border-radius:2px;"></span><span style="font-size:9px;color:var(--exito-muted);">Amarillo 70-94%</span>
+          <span style="display:inline-block;width:10px;height:10px;background:var(--exito-red);border-radius:2px;"></span><span style="font-size:9px;color:var(--exito-muted);">Rojo &lt;70%</span>
+        </div>
+      </div>
+
+      <div class="chart-reading">
+        <strong style="color:var(--exito-dark);">26 / 31 · Lectura:</strong> S01–S11 oscilan en zona amarilla/verde · S12 marca el quiebre · S13–S15 caen a zona roja sostenida · S17 muestra recuperación parcial pero sigue en naranja-rojo. No es un mes malo, son <strong>6 semanas continuas en crisis.</strong>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Análisis consolidado Q1 2026</span>
+    <span class="footer-right">5 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 · COLOCACIÓN · DETALLE GRÁFICO
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-5">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full" style="display:flex;flex-direction:column;">
+    <div style="margin-bottom:10px;">
+      <div class="section-label">Indicador Colocación · Detalle Gráfico</div>
+      <div class="slide-title" style="font-size:26px;">Visualización complementaria · barras de colocación</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Dos vistas gráficas del indicador de colocación — complementa el desglose semanal del gráfico anterior</div>
+    </div>
+    <div class="charts-stack">
+      <div class="chart-panel"><img src="assets/charts/colocacion_detalle_1.png" alt="Detalle de colocación — gráfico 1"></div>
+      <div class="chart-panel"><img src="assets/charts/colocacion_detalle_2.png" alt="Detalle de colocación — gráfico 2"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Análisis consolidado Q1 2026</span>
+    <span class="footer-right">6 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 8 · LOYALTY CATEGORÍAS
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-8">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Indicador Loyalty v2 · Categorías</div>
+      <div class="slide-title" style="font-size:26px;">Cinco niveles de Loyalty</div>
+    </div>
+    <div class="loyalty-grid">
+      <!-- 01 -->
+      <div class="loyalty-card lc-1">
+        <div class="loyalty-num">01</div>
+        <div class="loyalty-cat-name">HISTÓRICA FIJA</div>
+        <div class="loyalty-stat"><span class="loyalty-stat-num">5</span><span class="loyalty-stat-unit">placas</span></div>
+        <div class="loyalty-stat-label">PLACAS</div>
+        <div class="loyalty-stat" style="margin-top:8px;"><span class="loyalty-stat-num">311</span><span class="loyalty-stat-unit">svc</span></div>
+        <div class="loyalty-stat-label">SERVICIOS</div>
+        <div class="loyalty-pct">70,7%<span class="loyalty-pct-label"> del volumen</span></div>
+        <div class="loyalty-criterio"><strong>Criterio:</strong> En listado maestro de fijas históricas<br><strong>Lectura:</strong> Núcleo estructural de la operación</div>
+      </div>
+      <!-- 02 -->
+      <div class="loyalty-card lc-2">
+        <div class="loyalty-num">02</div>
+        <div class="loyalty-cat-name">NUEVA FIJA</div>
+        <div class="loyalty-stat"><span class="loyalty-stat-num">2</span><span class="loyalty-stat-unit">placas</span></div>
+        <div class="loyalty-stat-label">PLACAS</div>
+        <div class="loyalty-stat" style="margin-top:8px;"><span class="loyalty-stat-num">20</span><span class="loyalty-stat-unit">svc</span></div>
+        <div class="loyalty-stat-label">SERVICIOS</div>
+        <div class="loyalty-pct">4,5%<span class="loyalty-pct-label"> del volumen</span></div>
+        <div class="loyalty-criterio"><strong>Criterio:</strong> Vinculada como fija en el período<br><strong>Lectura:</strong> Incorporación reciente al núcleo</div>
+      </div>
+      <!-- 03 -->
+      <div class="loyalty-card lc-3">
+        <div class="loyalty-num">03</div>
+        <div class="loyalty-cat-name">APOYO RECURRENTE</div>
+        <div class="loyalty-stat"><span class="loyalty-stat-num">2</span><span class="loyalty-stat-unit">placas</span></div>
+        <div class="loyalty-stat-label">PLACAS</div>
+        <div class="loyalty-stat" style="margin-top:8px;"><span class="loyalty-stat-num">50</span><span class="loyalty-stat-unit">svc</span></div>
+        <div class="loyalty-stat-label">SERVICIOS</div>
+        <div class="loyalty-pct">11,4%<span class="loyalty-pct-label"> del volumen</span></div>
+        <div class="loyalty-criterio"><strong>Criterio:</strong> Loyalty ≥ 3 meses · no es fija<br><strong>Lectura:</strong> Presencia alta sin ser núcleo</div>
+      </div>
+      <!-- 04 -->
+      <div class="loyalty-card lc-4">
+        <div class="loyalty-num">04</div>
+        <div class="loyalty-cat-name">APOYO INTERMITENTE</div>
+        <div class="loyalty-stat"><span class="loyalty-stat-num">5</span><span class="loyalty-stat-unit">placas</span></div>
+        <div class="loyalty-stat-label">PLACAS</div>
+        <div class="loyalty-stat" style="margin-top:8px;"><span class="loyalty-stat-num">38</span><span class="loyalty-stat-unit">svc</span></div>
+        <div class="loyalty-stat-label">SERVICIOS</div>
+        <div class="loyalty-pct">8,6%<span class="loyalty-pct-label"> del volumen</span></div>
+        <div class="loyalty-criterio"><strong>Criterio:</strong> Loyalty = 2 meses<br><strong>Lectura:</strong> Dos meses, sin continuidad</div>
+      </div>
+      <!-- 05 -->
+      <div class="loyalty-card lc-5">
+        <div class="loyalty-num">05</div>
+        <div class="loyalty-cat-name">ESPORÁDICA</div>
+        <div class="loyalty-stat"><span class="loyalty-stat-num">6</span><span class="loyalty-stat-unit">placas</span></div>
+        <div class="loyalty-stat-label">PLACAS</div>
+        <div class="loyalty-stat" style="margin-top:8px;"><span class="loyalty-stat-num">21</span><span class="loyalty-stat-unit">svc</span></div>
+        <div class="loyalty-stat-label">SERVICIOS</div>
+        <div class="loyalty-pct">4,8%<span class="loyalty-pct-label"> del volumen</span></div>
+        <div class="loyalty-criterio"><strong>Criterio:</strong> Loyalty = 1 mes · no es fija<br><strong>Lectura:</strong> Un solo mes de actividad</div>
+      </div>
+    </div>
+    <div class="loyalty-nota">
+      <strong>Nota:</strong> Una placa con Loyalty alto y volumen bajo no es flota núcleo. Caso SAX583 (4 servicios, 4 meses) se clasifica como Apoyo recurrente, no como Fija.
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Indicador Loyalty v2 · Q1 2026</span>
+    <span class="footer-right">3 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 9 · LOYALTY RETENCIÓN
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-9">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:14px;">
+      <div class="section-label">Indicador Loyalty · Retención Trimestral</div>
+      <div class="slide-title" style="font-size:24px;">Promedio trimestre 80,0% · el quiebre de flota coincide con el inicio del quiebre operativo</div>
+    </div>
+    <div class="retention-kpis">
+      <div class="ret-card ret-card-green">
+        <div class="ret-card-label">Promedio Q1 · Promedio aritmético de las tres transiciones</div>
+        <div class="ret-card-value">80,0%</div>
+      </div>
+      <div class="ret-card ret-card-red">
+        <div class="ret-card-label">Peor transición · Feb → Mar</div>
+        <div class="ret-card-value">66,7%</div>
+        <div class="ret-card-sub">4 placas perdidas. Coincide con el inicio del quiebre operativo (S12 · 16 mar).</div>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Transición</th>
+            <th>Activas base</th>
+            <th>Loyalty</th>
+            <th>% Retención</th>
+            <th>Perdidas</th>
+            <th>Nuevas</th>
+            <th>Comentario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Enero → Febrero</strong></td>
+            <td>12</td>
+            <td>10</td>
+            <td><span style="background:#D4EDDA;color:#155724;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">83,3%</span></td>
+            <td style="color:var(--exito-red);font-weight:700;">2</td>
+            <td style="color:#27AE60;font-weight:700;">+2</td>
+            <td style="font-size:10px;color:var(--exito-slate);">Comportamiento estable</td>
+          </tr>
+          <tr style="background:rgba(227,24,55,0.04);">
+            <td><strong>Febrero → Marzo</strong></td>
+            <td>12</td>
+            <td>8</td>
+            <td><span style="background:#FFE0E3;color:#C0392B;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">66,7%</span></td>
+            <td style="color:var(--exito-red);font-weight:700;font-size:15px;">4</td>
+            <td style="color:#27AE60;font-weight:700;">+2</td>
+            <td style="font-size:10px;color:var(--exito-red);font-weight:600;">Pérdida de 4 placas que sostenían volumen</td>
+          </tr>
+          <tr>
+            <td><strong>Marzo → Abril*</strong></td>
+            <td>10</td>
+            <td>9</td>
+            <td><span style="background:#D4EDDA;color:#155724;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">90,0%</span></td>
+            <td style="color:var(--exito-red);font-weight:700;">3</td>
+            <td style="color:#27AE60;font-weight:700;">+4</td>
+            <td style="font-size:10px;color:var(--exito-slate);">7 retenidas + 2 nuevas fijas (regla de ajuste)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:10px;color:var(--exito-muted);line-height:1.6;padding:10px 14px;background:var(--exito-light);border-radius:6px;border:1px solid var(--exito-border);">
+      <strong>* Mar → Abr</strong> aplica regla de ajuste: las 2 nuevas fijas (PUN505 + EST515) suman al numerador. Sin ajuste, retención natural sería 70%.
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Indicador Loyalty v2 · Q1 2026</span>
+    <span class="footer-right">4 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 10 · DETALLE POR PLACA
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-10">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Indicador Loyalty · Detalle por Placa</div>
+      <div class="slide-title" style="font-size:24px;">Loyalty de las 20 placas del trimestre</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Una fila por placa · ordenadas por volumen · categoría asignada según metodología v2</div>
+    </div>
+    <div class="placa-two-col">
+      <div class="table-scroll" style="max-height:400px;">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Placa</th><th>Svc</th><th>Loy</th><th>Últ. mes</th><th>Categoría</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>SWX289</strong></td><td>108</td><td>4</td><td>Abril</td><td><span class="cat-badge cat-hist">Hist. fija</span></td></tr>
+            <tr><td>2</td><td><strong>TRH279</strong></td><td>69</td><td>4</td><td>Abril</td><td><span class="cat-badge cat-hist">Hist. fija</span></td></tr>
+            <tr><td>3</td><td><strong>PUN256</strong></td><td>66</td><td>4</td><td>Abril</td><td><span class="cat-badge cat-hist">Hist. fija</span></td></tr>
+            <tr><td>4</td><td><strong>LKP003</strong></td><td>52</td><td>4</td><td>Abril</td><td><span class="cat-badge cat-hist">Hist. fija</span></td></tr>
+            <tr><td>5</td><td><strong>TFW188</strong></td><td>46</td><td>3</td><td>Marzo</td><td><span class="cat-badge cat-recur">Apoyo recur.</span></td></tr>
+            <tr><td>6</td><td><strong>PXK207</strong></td><td>16</td><td>4</td><td>Abril</td><td><span class="cat-badge cat-hist">Hist. fija</span></td></tr>
+            <tr><td>7</td><td><strong>PUN505</strong></td><td>15</td><td>1</td><td>Abril</td><td><span class="cat-badge cat-nueva">Nueva fija</span></td></tr>
+            <tr><td>8</td><td><strong>KTN391</strong></td><td>12</td><td>2</td><td>Febrero</td><td><span class="cat-badge cat-interm">Apoyo interm.</span></td></tr>
+            <tr><td>9</td><td><strong>EQW902</strong></td><td>11</td><td>2</td><td>Febrero</td><td><span class="cat-badge cat-interm">Apoyo interm.</span></td></tr>
+            <tr><td>10</td><td><strong>LKM527</strong></td><td>11</td><td>1</td><td>Enero</td><td><span class="cat-badge cat-espor">Esporádica</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-scroll" style="max-height:400px;">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Placa</th><th>Svc</th><th>Loy</th><th>Últ. mes</th><th>Categoría</th></tr></thead>
+          <tbody>
+            <tr><td>11</td><td><strong>SNQ930</strong></td><td>9</td><td>2</td><td>Abril</td><td><span class="cat-badge cat-interm">Apoyo interm.</span></td></tr>
+            <tr><td>12</td><td><strong>LGV146</strong></td><td>6</td><td>1</td><td>Enero</td><td><span class="cat-badge cat-espor">Esporádica</span></td></tr>
+            <tr><td>13</td><td><strong>EST515</strong></td><td>5</td><td>1</td><td>Abril</td><td><span class="cat-badge cat-nueva">Nueva fija</span></td></tr>
+            <tr><td>14</td><td><strong>SAX583</strong></td><td>4</td><td>4</td><td>Abril</td><td><span class="cat-badge cat-recur">Apoyo recur.</span></td></tr>
+            <tr><td>15</td><td><strong>VCJ342</strong></td><td>4</td><td>2</td><td>Febrero</td><td><span class="cat-badge cat-interm">Apoyo interm.</span></td></tr>
+            <tr><td>16</td><td><strong>VDQ248</strong></td><td>2</td><td>2</td><td>Marzo</td><td><span class="cat-badge cat-interm">Apoyo interm.</span></td></tr>
+            <tr><td>17</td><td><strong>JLL226</strong></td><td>1</td><td>1</td><td>Abril</td><td><span class="cat-badge cat-espor">Esporádica</span></td></tr>
+            <tr><td>18</td><td><strong>SNY924</strong></td><td>1</td><td>1</td><td>Febrero</td><td><span class="cat-badge cat-espor">Esporádica</span></td></tr>
+            <tr><td>19</td><td><strong>TSS421</strong></td><td>1</td><td>1</td><td>Marzo</td><td><span class="cat-badge cat-espor">Esporádica</span></td></tr>
+            <tr><td>20</td><td><strong>WLW453</strong></td><td>1</td><td>1</td><td>Abril</td><td><span class="cat-badge cat-espor">Esporádica</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Indicador Loyalty v2 · Q1 2026</span>
+    <span class="footer-right">5 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 11 · LOGRO DE GESTIÓN
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-11">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Indicador Loyalty · Logro de Gestión</div>
+      <div class="slide-title" style="font-size:26px;">Vinculación de dos placas fijas nuevas en abril</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">PUN505 y EST515 ingresan al núcleo · la flota fija pasa de 5 a 7 placas sin interrupción del volumen</div>
+    </div>
+    <div class="logro-hero">
+      <div class="placa-card">
+        <div class="placa-card-label">Nueva Fija</div>
+        <div class="placa-card-name">PUN505</div>
+        <div class="placa-card-sub">15 servicios en abril · vinculada el 10 de abril</div>
+      </div>
+      <div class="placa-card">
+        <div class="placa-card-label">Nueva Fija</div>
+        <div class="placa-card-name">EST515</div>
+        <div class="placa-card-sub">5 servicios en abril · vinculada el 17 de abril</div>
+      </div>
+      <div class="flota-total-card">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;opacity:0.8;margin-bottom:4px;">Flota fija actual</div>
+        <div class="flota-total-num">7</div>
+        <div class="flota-total-label">placas<br>5 históricas + 2 nuevas en abril 2026</div>
+      </div>
+    </div>
+    <div class="narrativa-box">
+      <div class="narrativa-label">Narrativa Ejecutiva</div>
+      <div class="narrativa-quote">"En abril 2026 se vincularon 2 nuevas placas fijas a la operación Éxito Antioquia"</div>
+      <div class="narrativa-text">Aportaron 20 servicios en su primer mes de operación y sostuvieron el tamaño de la flota activa de la cuenta en un mes donde las esporádicas bajaron a 8 servicios.</div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Análisis consolidado Q1 2026</span>
+    <span class="footer-right">4 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 12 · RIESGO COVER
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-12" style="background:var(--exito-dark);color:white;flex-direction:row;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(227,24,55,0.2) 0%,transparent 60%),radial-gradient(ellipse at 85% 20%,rgba(245,168,0,0.1) 0%,transparent 50%);"></div>
+  <div class="slide-header-bar"></div>
+  <div class="dark-cover-content" style="position:relative;z-index:2;">
+    <div class="dark-cover-left">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--exito-red);margin-bottom:16px;">Módulo 2 · Riesgo de Recaudo</div>
+      <div class="dark-cover-title">RIESGO DE<br>EFECTIVO<br><span style="color:var(--exito-yellow);">POR MACROZONA</span></div>
+      <div class="dark-cover-desc">Servicios, recaudo en efectivo (Contado + Contraentrega) y clientes top en cada zona de Antioquia. Foco: dinero físico que cargan los conductores en zonas con presencia de estructuras criminales.</div>
+      <div class="badge badge-yellow" style="align-self:flex-start;">Ene – Abr 2026</div>
+    </div>
+    <div class="dark-cover-right">
+      <div class="dark-kpi">
+        <div class="dark-kpi-label">Período</div>
+        <div class="dark-kpi-value" style="font-size:22px;">Ene – Abr 2026</div>
+      </div>
+      <div class="dark-kpi">
+        <div class="dark-kpi-label">Servicios totales</div>
+        <div class="dark-kpi-value">3.246</div>
+      </div>
+      <div class="dark-kpi">
+        <div class="dark-kpi-label">Efectivo expuesto</div>
+        <div class="dark-kpi-value" style="color:var(--exito-yellow);">$1.50MM</div>
+        <div class="dark-kpi-sub">COP · Contado + Contraentrega</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 13 · MAPA OVERVIEW ANTIOQUIA
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-13">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full" style="display:flex;flex-direction:column;">
+    <div style="margin-bottom:6px;">
+      <div class="section-label">Riesgo de Efectivo · Mapa Consolidado</div>
+      <div class="slide-title" style="font-size:26px;">Macrozonas de la Operación Éxito Antioquia</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Distribución geográfica de las 9 macrozonas que concentran el 87 % de los servicios con recaudo en efectivo</div>
+    </div>
+    <div class="overview-map-wrap">
+      <img src="assets/maps/overview_antioquia.png" alt="Mapa overview · Macrozonas Éxito Antioquia">
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span>
+    <span class="footer-right">1 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 14 · CLASIFICACIÓN RIESGO (sin máximo)
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-14">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Clasificación de Riesgo · Basada en distribución real</div>
+      <div class="slide-title" style="font-size:24px;">Según máximos, P90 y días en zona crítica (&gt;$8M)</div>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Mediana</th>
+            <th>P75 (1 de 4 días)</th>
+            <th>P90 (1 de 10 días)</th>
+            <th>Máximo registrado</th>
+            <th>Días &gt;$8M</th>
+            <th>Días &gt;$15M</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>PUN256</strong></td><td>$6.3M</td><td>$12.0M</td><td>$18.5M</td><td style="color:var(--exito-red);font-weight:700;">$31.2M</td><td><span style="background:#FFE0E3;color:#C0392B;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">17</span></td><td style="font-weight:700;">7</td></tr>
+          <tr><td><strong>SWX289</strong></td><td>$4.1M</td><td>$6.7M</td><td>$11.2M</td><td>$16.0M</td><td><span style="background:#FFE0E3;color:#C0392B;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">14</span></td><td>1</td></tr>
+          <tr><td><strong>TRH279</strong></td><td>$4.0M</td><td>$6.0M</td><td>$8.8M</td><td style="color:var(--exito-red);font-weight:700;">$28.5M</td><td><span style="background:#FFF3CD;color:#856404;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px;">8</span></td><td>3</td></tr>
+          <tr><td><strong>LKP003</strong></td><td>$3.8M</td><td>$6.1M</td><td>$7.7M</td><td>$10.5M</td><td>4</td><td>—</td></tr>
+          <tr><td><strong>TFW188</strong></td><td>$2.4M</td><td>$4.1M</td><td>$5.0M</td><td style="color:var(--exito-red);font-weight:700;">$22.2M</td><td>2</td><td>1</td></tr>
+          <tr><td><strong>EQW902</strong></td><td>$3.5M</td><td>$5.8M</td><td>$9.1M</td><td>$11.2M</td><td>2</td><td>—</td></tr>
+          <tr><td><strong>PXK207</strong></td><td>$5.0M</td><td>$6.2M</td><td>$8.6M</td><td>$12.9M</td><td>1</td><td>—</td></tr>
+          <tr><td><strong>LKM527</strong></td><td>$2.7M</td><td>$6.1M</td><td>$7.9M</td><td>$8.7M</td><td>1</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Análisis consolidado Q1 2026</span>
+    <span class="footer-right">4 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 15 · CLASIFICACIÓN CON RIESGO
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-15">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Clasificación de Riesgo · Tabla completa</div>
+      <div class="slide-title" style="font-size:24px;">Clasificación según máximos, P90 y días en zona crítica (&gt;$8M)</div>
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Riesgo</th>
+            <th>Recaudo total</th>
+            <th>Días op.</th>
+            <th>Mediana/día</th>
+            <th>P75</th>
+            <th>P90</th>
+            <th>Máximo</th>
+            <th>Días &gt;$8M</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>PUN256</strong></td><td><span class="risk-tag risk-critico">Crítico</span></td><td>$408M</td><td>47</td><td>$6.3M</td><td>$12.0M</td><td>$18.5M</td><td>$31.2M</td><td style="font-weight:700;color:var(--exito-red);">17</td></tr>
+          <tr><td><strong>SWX289</strong></td><td><span class="risk-tag risk-alto">Alto</span></td><td>$358M</td><td>72</td><td>$4.1M</td><td>$6.7M</td><td>$11.2M</td><td>$16.0M</td><td style="font-weight:700;">14</td></tr>
+          <tr><td><strong>TRH279</strong></td><td><span class="risk-tag risk-critico">Crítico</span></td><td>$227M</td><td>45</td><td>$4.0M</td><td>$6.0M</td><td>$8.8M</td><td>$28.5M</td><td style="font-weight:700;">8</td></tr>
+          <tr><td><strong>LKP003</strong></td><td><span class="risk-tag risk-alto">Alto</span></td><td>$186M</td><td>45</td><td>$3.8M</td><td>$6.1M</td><td>$7.7M</td><td>$10.5M</td><td>4</td></tr>
+          <tr><td><strong>TFW188</strong></td><td><span class="risk-tag risk-critico">Crítico</span></td><td>$143M</td><td>43</td><td>$2.4M</td><td>$4.1M</td><td>$5.0M</td><td>$22.2M</td><td>2</td></tr>
+          <tr><td><strong>EQW902</strong></td><td><span class="risk-tag risk-alto">Alto</span></td><td>$43M</td><td>10</td><td>$3.5M</td><td>$5.8M</td><td>$9.1M</td><td>$11.2M</td><td>2</td></tr>
+          <tr><td><strong>PXK207</strong></td><td><span class="risk-tag risk-alto">Alto</span></td><td>$43M</td><td>8</td><td>$5.0M</td><td>$6.2M</td><td>$8.6M</td><td>$12.9M</td><td>1</td></tr>
+          <tr><td><strong>LKM527</strong></td><td><span class="risk-tag risk-moderado">Moderado</span></td><td>$41M</td><td>11</td><td>$2.7M</td><td>$6.1M</td><td>$7.9M</td><td>$8.7M</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Análisis consolidado Q1 2026</span>
+    <span class="footer-right">4 / 7</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 16 · DISTRIBUCIÓN DE RIESGO
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-16">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:14px;">
+      <div class="section-label">Distribución de Riesgo · Datos agrupados</div>
+      <div class="slide-title" style="font-size:26px;">Clasificación según máximos, P90 y días en zona crítica (&gt;$8M)</div>
+    </div>
+
+    <div class="risk-row">
+      <div class="risk-level-badge" style="background:#D4EDDA;color:#155724;">BAJO</div>
+      <div class="risk-range">$1K – $2M</div>
+      <div class="risk-bar-wrap"><div class="risk-bar-fill" style="width:29.3%;background:#27AE60;"></div></div>
+      <div class="risk-stats">
+        <div class="risk-stat"><div class="risk-stat-val">94 días</div><div class="risk-stat-label">días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">29,3%</div><div class="risk-stat-label">% días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">5,5%</div><div class="risk-stat-label">% recaudo</div></div>
+      </div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-level-badge" style="background:#D4EDDA;color:#155724;">BAJO</div>
+      <div class="risk-range">$2M – $5M</div>
+      <div class="risk-bar-wrap"><div class="risk-bar-fill" style="width:37.4%;background:#52B788;"></div></div>
+      <div class="risk-stats">
+        <div class="risk-stat"><div class="risk-stat-val">120 días</div><div class="risk-stat-label">días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">37,4%</div><div class="risk-stat-label">% días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">27,4%</div><div class="risk-stat-label">% recaudo</div></div>
+      </div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-level-badge" style="background:#FFF3CD;color:#856404;">MODERADO</div>
+      <div class="risk-range">$5M – $8M</div>
+      <div class="risk-bar-wrap"><div class="risk-bar-fill" style="width:17.8%;background:#F5A800;"></div></div>
+      <div class="risk-stats">
+        <div class="risk-stat"><div class="risk-stat-val">57 días</div><div class="risk-stat-label">días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">17,8%</div><div class="risk-stat-label">% días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">23,3%</div><div class="risk-stat-label">% recaudo</div></div>
+      </div>
+    </div>
+    <div class="risk-row" style="background:rgba(230,126,34,0.06);border-color:rgba(230,126,34,0.2);">
+      <div class="risk-level-badge" style="background:#FFE4CC;color:#E67E22;">ALTO</div>
+      <div class="risk-range">$8M – $12M</div>
+      <div class="risk-bar-wrap"><div class="risk-bar-fill" style="width:8.7%;background:#E67E22;"></div></div>
+      <div class="risk-stats">
+        <div class="risk-stat"><div class="risk-stat-val">28 días</div><div class="risk-stat-label">días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">8,7%</div><div class="risk-stat-label">% días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">17,7%</div><div class="risk-stat-label">% recaudo</div></div>
+      </div>
+    </div>
+    <div class="risk-row" style="background:rgba(227,24,55,0.06);border-color:rgba(227,24,55,0.2);">
+      <div class="risk-level-badge" style="background:#FFE0E3;color:#C0392B;">CRÍTICO</div>
+      <div class="risk-range">$12M – $20M</div>
+      <div class="risk-bar-wrap"><div class="risk-bar-fill" style="width:5%;background:var(--exito-red);"></div></div>
+      <div class="risk-stats">
+        <div class="risk-stat"><div class="risk-stat-val">16 días</div><div class="risk-stat-label">días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">5,0%</div><div class="risk-stat-label">% días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">15,8%</div><div class="risk-stat-label">% recaudo</div></div>
+      </div>
+    </div>
+    <div class="risk-row" style="background:rgba(142,68,173,0.06);border-color:rgba(142,68,173,0.2);">
+      <div class="risk-level-badge" style="background:#E8D5F5;color:#8E44AD;">EXTREMO</div>
+      <div class="risk-range">&gt; $20M</div>
+      <div class="risk-bar-wrap"><div class="risk-bar-fill" style="width:1.9%;background:#8E44AD;"></div></div>
+      <div class="risk-stats">
+        <div class="risk-stat"><div class="risk-stat-val">6 días</div><div class="risk-stat-label">días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">1,9%</div><div class="risk-stat-label">% días</div></div>
+        <div class="risk-stat"><div class="risk-stat-val">10,2%</div><div class="risk-stat-label">% recaudo</div></div>
+      </div>
+    </div>
+
+    <div class="brecha-alert">
+      <div class="brecha-icon">⚠️</div>
+      <div class="brecha-text">50 días (15,6%) superan $8M — representan el <strong>43,7% del recaudo total</strong> del período</div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span>
+    <span class="footer-right"></span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 17 · RESUMEN EJECUTIVO RIESGO
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-17">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:14px;">
+      <div class="section-label">Resumen Ejecutivo · Éxito Antioquia</div>
+      <div class="slide-title" style="font-size:26px;">El argumento que abre la conversación</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Foco en los recaudos que sí implican riesgo: CONTADO + PAGO CONTRAENTREGA (efectivo físico)</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;">
+      <div style="background:var(--exito-dark);color:white;border-radius:10px;padding:18px 20px;grid-column:1/2;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Efectivo en zonas de riesgo</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:white;line-height:1;">$1.50MM</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-top:6px;line-height:1.5;">en efectivo facturado (Contado + Contraentrega) entró a zonas marcadas como riesgo durante el Q1 2026.</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.5);margin-top:8px;border-top:1px solid rgba(255,255,255,0.1);padding-top:8px;">Equivalente al 82% del recaudo en efectivo total ($1.84MM COP) y al 87% de los 1.643 servicios que recaudan efectivo.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="kpi-card"><div class="kpi-label">Servicios totales</div><div class="kpi-value">3.246</div></div>
+        <div class="kpi-card"><div class="kpi-label">Servicios con efectivo</div><div class="kpi-value">1.643 <span style="font-size:16px;color:var(--exito-muted);">(51%)</span></div></div>
+        <div class="kpi-card" style="border-left:3px solid var(--exito-red);"><div class="kpi-label">Servicios efectivo en riesgo</div><div class="kpi-value" style="color:var(--exito-red);">1.434 <span style="font-size:16px;">(87%)</span></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="kpi-card"><div class="kpi-label">Recaudo efectivo total</div><div class="kpi-value">$1.84MM</div></div>
+        <div class="kpi-card" style="border-left:3px solid var(--exito-red);"><div class="kpi-label">Recaudo efectivo en riesgo</div><div class="kpi-value" style="color:var(--exito-red);">$1.50MM</div></div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--exito-slate);line-height:1.6;padding:12px 16px;background:var(--exito-light);border-radius:8px;border:1px solid var(--exito-border);">
+      Lo que sigue son 9 fichas — una por cada macrozona del Valle. Cada ficha muestra el mapa de la zona, los servicios totales, el recaudo en efectivo, los 3 clientes que más servicios reciben y los 3 que más recaudan en efectivo.
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span>
+    <span class="footer-right">2 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDES 18–26 · FICHAS DE ZONA (template)
+════════════════════════════════════════════════ -->
+
+<!-- helper macro via JS generation below -->
+
+<!-- SLIDE 18 · ABURRÁ NORTE -->
+<div class="slide" id="slide-18">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header">
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 2 de 9 · Operación Éxito Antioquia</div>
+      <div class="zona-name">Aburrá Norte</div>
+    </div>
+    <div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 4 / 13</div>
+  </div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/aburra_norte.jpg" alt="Mapa Aburrá Norte"></div>
+    <div class="zona-kpi-col">
+      <div class="zona-card zona-card-red">
+        <div class="zona-card-label">Servicios totales</div>
+        <div class="zona-card-value">538</div>
+        <div class="zona-card-sub">88% Asignado a zona de Riesgo (474)</div>
+      </div>
+      <div class="zona-card zona-card-yellow">
+        <div class="zona-card-label">Recaudo en efectivo</div>
+        <div class="zona-card-value">$275M</div>
+        <div class="zona-card-sub">296 servicios · Contado + Contraentrega</div>
+      </div>
+      <div class="zona-card">
+        <div class="zona-card-label">Distribución del efectivo</div>
+        <div class="distrib-bar"><div class="distrib-bar-a" style="width:49%;"></div><div class="distrib-bar-b" style="width:51%;"></div></div>
+        <div class="distrib-legend">
+          <span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 145 svc (49%)</span></span>
+          <span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 151 svc (51%)</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="zona-card" style="padding:16px 18px;">
+      <div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div>
+      <ul class="top3-list">
+        <li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Ciro Noreña Martin Andres</span><span class="top3-val">22 svc</span></li>
+        <li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Ruiz Wiliam</span><span class="top3-val">16 svc</span></li>
+        <li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Hernandez Toro Ana Lucia</span><span class="top3-val">13 svc</span></li>
+      </ul>
+    </div>
+    <div class="zona-card" style="padding:16px 18px;">
+      <div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div>
+      <ul class="top3-list">
+        <li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Ciro Noreña Martin Andres</span><span class="top3-val" style="color:var(--exito-red);">$30.5M</span></li>
+        <li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Supermercado Comercial SAS</span><span class="top3-val" style="color:var(--exito-red);">$17.3M</span></li>
+        <li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Herrera Ortiz Albeiro</span><span class="top3-val" style="color:var(--exito-red);">$16.0M</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">4 / 13</span></div>
+</div>
+
+<!-- SLIDE 19 · ABURRÁ SUR -->
+<div class="slide" id="slide-19">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header">
+    <div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 1 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Aburrá Sur</div></div>
+    <div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 3 / 13</div>
+  </div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/aburra_sur.jpg" alt="Mapa Aburrá Sur"></div>
+    <div class="zona-kpi-col">
+      <div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">636</div><div class="zona-card-sub">92% en zona de riesgo</div></div>
+      <div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$364M</div><div class="zona-card-sub">379 servicios · Contado + Contraentrega</div></div>
+      <div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:46%;"></div><div class="distrib-bar-b" style="width:54%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 174 svc (46%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 205 svc (54%)</span></span></div></div>
+    </div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Rojas Agudelo Fernando</span><span class="top3-val">20 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Morales Marco</span><span class="top3-val">15 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Ramirez Jhon</span><span class="top3-val">15 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Rojas Agudelo Fernando</span><span class="top3-val" style="color:var(--exito-red);">$31.9M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Perez Gonzalez Diana Girlesa</span><span class="top3-val" style="color:var(--exito-red);">$25.5M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Perez Taborda Albeiro de Jesus</span><span class="top3-val" style="color:var(--exito-red);">$20.3M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">3 / 13</span></div>
+</div>
+
+<!-- SLIDE 20 · NOROCCIDENTE -->
+<div class="slide" id="slide-20">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 3 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Medellín – Noroccidente (C5-7)</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 5 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/medellin_noroccidente.jpg" alt="Mapa Medellín Noroccidente"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">608</div><div class="zona-card-sub">75% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$282M</div><div class="zona-card-sub">270 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:51%;"></div><div class="distrib-bar-b" style="width:49%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 139 svc (51%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 131 svc (49%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Segura Marmol Juan David</span><span class="top3-val">29 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Arango Montoya Alirio</span><span class="top3-val">17 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Loaiza Arango Sorani</span><span class="top3-val">16 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Posada Ricardo</span><span class="top3-val" style="color:var(--exito-red);">$27.5M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Ciro Noreña Nancy Carolina</span><span class="top3-val" style="color:var(--exito-red);">$18.6M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Lopez Noreña Lina Marcela</span><span class="top3-val" style="color:var(--exito-red);">$14.2M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">5 / 13</span></div>
+</div>
+
+<!-- SLIDE 21 · NORORIENTE -->
+<div class="slide" id="slide-21">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 4 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Medellín – Nororiente (C1-4)</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 6 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/medellin_nororiente.jpg" alt="Mapa Medellín Nororiente"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">459</div><div class="zona-card-sub">96% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$167M</div><div class="zona-card-sub">237 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:58%;"></div><div class="distrib-bar-b" style="width:42%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 137 svc (58%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 100 svc (42%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Supermercado Merca Ahorro S.A.S.</span><span class="top3-val">16 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Villegas Vargas Juan David</span><span class="top3-val">16 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Yineth Polania</span><span class="top3-val">13 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Castaño Wilson de Jesús</span><span class="top3-val" style="color:var(--exito-red);">$13.1M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Thejais SAS</span><span class="top3-val" style="color:var(--exito-red);">$8.5M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Arias Holguin Claudia Yaned</span><span class="top3-val" style="color:var(--exito-red);">$7.1M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">6 / 13</span></div>
+</div>
+
+<!-- SLIDE 22 · CENTRORIENTE -->
+<div class="slide" id="slide-22">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 5 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Medellín – Centroriente (C8-10)</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 7 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/medellin_centroriente.jpg" alt="Mapa Medellín Centroriente"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">264</div><div class="zona-card-sub">77% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$255M</div><div class="zona-card-sub">112 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:51%;"></div><div class="distrib-bar-b" style="width:49%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 57 svc (51%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 55 svc (49%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Henao Loaiza Manuela</span><span class="top3-val">10 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Gomez Mejia Ana Lucia</span><span class="top3-val">8 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Montoya Edgar Alberto</span><span class="top3-val">8 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Lescano Juan Pablo</span><span class="top3-val" style="color:var(--exito-red);">$29.4M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Jhоana Henao Loaiza</span><span class="top3-val" style="color:var(--exito-red);">$17.7M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Inversiones Diyanvima SAS</span><span class="top3-val" style="color:var(--exito-red);">$15.9M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">7 / 13</span></div>
+</div>
+
+<!-- SLIDE 23 · CENTROCCIDENTE -->
+<div class="slide" id="slide-23">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 6 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Medellín – Centroccidente (C11-13)</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 8 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/medellin_centroccidente.jpg" alt="Mapa Medellín Centroccidente"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">172</div><div class="zona-card-sub">65% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$83.8M</div><div class="zona-card-sub">79 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:56%;"></div><div class="distrib-bar-b" style="width:44%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 44 svc (56%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 35 svc (44%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Torres Martinez Jesus Eduardo</span><span class="top3-val">9 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Jimenez Janneth</span><span class="top3-val">8 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Castaño Giraldo Mario de Jesus</span><span class="top3-val">8 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Gomez Julian</span><span class="top3-val" style="color:var(--exito-red);">$8.5M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Salazar Alzate Efrain Onesimo</span><span class="top3-val" style="color:var(--exito-red);">$8.0M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Lopez Velasquez Maria Jose</span><span class="top3-val" style="color:var(--exito-red);">$7.2M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">8 / 13</span></div>
+</div>
+
+<!-- SLIDE 24 · SUROCCIDENTE -->
+<div class="slide" id="slide-24">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 7 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Medellín – Suroccidente (C15-16)</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 9 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/medellin_suroccidente.jpg" alt="Mapa Medellín Suroccidente"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">218</div><div class="zona-card-sub">83% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$141M</div><div class="zona-card-sub">92 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:51%;"></div><div class="distrib-bar-b" style="width:49%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 47 svc (51%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 45 svc (49%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Merka Rey SAS</span><span class="top3-val">9 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Garcia Daniel</span><span class="top3-val">8 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Duque Damian</span><span class="top3-val">8 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Garcia Daniel</span><span class="top3-val" style="color:var(--exito-red);">$17.1M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Ramirez Quintero Juan David</span><span class="top3-val" style="color:var(--exito-red);">$12.9M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Maloka Autoservicio S.A.S</span><span class="top3-val" style="color:var(--exito-red);">$12.6M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">9 / 13</span></div>
+</div>
+
+<!-- SLIDE 25 · CORREGIMIENTOS -->
+<div class="slide" id="slide-25">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 8 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Medellín – Corregimientos</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 10 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/medellin_corregimientos.jpg" alt="Mapa Medellín Corregimientos"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">185</div><div class="zona-card-sub">100% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$139M</div><div class="zona-card-sub">112 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:50%;"></div><div class="distrib-bar-b" style="width:50%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 56 svc (50%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 56 svc (50%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Cardona Alex</span><span class="top3-val">13 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Zuluaga Martinez Maria Alejandra</span><span class="top3-val">11 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Cardona Orozco Henry</span><span class="top3-val">10 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Giraldo Marin Liliana Maria</span><span class="top3-val" style="color:var(--exito-red);">$44.5M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Vélez Zapata Miguel Ángel</span><span class="top3-val" style="color:var(--exito-red);">$10.8M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Ceballos Giraldo de Jesus</span><span class="top3-val" style="color:var(--exito-red);">$10.0M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">10 / 13</span></div>
+</div>
+
+<!-- SLIDE 26 · OTROS MUNICIPIOS -->
+<div class="slide" id="slide-26">
+  <div class="slide-header-bar"></div>
+  <div class="zona-header"><div><div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Ficha 9 de 9 · Operación Éxito Antioquia</div><div class="zona-name">Otros Municipios y Medellín No Clasificado</div></div><div class="zona-ficha">Riesgo de recaudo en efectivo · Q1 2026 · 11 / 13</div></div>
+  <div class="zona-body">
+    <div class="zona-map"><img src="assets/maps/otros_municipios.jpg" alt="Mapa Otros Municipios"></div>
+    <div class="zona-kpi-col"><div class="zona-card zona-card-red"><div class="zona-card-label">Servicios totales</div><div class="zona-card-value">101</div><div class="zona-card-sub">61% en zona de riesgo</div></div><div class="zona-card zona-card-yellow"><div class="zona-card-label">Recaudo en efectivo</div><div class="zona-card-value">$105M</div><div class="zona-card-sub">50 servicios · Contado + Contraentrega</div></div><div class="zona-card"><div class="zona-card-label">Distribución del efectivo</div><div class="distrib-bar"><div class="distrib-bar-a" style="width:26%;"></div><div class="distrib-bar-b" style="width:74%;"></div></div><div class="distrib-legend"><span><span class="distrib-dot" style="background:var(--exito-red);"></span><span class="distrib-legend-text">Contado: 13 svc (26%)</span></span><span><span class="distrib-dot" style="background:var(--exito-yellow);"></span><span class="distrib-legend-text">Contraentrega: 37 svc (74%)</span></span></div></div></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por # servicios a la zona</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Jesus Alberto Usuga Sanchez</span><span class="top3-val">11 svc</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Maximax Supermercados Asociados ZOM</span><span class="top3-val">8 svc</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Valderrama Ramirez Juan Diego</span><span class="top3-val">6 svc</span></li></ul></div>
+    <div class="zona-card" style="padding:16px 18px;"><div class="zona-card-label" style="margin-bottom:10px;">Top 3 clientes por valor recaudado en efectivo</div><ul class="top3-list"><li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Valderrama Ramirez Juan Diego</span><span class="top3-val" style="color:var(--exito-red);">$26.2M</span></li><li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Jesus Alberto Usuga Sanchez</span><span class="top3-val" style="color:var(--exito-red);">$12.3M</span></li><li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Velasquez Atehortua Dannover de Jesús</span><span class="top3-val" style="color:var(--exito-red);">$10.4M</span></li></ul></div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">11 / 13</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 27 · CONCLUSIONES
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-27">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Conclusiones · Riesgo de efectivo</div>
+      <div class="slide-title" style="font-size:26px;">Lo que estos datos sostienen y lo que sigue</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Cierre del primer corte y puente con la base de incidencias</div>
+    </div>
+    <div class="conclusiones-layout">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--exito-dark);margin-bottom:10px;padding:6px 12px;background:var(--exito-dark);color:white;border-radius:6px;">Lo que los datos sostienen</div>
+        <ul class="conclusion-list">
+          <li class="conclusion-item"><span class="conclusion-num">1.</span><span class="conclusion-text">$1.36MM en efectivo viajan por zonas de riesgo en el Q1 — el 81% del recaudo en efectivo total.</span></li>
+          <li class="conclusion-item"><span class="conclusion-num">2.</span><span class="conclusion-text">87% de los servicios con recaudo en efectivo entran a zonas marcadas — no es percepción del conductor, es geografía operativa.</span></li>
+          <li class="conclusion-item"><span class="conclusion-num">3.</span><span class="conclusion-text">La concentración tiene nombre y apellido: las 9 fichas anteriores muestran exactamente qué zona, qué clientes y qué tipo de recaudo predomina (Contado vs Contraentrega).</span></li>
+        </ul>
+        <div class="cita-box" style="margin-top:14px;">
+          <div class="cita-text">"No es que no estemos colocando vehículos. Estamos colocándolos en zonas donde $1.36MM en efectivo cruzan la ciudad expuestos a estructuras criminales documentadas. La conversación con el cliente ya no es sobre disponibilidad — es sobre cómo proteger el recaudo en cada zona."</div>
+          <div class="cita-followup">Próxima entrega: cruce con base de incidencias + propuesta de protocolo por cliente.</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;background:var(--exito-red);color:white;border-radius:6px;padding:6px 12px;margin-bottom:10px;">Siguientes pasos</div>
+        <div class="siguiente-item"><div class="siguiente-letter">A</div><div class="siguiente-text">Cruzar esta zonificación con la base de incidencias de otras operaciones — sustentar con eventos reales por qué los conductores se niegan.</div></div>
+        <div class="siguiente-item"><div class="siguiente-letter">B</div><div class="siguiente-text">Convocar al cliente con los clientes top de cada zona y plantear protocolos diferenciados (transferencia, punto seguro, escolta, tope de efectivo).</div></div>
+        <div class="siguiente-item"><div class="siguiente-letter">C</div><div class="siguiente-text">Construir un score de riesgo por servicio que combine zona + tipo de recaudo + recurrencia, para priorizar la asignación de placas.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span><span class="footer-right">12 / 13</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 28 · ESCOLTAS COVER
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-28" style="flex-direction:row;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(245,168,0,0.15) 0%,transparent 60%),linear-gradient(135deg,#0F1117,#1A1A2E);"></div>
+  <div class="slide-header-bar"></div>
+  <div class="dark-cover-content" style="position:relative;z-index:2;">
+    <div class="dark-cover-left">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:16px;">Módulo 3 · Escoltas operativos</div>
+      <div class="dark-cover-title">ESCOLTAS<br>OPERATIVOS<br><span style="color:var(--exito-red);">COBERTURA Y BRECHA</span></div>
+      <div class="dark-cover-desc">Cobertura, inversión y brecha vs. zonas de riesgo. Distribución de jornadas de escolta por macrozona y análisis de brechas estructurales.</div>
+      <div class="badge badge-yellow" style="align-self:flex-start;">Ene – Mar 2026</div>
+    </div>
+    <div class="dark-cover-right">
+      <div class="dark-kpi"><div class="dark-kpi-label">Jornadas de escolta</div><div class="dark-kpi-value">111</div><div class="dark-kpi-sub">849 svc cubiertos</div></div>
+      <div class="dark-kpi"><div class="dark-kpi-label">Inversión trimestre</div><div class="dark-kpi-value" style="color:var(--exito-yellow);">$26.8M</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 29 · ESCOLTAS RESUMEN
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-29">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:12px;">
+      <div class="section-label">Escoltas · Resumen Ejecutivo</div>
+      <div class="slide-title" style="font-size:26px;">La escolta cubre 31% del riesgo</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Inversión actual de $26,8M en 111 jornadas · 849 servicios cubiertos de 2.743 servicios en zonas de riesgo</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;">
+      <div style="background:var(--exito-dark);color:white;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--exito-yellow);margin-bottom:4px;">Inversión total en escoltas</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:white;line-height:1;">$26.8M</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.55);margin-top:6px;line-height:1.5;">Para proteger recaudo en 8 de cada 10 entregas a zonas de riesgo del trimestre.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="kpi-card"><div class="kpi-label">Jornadas de escolta</div><div class="kpi-value">111</div></div>
+        <div class="kpi-card"><div class="kpi-label">Servicios cubiertos</div><div class="kpi-value">849 <span style="font-size:15px;color:var(--exito-muted);">(26%)</span></div></div>
+        <div class="kpi-card" style="border-left:3px solid var(--exito-red);"><div class="kpi-label">Svc en riesgo sin escolta</div><div class="kpi-value" style="color:var(--exito-red);">1.894 <span style="font-size:14px;">(69%)</span></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="kpi-card"><div class="kpi-label">Costo promedio / jornada</div><div class="kpi-value" style="font-size:22px;">$241.527</div></div>
+        <div class="kpi-card" style="border-left:3px solid var(--exito-yellow);"><div class="kpi-label">Cobertura del riesgo</div><div class="kpi-value" style="color:var(--exito-yellow);font-size:36px;">31%</div></div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--exito-charcoal);line-height:1.6;padding:12px 16px;background:rgba(227,24,55,0.06);border-left:3px solid var(--exito-red);border-radius:0 8px 8px 0;">
+      <strong>Relación protección / exposición:</strong> $26.8M invertidos para proteger $1.36MM en efectivo expuesto → ~2,0%<br>
+      Las zonas con mayor exposición (Aburrá Sur y Corregimientos) son las que menos escolta reciben — <strong>brecha estructural.</strong>
+    </div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Análisis de escoltas Q1 2026</span><span class="footer-right">2 / 7</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 30 · ESCOLTAS POR ZONA
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-30">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full">
+    <div style="margin-bottom:14px;">
+      <div class="section-label">Escoltas · Inversión por Zona</div>
+      <div class="slide-title" style="font-size:26px;">Dónde se está invirtiendo la protección</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:3px;">Valor total de escoltas distribuido por macrozona del Valle · total $26,8M COP</div>
+    </div>
+    <div class="escolta-bars">
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Aburrá Norte (municipios)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:100%;"><span class="escolta-bar-label">$7.118.457</span></div></div><div class="escolta-val">$7,1M</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Medellín – Nororiente (C1-4)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:91%;"><span class="escolta-bar-label">$6.462.052</span></div></div><div class="escolta-val">$6,5M</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Medellín – Suroccidente (C15-16)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:50%;"><span class="escolta-bar-label">$3.562.940</span></div></div><div class="escolta-val">$3,6M</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Medellín – Centroriente (C8-10)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:47%;"><span class="escolta-bar-label">$3.340.825</span></div></div><div class="escolta-val">$3,3M</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Medellín – Noroccidente (C5-7)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:42%;"><span class="escolta-bar-label">$2.968.355</span></div></div><div class="escolta-val">$3,0M</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Medellín – Centroccidente (C11-13)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:28%;"><span class="escolta-bar-label">$1.967.375</span></div></div><div class="escolta-val">$2,0M</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Aburrá Sur (municipios)</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:8%;min-width:30px;"></div></div><div class="escolta-val">$578.648</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Medellín – Corregimientos</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:7%;min-width:28px;"></div></div><div class="escolta-val">$529.774</div></div>
+      <div class="escolta-bar-row"><div class="escolta-zona-name">Otros municipios y zonas menores</div><div class="escolta-bar-outer"><div class="escolta-bar-inner" style="width:4%;min-width:20px;"></div></div><div class="escolta-val">$281.072</div></div>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:14px;">
+      <div class="kpi-card" style="flex:1;"><div class="kpi-label">Inversión total</div><div class="kpi-value">$26.8M</div><div class="kpi-sub">111 jornadas de escolta contratadas</div></div>
+      <div class="kpi-card" style="flex:2;border-left:3px solid var(--exito-yellow);"><div class="kpi-label">Zona con más inversión</div><div class="kpi-value" style="font-size:20px;">Aburrá Norte · $7.118.457</div><div class="kpi-sub">236 svc cubiertos · 50% cobertura · Aburrá Norte y Nororiente concentran más del 50% de la inversión — GDO y estructuras identificadas.</div></div>
+    </div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Operación Éxito Antioquia · Análisis de escoltas Q1 2026</span><span class="footer-right">3 / 7</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 31 · PLAN ESTRATÉGICO
+════════════════════════════════════════════════ -->
+<div class="slide" id="slide-31">
+  <div class="slide-header-bar"></div>
+  <div class="slide-content-full" style="padding-top:28px;">
+    <div style="margin-bottom:10px;">
+      <div class="section-label">Estrategia Operativa · Operación Éxito Antioquia</div>
+      <div class="slide-title" style="font-size:22px;">Plan de Acción Estratégico · Hoja de Ruta Q2 2026</div>
+      <div style="font-size:11px;color:var(--exito-muted);margin-top:2px;">Compromisos internos de Quick y agenda de negociación con el cliente</div>
+    </div>
+    <div class="plan-kpis">
+      <div class="plan-kpi dark-bg"><div class="plan-kpi-label">Colocación Q1 · Base</div><div class="plan-kpi-value">66,3%</div><div style="font-size:9px;opacity:0.6;margin-top:2px;">brecha −28,7pp vs target</div></div>
+      <div class="plan-kpi red-bg"><div class="plan-kpi-label">Punto de inflexión · Abr 2026</div><div class="plan-kpi-value">+8.25pp</div><div style="font-size:9px;opacity:0.75;margin-top:2px;">81,56% → 89,81%</div></div>
+      <div class="plan-kpi light-bg"><div class="plan-kpi-label plan-kpi-light-label">Meta Q2 2026 · Objetivo Loyalty</div><div class="plan-kpi-value plan-kpi-light-value" style="color:var(--exito-red);font-size:28px;">95%</div></div>
+    </div>
+    <div class="plan-layout">
+      <div>
+        <div class="plan-col-title quick">▸ Compromisos Quick · Lo que ejecutamos</div>
+        <div class="eje-card"><div class="eje-number">Eje 1</div><div class="eje-title">Efectividad Operativa</div><ul class="eje-bullets"><li class="eje-bullet">Control diario del indicador de colocación</li><li class="eje-bullet">Control de peso y salidas vehiculares</li><li class="eje-bullet">Seguimiento de tráfico vía TMS SmartQuick</li><li class="eje-bullet done">Planeación de rutas + salidas tempranas (5-8 am)</li></ul></div>
+        <div class="eje-card"><div class="eje-number">Eje 2</div><div class="eje-title">Gestión de Flota</div><ul class="eje-bullets"><li class="eje-bullet">Proceso de vinculación de VH por contrato</li><li class="eje-bullet">Incremento de límite mínimo a 8 VH/día</li><li class="eje-bullet">Iniciativa pagos semanales (impacto medio)</li><li class="eje-bullet done">PUN505 + EST515 vinculadas · flota fija = 7 placas</li></ul></div>
+        <div class="eje-card"><div class="eje-number">Eje 3</div><div class="eje-title">Bienestar y Fidelización</div><ul class="eje-bullets"><li class="eje-bullet">Bono mensual por posicionamiento + efectividad</li><li class="eje-bullet">Programa de fidelización de flota</li><li class="eje-bullet done">Contratación y recursos del equipo</li><li class="eje-bullet done">Equipo completo y operativo</li></ul></div>
+      </div>
+      <div>
+        <div class="plan-col-title cliente">▸ Agenda con el cliente</div>
+        <div class="agenda-item"><div class="agenda-num">1</div><div class="agenda-content"><div class="agenda-title">Quick Pay</div><div class="agenda-desc">Implementación como herramienta de control del recaudo, seguridad y bienestar del transportador.</div></div></div>
+        <div class="agenda-item"><div class="agenda-num">2</div><div class="agenda-content"><div class="agenda-title">Tope máximo de recaudo por ruta</div><div class="agenda-desc">$5.000.000 en efectivo por ruta para mitigar riesgo y fidelizar al transportador.</div></div></div>
+        <div class="agenda-item"><div class="agenda-num">3</div><div class="agenda-content"><div class="agenda-title">Volumen mínimo mensual por placa</div><div class="agenda-desc">Garantizar 8 vehículos/día con equidad entre zonas (sur y norte en igual proporción).</div></div></div>
+        <div class="agenda-item"><div class="agenda-num">4</div><div class="agenda-content"><div class="agenda-title">Reporte diario de posicionamiento</div><div class="agenda-desc">Reporte Quick-Cliente por placa y cierre con cumplimiento de entregas · visibilidad compartida.</div></div></div>
+        <div class="agenda-item"><div class="agenda-num">5</div><div class="agenda-content"><div class="agenda-title">Pago de escoltas en rutas de alto riesgo</div><div class="agenda-desc">Esquema de seguridad sobre rutas con recaudo en efectivo en zonas identificadas.</div></div></div>
+        <div class="transversal-box" style="margin-top:8px;"><div class="transversal-star">★</div><div class="transversal-text"><strong>Iniciativa transversal:</strong> Nivelación de tarifas y fletes — clave para mejorar loyalty y reducir rotación de flota. <strong>Impacto crítico · En proceso.</strong></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar"><span class="footer-text">Estrategia Operativa · Éxito Antioquia · Q2 2026</span><span class="footer-right"></span></div>
+</div>
+
+</div><!-- /slideshow -->
+
+<!-- NAVIGATION -->
+<div id="nav">
+  <button onclick="prevSlide()">‹</button>
+  <span id="slide-counter">1 / 29</span>
+  <button onclick="nextSlide()">›</button>
+  <div id="dot-nav"></div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  const total = slides.length;
+
+  // initialize counter so it matches actual slide count on load
+  document.getElementById('slide-counter').textContent = '1 / ' + total;
+
+  // build dot nav
+  const dotNav = document.getElementById('dot-nav');
+  for(let i = 0; i < total; i++){
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotNav.appendChild(d);
+  }
+
+  function goTo(n){
+    slides[current].classList.remove('active');
+    dotNav.children[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    dotNav.children[current].classList.add('active');
+    document.getElementById('slide-counter').textContent = (current+1) + ' / ' + total;
+  }
+
+  function nextSlide(){ goTo(current + 1); }
+  function prevSlide(){ goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+    if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  });
+
+  // touch swipe
+  let touchStart = 0;
+  document.addEventListener('touchstart', e => touchStart = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 50){ diff > 0 ? nextSlide() : prevSlide(); }
+  });
+</script>
+</body>
+</html>
