@@ -22,15 +22,10 @@
     if (!body) continue;
     body.style.gridTemplateColumns = "280px 1fr 1fr 1fr";
     const mapDiv = document.createElement("div");
-    mapDiv.style.cssText =
-      "border-radius:10px;overflow:hidden;border:1px solid #CBD5E1;" +
-      "background:#F1F5F9;box-shadow:0 2px 8px rgba(26,26,46,0.08);" +
-      "display:flex;align-items:center;justify-content:center;min-height:0;";
+    mapDiv.className = "zona-map-cell";
     const img = document.createElement("img");
     img.src = imgSrc;
     img.alt = "Mapa " + slideId;
-    img.style.cssText =
-      "width:100%;height:100%;object-fit:cover;object-position:center;display:block;";
     mapDiv.appendChild(img);
     body.insertBefore(mapDiv, body.firstChild);
   }

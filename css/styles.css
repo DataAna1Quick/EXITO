@@ -1119,6 +1119,51 @@
         flex-direction: column;
         gap: 10px;
       }
+
+      /* ─── FICHAS DE ZONA (slides 18-26, tienen atributo data-map) ─── */
+      /* El slide usa display:flex → necesita flex-direction column + zona-body flex:1 */
+      .slide[data-map] {
+        flex-direction: column;
+      }
+      .slide[data-map] .zona-body {
+        flex: 1;
+        min-height: 0;
+        /* 60px despeja el zona-header (top:12 + h:40 + 8 margen)          */
+        /* 44px despeja el footer-bar  (h:36 + 8 margen)                    */
+        padding: 60px 36px 44px;
+        display: grid;
+        gap: 12px;
+        align-items: stretch;
+        /* grid-template-columns lo setea JS según si hay mapa (280px 1fr 1fr 1fr) */
+      }
+      .slide[data-map] .zona-kpi-col {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 0;
+        overflow: hidden;
+      }
+      .slide[data-map] .zona-kpi-col .zona-card {
+        flex: 1 1 0;
+        min-height: 0;
+        overflow: hidden;
+      }
+      /* Contenedor del mapa inyectado por JS */
+      .zona-map-cell {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #cbd5e1;
+        background: #f1f5f9;
+        box-shadow: 0 2px 8px rgba(26, 26, 46, 0.08);
+        min-height: 0;
+      }
+      .zona-map-cell img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
       .zona-card {
         background: var(--exito-light);
         border: 1px solid var(--exito-border);
