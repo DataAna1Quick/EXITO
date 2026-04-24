@@ -18,16 +18,13 @@
   for (const [slideId, imgSrc] of Object.entries(maps)) {
     const slide = document.getElementById(slideId);
     if (!slide) continue;
-    const body = slide.querySelector(".zona-body");
-    if (!body) continue;
-    body.style.gridTemplateColumns = "280px 1fr 1fr 1fr";
-    const mapDiv = document.createElement("div");
-    mapDiv.className = "zona-map-cell";
+    const mapFill = document.createElement("div");
+    mapFill.className = "zona-map-fill";
     const img = document.createElement("img");
     img.src = imgSrc;
     img.alt = "Mapa " + slideId;
-    mapDiv.appendChild(img);
-    body.insertBefore(mapDiv, body.firstChild);
+    mapFill.appendChild(img);
+    slide.insertBefore(mapFill, slide.firstChild);
   }
 
   // ── 3. Navigation ─────────────────────────────────────────────────────────
