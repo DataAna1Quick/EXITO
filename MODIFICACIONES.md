@@ -372,3 +372,70 @@ Genera de nuevo el CSV+JSON desde la fuente. Si la base se actualiza, esto debe 
 **Las rutas internas del HTML siguen funcionando** sin cambios: `css/styles.css`, `js/...`, `../images/...` son relativas al HTML, no al repo. La carpeta `images/` no se movió.
 
 **TODO:** después del próximo merge a `main`, considerar si conviene mover Pages back a `main` con `/docs` (para que la URL pública refleje "estable" y no la rama de feature).
+
+---
+
+### 2026-04-28 · Landing menu + redistribución G4/G5/slide-9 + slide-6 con más aire
+
+**Motivación:** feedback del usuario después de probar la versión publicada — el menú de tabs era poco visible, varios slides se sentían densos.
+
+**Cambios:**
+- **Landing menu inicial:** nueva primera pantalla fullscreen (gradiente azul Éxito) con dos botones grandes (🌎 GENERAL, 📍 MEDELLÍN). Reemplaza la entrada directa al primer slide. Tabs flotantes ahora aparecen tras la elección + botón ☰ para volver al menú. Implementado en `docs/index.html`, `docs/js/slides.js`, `docs/css/styles.css` (sección "Landing menu").
+- **Slide-G4 redistribuido:** tabla simple → 5 cards verticales con sparkbars (una por región) + banda inferior de totales país por mes (Mar pico verde, Abr bajo rojo) + insight box.
+- **Slide-G5 redistribuido:** 6 cards en grid → ranking horizontal de 6 filas con barras de progreso grandes (verde/naranja/rojo según %) + KPI "Promedio país 70,5%" en header + Santanderes como fila "sin operación".
+- **Slide-9 (Loyalty) redistribuido:** layout vertical → 2 columnas (300px izq con KPIs grandes 80,0% y 66,7% prominentes, derecha con tabla compacta). Más respiración.
+- **Slide-6 (Medellín patrón regional):** ajustes de espaciado — gap 10→14, margins 10→18, padding 6→10, sparkline height 72→78. Más aire entre las 3 secciones (cards regionales, footer Total Q1, sparkline semanal).
+
+**Componentes CSS nuevos en `docs/css/styles.css`:**
+- `.landing-*` (menú inicial)
+- `.trend-card`, `.trend-bars`, `.trend-bar-fill`, `.trend-country-month` (G4)
+- `.risk-rank`, `.risk-row`, `.risk-bar-track`, `.risk-bar-fill` (G5, con variantes `--good --mid --bad --empty`)
+
+---
+
+### 2026-04-28 · Números completos en pesos (todo el dashboard)
+
+**Motivación:** decisión del usuario para reunión Surtimax — montos en COP completos, sin truncar a `$XM`.
+
+**Acción:** script ad-hoc Python con regex `\$([\d]+(?:[\.,][\d]+)*)M\b` aplicado a `docs/index.html` y `docs/js/arcgis_map.js`. Detección de separador (decimal `,` vs miles `.` con regla "3 dígitos = miles, 1-2 = decimal"), conversión `× 1.000.000`, formato `f"{n:,}".replace(",", ".")`.
+
+**Resultado:** **133 reemplazos** (113 en HTML, 20 en JS). Ejemplos:
+- `$23.919M` → `$23.919.000.000`
+- `$5,1M` → `$5.100.000`
+- `$182M` → `$182.000.000`
+- `$314,2M` → `$314.200.000`
+
+**Excepción:** sparkbars compactos del slide-G4 (`.trend-bar > b`) mantienen `$XXXM` por restricción de espacio visual — etiquetas de barras donde un valor completo no entra.
+
+**Convención agregada** a `04_CONVENTIONS.md` § "Formato de números (montos)".
+
+---
+
+### 2026-04-28 · Copia `images/` → `docs/images/` para GitHub Pages
+
+**Motivación:** las imágenes referenciadas en el HTML como `../images/...` quedaban **fuera** de lo que GitHub Pages publica (Pages sirve solo `/docs`, así que `../images/` resolvía a la raíz del repo, no accesible). Resultado: 13 imágenes con 404 en producción.
+
+**Acción:**
+1. **Copia** (no rename) de `images/` → `docs/images/` con PowerShell (24 archivos: 12 charts, 10 maps, 1 jpeg, 1 screenshot).
+2. **Reemplazo** de las 13 rutas `../images/` → `images/` (4 en `docs/index.html`, 9 en `docs/js/slides.js`).
+
+**Resultado:** todas las imágenes funcionan tanto local (`file://`) como en Pages (`https://dataana1quick.github.io/EXITO/`).
+
+**Pendiente:** `images/` raíz queda como **espejo duplicado** de `docs/images/`. Ambas trackeadas en git. En el futuro evaluar fuente única (mover origen a `docs/images/` y deprecar `images/` raíz, o mantener `images/` y excluir `docs/images/` con un script de sync). No urgente — la duplicación no rompe nada.
+
+---
+
+### 2026-04-28 · Reparación de `scripts/push.py`
+
+**Motivación:** detectados 2 bugs post-reorganización 2026-04-28:
+1. `PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))` apuntaba a `scripts/` (donde vive ahora el script), no a la raíz del proyecto.
+2. `git push origin main` hardcoded — siempre empujaba `main`, ignorando la rama actual.
+
+**Fix aplicado:**
+- `PROJECT_DIR = os.path.dirname(os.path.dirname(...))` → ahora apunta a la raíz.
+- Detección dinámica de la rama con `git branch --show-current` y push a `origin/<rama-actual>`.
+- Agregada detección de "nada para commitear" (saltea commit, hace solo push).
+- Agregado `-u` automático si la rama no tiene upstream configurado.
+- Mensaje de error claro si HEAD está detached.
+
+**Uso:** `python scripts/push.py "mensaje"` desde la raíz. Ahora seguro y robusto.
