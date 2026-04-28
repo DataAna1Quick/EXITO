@@ -2077,3 +2077,191 @@
         letter-spacing: 0.04em;
       }
       .exito-popup__cta:hover { text-decoration: underline; }
+
+      /* ═══════════════════════════════════════════════════════════════
+         G4 · Cards de tendencia mensual con sparkbars
+         ═══════════════════════════════════════════════════════════════ */
+      .trend-card {
+        background: var(--exito-light);
+        border: 1px solid var(--exito-border);
+        border-top: 3px solid var(--exito-red);
+        border-radius: 10px;
+        padding: 12px 12px 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      .trend-card--leader { border-top-color: var(--exito-dark); background: var(--exito-yellow-soft); }
+      .trend-card-label {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 13px;
+        font-weight: 900;
+        color: var(--exito-dark);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .trend-card-total {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--exito-charcoal);
+        line-height: 1.1;
+        margin-top: 2px;
+      }
+      .trend-card-share {
+        font-size: 10px;
+        color: var(--exito-muted);
+        margin-bottom: 10px;
+      }
+      .trend-bars {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+        align-items: end;
+        height: 80px;
+        margin-top: auto;
+      }
+      .trend-bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        gap: 2px;
+      }
+      .trend-bar > span {
+        font-size: 9px;
+        color: var(--exito-muted);
+        font-weight: 700;
+        order: 3;
+      }
+      .trend-bar > b {
+        font-size: 8.5px;
+        color: var(--exito-dark);
+        font-weight: 700;
+        order: 1;
+        letter-spacing: -0.02em;
+      }
+      .trend-bar-fill {
+        order: 2;
+        width: 100%;
+        background: var(--exito-red);
+        border-radius: 3px 3px 0 0;
+        min-height: 4px;
+      }
+      .trend-bar-fill--down { background: #c0392b; }
+      .trend-card--leader .trend-bar-fill { background: var(--exito-dark); }
+
+      .trend-country {
+        background: var(--exito-light);
+        border: 1px solid var(--exito-border);
+        border-radius: 8px;
+        padding: 12px 18px;
+      }
+      .trend-country-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--exito-dark);
+        margin-bottom: 8px;
+      }
+      .trend-country-bars {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .trend-country-month {
+        background: var(--exito-white);
+        border: 1px solid var(--exito-border);
+        border-radius: 6px;
+        padding: 10px 12px;
+        text-align: center;
+      }
+      .trend-country-month .m-label {
+        display: block;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--exito-muted);
+        margin-bottom: 4px;
+      }
+      .trend-country-month strong {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--exito-dark);
+        letter-spacing: -0.01em;
+      }
+      .trend-country-month--peak { border-color: #27ae60; background: rgba(39,174,96,0.06); }
+      .trend-country-month--peak strong { color: #27ae60; }
+      .trend-country-month--low { border-color: var(--exito-red); background: var(--exito-red-soft); }
+      .trend-country-month--low strong { color: var(--exito-red); }
+
+      /* ═══════════════════════════════════════════════════════════════
+         G5 · Ranking horizontal de regiones (% sin riesgo)
+         ═══════════════════════════════════════════════════════════════ */
+      .risk-rank {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .risk-row {
+        display: grid;
+        grid-template-columns: 160px 1fr 180px;
+        gap: 16px;
+        align-items: center;
+        background: var(--exito-light);
+        border: 1px solid var(--exito-border);
+        border-radius: 8px;
+        padding: 10px 16px;
+      }
+      .risk-region {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        color: var(--exito-dark);
+      }
+      .risk-bar-track {
+        position: relative;
+        height: 26px;
+        background: var(--exito-border);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .risk-bar-fill {
+        height: 100%;
+        background: var(--exito-red);
+        color: var(--exito-white);
+        font-size: 12px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        border-radius: 4px;
+      }
+      .risk-row--good .risk-bar-fill { background: #27ae60; }
+      .risk-row--mid  .risk-bar-fill { background: #e67e22; }
+      .risk-row--bad  .risk-bar-fill { background: #c0392b; }
+      .risk-row--bad  .risk-region   { color: #c0392b; }
+      .risk-bar-empty {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        font-size: 11px;
+        color: var(--exito-muted);
+        font-style: italic;
+      }
+      .risk-row--empty { border-style: dashed; opacity: 0.7; }
+      .risk-counts {
+        font-size: 11px;
+        color: var(--exito-slate);
+        text-align: right;
+      }
+      .risk-counts strong {
+        font-size: 13px;
+        color: var(--exito-dark);
+        font-weight: 800;
+      }

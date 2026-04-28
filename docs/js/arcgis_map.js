@@ -14,47 +14,47 @@
   const REGIONES = [
     {
       nombre: "Bogotá-Sabana", lat: 4.71, lng: -74.07, capital: "Bogotá",
-      servicios: 7543, recaudo: "$10.259M", sinRiesgo: "74,2%",
+      servicios: 7543, recaudo: "$10.259.000.000", sinRiesgo: "74,2%",
       topClientes: [
-        { name: "INVERSIONES GRUPO ROAL SAS", val: "$314,2M" },
-        { name: "GUTIERREZ GIL JOSE JAIRO",   val: "$95,6M" },
-        { name: "BARBOSA GUERRA YOLANDA",     val: "$90,5M" },
+        { name: "INVERSIONES GRUPO ROAL SAS", val: "$314.200.000" },
+        { name: "GUTIERREZ GIL JOSE JAIRO",   val: "$95.600.000" },
+        { name: "BARBOSA GUERRA YOLANDA",     val: "$90.500.000" },
       ],
     },
     {
       nombre: "Antioquia", lat: 6.25, lng: -75.57, capital: "Medellín",
-      servicios: 3563, recaudo: "$5.497M", sinRiesgo: "68,2%",
+      servicios: 3563, recaudo: "$5.497.000.000", sinRiesgo: "68,2%",
       topClientes: [
-        { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: "$86,7M" },
-        { name: "CIRO NORENA MARTIN ANDRES",        val: "$76,9M" },
-        { name: "SEGURA MARMOL JUAN DAVID",         val: "$63,7M" },
+        { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: "$86.700.000" },
+        { name: "CIRO NORENA MARTIN ANDRES",        val: "$76.900.000" },
+        { name: "SEGURA MARMOL JUAN DAVID",         val: "$63.700.000" },
       ],
     },
     {
       nombre: "Costa Atlántica", lat: 10.97, lng: -74.81, capital: "Barranquilla",
-      servicios: 3166, recaudo: "$4.454M", sinRiesgo: "72,9%",
+      servicios: 3166, recaudo: "$4.454.000.000", sinRiesgo: "72,9%",
       topClientes: [
-        { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: "$132,1M" },
-        { name: "URREA GARCIA JUAN CAMILO",            val: "$90,7M" },
-        { name: "MERCADOS LA OCTAVA S.A.S.",           val: "$77,5M" },
+        { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: "$132.100.000" },
+        { name: "URREA GARCIA JUAN CAMILO",            val: "$90.700.000" },
+        { name: "MERCADOS LA OCTAVA S.A.S.",           val: "$77.500.000" },
       ],
     },
     {
       nombre: "Eje Cafetero", lat: 4.81, lng: -75.69, capital: "Pereira",
-      servicios: 1567, recaudo: "$2.135M", sinRiesgo: "54,4%",
+      servicios: 1567, recaudo: "$2.135.000.000", sinRiesgo: "54,4%",
       topClientes: [
-        { name: "NARANJO DULFARY DEL SOCORRO", val: "$85,0M" },
-        { name: "RESTREPO ESCOBAR LUZ AMPARO", val: "$62,3M" },
-        { name: "ARIAS ARIAS NORBEY",          val: "$49,3M" },
+        { name: "NARANJO DULFARY DEL SOCORRO", val: "$85.000.000" },
+        { name: "RESTREPO ESCOBAR LUZ AMPARO", val: "$62.300.000" },
+        { name: "ARIAS ARIAS NORBEY",          val: "$49.300.000" },
       ],
     },
     {
       nombre: "Valle del Cauca", lat: 3.45, lng: -76.53, capital: "Cali",
-      servicios: 1337, recaudo: "$1.573M", sinRiesgo: "65,0%",
+      servicios: 1337, recaudo: "$1.573.000.000", sinRiesgo: "65,0%",
       topClientes: [
-        { name: "ALYAN UNIDOS S.A.S",          val: "$93,2M" },
-        { name: "LOPEZ HERRERA CESAR ARMANDO", val: "$61,3M" },
-        { name: "VANEGAS PARRA DIEGO ALEXANDER", val: "$57,4M" },
+        { name: "ALYAN UNIDOS S.A.S",          val: "$93.200.000" },
+        { name: "LOPEZ HERRERA CESAR ARMANDO", val: "$61.300.000" },
+        { name: "VANEGAS PARRA DIEGO ALEXANDER", val: "$57.400.000" },
       ],
     },
   ];
