@@ -7,15 +7,15 @@
 
   // ── 1. Inject zona-slide maps into existing slides 18-26 ──────────────────
   const maps = {
-    "slide-18": "../images/charts/map_slide-18.jpg",
-    "slide-19": "../images/charts/map_slide-19.jpg",
-    "slide-20": "../images/charts/map_slide-20.jpg",
-    "slide-21": "../images/charts/map_slide-21.jpg",
-    "slide-22": "../images/charts/map_slide-22.jpg",
-    "slide-23": "../images/charts/map_slide-23.jpg",
-    "slide-24": "../images/charts/map_slide-24.jpg",
-    "slide-25": "../images/charts/map_slide-25.jpg",
-    "slide-26": "../images/charts/map_slide-26.jpg",
+    "slide-18": "images/charts/map_slide-18.jpg",
+    "slide-19": "images/charts/map_slide-19.jpg",
+    "slide-20": "images/charts/map_slide-20.jpg",
+    "slide-21": "images/charts/map_slide-21.jpg",
+    "slide-22": "images/charts/map_slide-22.jpg",
+    "slide-23": "images/charts/map_slide-23.jpg",
+    "slide-24": "images/charts/map_slide-24.jpg",
+    "slide-25": "images/charts/map_slide-25.jpg",
+    "slide-26": "images/charts/map_slide-26.jpg",
   };
 
   for (const [slideId, imgSrc] of Object.entries(maps)) {
