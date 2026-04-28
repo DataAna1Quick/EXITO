@@ -9,6 +9,9 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- ArcGIS Maps SDK for JS 4.x (mapa interactivo de regionales en slide-13) -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
+    <script defer src="https://js.arcgis.com/4.30/"></script>
   </head>
   <body>
     <div id="slideshow">
@@ -1684,25 +1687,21 @@
               min-height: 0;
             "
           >
-            <img
-              src="assets/charts/chart_3.png"
-              alt="Mapa overview macrozonas"
-              style="
-                max-width: 100%;
-                max-height: 100%;
-                border-radius: 10px;
-                border: 1px solid #cbd5e1;
-                box-shadow: 0 4px 18px rgba(26, 26, 46, 0.08);
-                object-fit: contain;
-                display: block;
-              "
-            />
+            <div class="arcgis-map-wrapper">
+              <div id="arcgis-map" role="region" aria-label="Mapa interactivo de regionales Éxito Antioquia"></div>
+              <div class="arcgis-map-fallback" aria-hidden="true">
+                <img
+                  src="assets/charts/chart_3.png"
+                  alt="Mapa overview macrozonas (fallback estático)"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div class="footer-bar">
           <span class="footer-text"
             >Operacion Exito Antioquia - Riesgo de recaudo en efectivo - Q1
-            2026</span
+            2026 · Click sobre cada regional para ver KPIs</span
           >
           <span class="footer-right">1 / 13</span>
         </div>
@@ -3854,5 +3853,6 @@
     </div>
 
     <script src="js/slides.js"></script>
+    <script src="js/arcgis_map.js"></script>
   </body>
 </html>
