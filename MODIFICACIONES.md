@@ -227,3 +227,117 @@ Para borrarlas en Windows: clic derecho → Eliminar.
 - La ruta `assets/charts/chart_3.png` que actúa como fallback **está rota** desde la reorganización del 2026-04-28 (la imagen vive ahora en `images/charts/chart_3.png`). No se corrige aquí porque excede el alcance de esta tarea, pero el mapa interactivo igual funciona y, si el SDK monta, el fallback nunca se ve.
 - El SDK ArcGIS pesa ~3 MB en primera carga; lazy init mitiga el costo. Si el cliente está offline, el mapa no carga y queda visible la imagen fallback (rota actualmente — ver punto anterior).
 - **No se borraron** las imágenes en `images/maps/*.jpg` ni `images/charts/chart_3.png`: el mapa interactivo coexiste como capa lógica.
+
+---
+
+### 2026-04-28 · Reestructuración a 2 secciones (GENERAL país / MEDELLÍN) — reunión Surtimax
+
+**Motivación:** Dirección solicita reunión con Surtimax (programada 2026-04-29) con foco en **información país** de recaudos, no solo Medellín. Estadística por cliente últimos 6 meses con desglose total mes vs. total por VH. El mapa interactivo aplica solo a **macrozonas país**; el detalle Medellín conserva las imágenes estáticas existentes.
+
+**Cambios estructurales en `web/index.html`:**
+- Agregado `<div id="section-tabs">` con dos botones: **GENERAL** (default) y **MEDELLÍN**.
+- Los 31 slides existentes quedan envueltos en `<section data-section="medellin" hidden>`. Sin tagging individual.
+- Nuevos 7 slides en `<section data-section="general">`:
+  | # | ID | Contenido |
+  |---|---|---|
+  | 1 | `slide-G1` | Cover Surtimax · Recaudo país |
+  | 2 | `slide-G2` | KPIs ejecutivos país (servicios, recaudo, clientes, VH) |
+  | 3 | `slide-G3` | Tabla top 10 clientes 6 meses (formato pedido por dirección) |
+  | 4 | `slide-G4` | Tendencia mensual por región (matriz 6×6 + total país) |
+  | 5 | `slide-G5` | Efectividad comparativa por región |
+  | 6 | `slide-G6` | Detalle cliente × mes × VH (formato Diana Pinilla solicitado por jefe) |
+  | 7 | `slide-G7` | Mapa interactivo ArcGIS de 6 regiones país |
+- `slide-13` (MEDELLÍN) **restaurado** a imagen estática `../images/maps/overview_antioquia.png`. El componente `#arcgis-map` ahora vive solo en `slide-G7`.
+
+**Cambios en `web/js/slides.js`:**
+- Reescrito para soportar tabs. Estado `{ section, current, slides }`.
+- Al cambiar de tab: oculta el otro `<section>`, reconstruye `dot-nav`, resetea a slide 0.
+- Expone API `window.QuickSlides` (`switchSection`, `goTo`, `getSection`, `getCurrent`).
+- Corrige rutas de mapas de zona Medellín (`assets/charts/` → `../images/charts/`) que estaban rotas tras la reorg 2026-04-28.
+
+**Cambios en `web/js/arcgis_map.js`:**
+- Reemplaza las 9 zonas Medellín por **6 regiones país**: Antioquia, Bogotá-Sabana, Valle del Cauca, Costa Atlántica, Eje Cafetero, Santanderes.
+- Centroides aproximados en capitales departamentales (TODO: ajustar con shapefile oficial).
+- Vista inicial: `center=[-73.5, 5.5]`, `zoom=6` (Colombia entera).
+- KPIs **mock estables** inline (no aleatorios por carga): servicios, recaudo $M, efectividad %, top 3 clientes.
+- Init lazy ahora vigila `slide-G7` (no `slide-13`).
+
+**Cambios en `web/css/styles.css`:**
+- Sección "Section tabs": píldora flotante centrada arriba, paleta azul Éxito.
+- Sección "Tabla genérica .general-table": estilo unificado para slides G3, G4, G6.
+- `.section-block { display: contents }` para que el `<section>` no rompa el layout original.
+
+**Datos mock — estructura esperada para `data/db_real`:**
+```
+clientes:
+  - cliente: str
+    region: str  ∈ {Antioquia, Bogotá-Sabana, Valle, Costa, Eje Cafetero, Santanderes}
+    meses:
+      - mes: YYYY-MM
+        total_mes_M: number    # millones COP
+        total_por_vh_M: number # millones COP / VH
+        vh_activos: int
+        servicios: int
+```
+
+**Impactos / TODOs:**
+- ⚠️ **Datos mock estables**: reemplazar al subir archivos a `data/db_real/`. Los lugares a tocar son: tablas en `slide-G2..G6` (HTML directo) y constante `REGIONES` en `web/js/arcgis_map.js`.
+- ⚠️ Los **6 centroides** son aproximados (capital de cada región). Validar con shapefile oficial.
+- ⚠️ El WebMap `781f76fd8f9b402a82c0b1672cff38c4` debe ser **público o accesible** desde el browser del cliente.
+- La sección MEDELLÍN queda intacta (slides 1-31), solo reactiva su imagen estática en slide-13.
+
+---
+
+### 2026-04-28 · Integración base real `RECAUDO_NACIONAL_LIMPIO.xlsx` → reemplazo de mocks GENERAL
+
+**Motivación:** el usuario subió `data/db_real/RECAUDO_NACIONAL_LIMPIO.xlsx` (17.324 filas, 1,6 MB). Se reemplazan los datos mock placeholder de la sección GENERAL por los reales antes de la reunión Surtimax 2026-04-29.
+
+**Cobertura real vs solicitada:**
+- Cobertura entregada: **4 meses** (2026-01 a 2026-04). El REQUEST pedía 6 (nov-25 a abr-26). Decisión del usuario: adaptar dashboard a 4 meses.
+- 5 regiones con datos (Antioquia, Bogotá-Sabana, Valle del Cauca, Costa Atlántica, Eje Cafetero). **Santanderes sin servicios** en el período.
+
+**Archivos creados:**
+| Archivo | Rol |
+|---|---|
+| `scripts/clean_db_real.py` | Pipeline reproducible: carga xlsx → limpia → mapea → agrega → genera CSV+JSON |
+| `data/db_real_clean_v1.csv` | Base normalizada nivel servicio · 17.176 filas · UTF-8 |
+| `data/db_real_aggregations_v1.json` | KPIs pre-calculados listos para los slides |
+
+**Decisiones de modelado (acordadas con usuario):**
+- **Cobertura:** 4 meses (ene-abr 2026), no 6.
+- **Slide G5 efectividad:** mantenido con proxy temporal **% Sin riesgo = SIN_RIESGO / total** por región. TODO: ajustar a fórmula real (cobrados/asignados) cuando se reciba base de servicios pendientes.
+- **TIPO DE RECAUDO:** 4 buckets — Contado · Contraentrega · Aliados · Crédito (+ Otros para "Recogida en Cedi"). 16 variantes raw colapsadas.
+- **RIESGO:** valor `"0"` (2.486 filas) → categoría **"Sin clasificar"** (no se une a SIN RIESGO).
+- **Mapeo regional:** prioridad `REGIONAL` operativa (FUNZA/MEDELLIN/COSTA/EJE/CALI) con fallback a `DEPARTAMENTO`. Servicios fuera de las 6 macrozonas (11 filas) → "Otros".
+
+**Limpieza aplicada:**
+- 5 fechas inválidas (NaT) descartadas
+- 143 duplicados removidos por `(fecha, placa, cliente, valor, municipio)`
+- Encoding mojibake corregido (`NARI�O`→`NARIÑO`, `BELTR�N`→`BELTRÁN`, etc.)
+- Strings normalizados (NFC, strip)
+- IDs derivados por hash MD5: `servicio_id` (10 chars), `cliente_id` (8 chars)
+
+**Reemplazos en el dashboard:**
+| Slide | Cambio |
+|---|---|
+| **G1** cover | Subtítulo "6 meses" → "4 meses · enero — abril 2026"; metas: 5 regiones país, 3.453 clientes, $23.919M |
+| **G2** KPIs | Servicios 12.480→**17.176**; Recaudo $4.820M→**$23.919M**; Clientes 187→**3.453**; VH 94→**131**; concentración real (Bogotá 42,9% · Antioquia 23% · Costa 18,6%); meses pico/bajo/promedio reales |
+| **G3** Top 10 clientes | Reemplazo completo: INVERSIONES GRUPO ROAL SAS, INVERSIONES LA CENTRAL DE CLEMENCIA, GUTIERREZ GIL, ALYAN UNIDOS, URREA GARCIA, BARBOSA GUERRA, CARDENAS VALENCIA, RODRIGUEZ FORERO, NARANJO DULFARY, SUPERMERCADOS LOS PAISAS |
+| **G4** Tendencia | Tabla de 6×6 → **5×4** (5 regiones · 4 meses). Total país $4.820M→**$23.919M** |
+| **G5** Efectividad | Etiqueta "% efectividad" → **"% Sin riesgo"** (proxy). 6 cards → 5 cards reales + 1 marcador "sin datos" para Santanderes. Eje Cafetero como región más crítica (54,4%) |
+| **G6** Detalle cliente×mes×VH | Top 5 reales (INVERSIONES GRUPO ROAL SAS, INVERSIONES LA CENTRAL DE CLEMENCIA, GUTIERREZ GIL, ALYAN UNIDOS, URREA GARCIA) × 4 meses × 2 métricas |
+| **G7** Mapa ArcGIS | Constante `REGIONES` reemplazada con 5 regiones reales (Bogotá, Antioquia, Costa, Eje, Valle). Popup actualizado: subtítulo "ene-abr 2026", campo "% Sin riesgo" en lugar de "Efectividad", footer cita `data/db_real_clean_v1.csv` |
+
+**Re-ejecución del pipeline:**
+```
+cd <project_root>
+python scripts/clean_db_real.py
+```
+Genera de nuevo el CSV+JSON desde la fuente. Si la base se actualiza, esto debe correrse antes de tocar el HTML.
+
+**TODOs pendientes:**
+- Recibir base de servicios pendientes/asignados → recalcular efectividad real en G5.
+- Confirmar significado de columna `PESO` (puede ser kg, indicador binario, ignorado).
+- Validar centroides de capitales con shapefile oficial.
+- Considerar `fetch(data/db_real_aggregations_v1.json)` en `arcgis_map.js` para evitar duplicación HTML/JS.
+- Aclarar 11 servicios fuera de las 6 macrozonas (Santander/Tolima/Nariño/Córdoba): incluir o excluir.

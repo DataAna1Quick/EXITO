@@ -14,11 +14,311 @@
     <script defer src="https://js.arcgis.com/4.30/"></script>
   </head>
   <body>
+    <!-- TAB NAV país vs Medellín -->
+    <div id="section-tabs" role="tablist">
+      <button class="section-tab active" role="tab" data-section="general" aria-selected="true">GENERAL</button>
+      <button class="section-tab" role="tab" data-section="medellin" aria-selected="false">MEDELLÍN</button>
+    </div>
+
     <div id="slideshow">
+      <!-- ══════════════════════════════════════════════
+     SECTION: GENERAL — País / Surtimax (datos mock placeholder)
+════════════════════════════════════════════════ -->
+      <section class="section-block active" data-section="general">
+        <!-- SLIDE G1 · COVER GENERAL -->
+        <div class="slide active" id="slide-G1">
+          <div class="cover-bg"></div>
+          <div class="cover-geo"></div>
+          <div class="cover-content">
+            <div class="cover-eyebrow">
+              <span class="exito-logo-text">Surtimax · Grupo Éxito</span>
+              <span style="color: rgba(255, 255, 255, 0.2); font-size: 18px">·</span>
+              <span style="font-size: 11px; color: rgba(255,255,255,.7); letter-spacing:.15em">RECAUDO PAÍS · 6 MESES</span>
+            </div>
+            <h1 class="cover-title" style="font-size:56px;line-height:1.05">Operación de Recaudo · Vista País</h1>
+            <div class="cover-subtitle" style="font-size:16px">Estadística por cliente · últimos 4 meses · enero — abril 2026</div>
+            <div class="cover-meta" style="margin-top:36px">
+              <span class="cover-meta-item"><strong>5</strong> regiones país</span>
+              <span class="cover-meta-item"><strong>3.453</strong> clientes activos</span>
+              <span class="cover-meta-item"><strong>$23.919M</strong> recaudo</span>
+            </div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Recaudo país · Reunión 2026-04-29</span>
+            <span class="footer-right">1 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G2 · KPIs PAÍS -->
+        <div class="slide" id="slide-G2">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full">
+            <div class="section-label">Resumen ejecutivo · País</div>
+            <div class="slide-title" style="font-size:28px">¿Cómo se distribuye el recaudo en Surtimax país?</div>
+            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Últimos 4 meses · enero — abril 2026 · datos reales <code>RECAUDO_NACIONAL_LIMPIO.xlsx</code></div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px">
+              <div class="zona-card zona-card-red">
+                <div class="zona-card-label">Servicios totales</div>
+                <div class="zona-card-value">17.176</div>
+                <div class="zona-card-sub">5 regiones · 4 meses</div>
+              </div>
+              <div class="zona-card zona-card-yellow">
+                <div class="zona-card-label">Recaudo en efectivo</div>
+                <div class="zona-card-value">$23.919M</div>
+                <div class="zona-card-sub">$5.980M promedio mensual</div>
+              </div>
+              <div class="zona-card">
+                <div class="zona-card-label">Clientes activos</div>
+                <div class="zona-card-value">3.453</div>
+                <div class="zona-card-sub">Top 10 concentra ~5,7%</div>
+              </div>
+              <div class="zona-card">
+                <div class="zona-card-label">Vehículos en operación</div>
+                <div class="zona-card-value">131</div>
+                <div class="zona-card-sub">$182M / VH (4 meses)</div>
+              </div>
+            </div>
+
+            <div style="margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="zona-card" style="padding:16px 18px">
+                <div class="zona-card-label" style="margin-bottom:8px">Concentración por región (recaudo $M)</div>
+                <ul class="top3-list">
+                  <li class="top3-item"><span class="top3-rank">1</span><span class="top3-name">Bogotá-Sabana</span><span class="top3-val">$10.259M (42,9%)</span></li>
+                  <li class="top3-item"><span class="top3-rank">2</span><span class="top3-name">Antioquia</span><span class="top3-val">$5.497M (23,0%)</span></li>
+                  <li class="top3-item"><span class="top3-rank">3</span><span class="top3-name">Costa Atlántica</span><span class="top3-val">$4.454M (18,6%)</span></li>
+                </ul>
+              </div>
+              <div class="zona-card" style="padding:16px 18px">
+                <div class="zona-card-label" style="margin-bottom:8px">Comportamiento mensual (4 meses)</div>
+                <ul class="top3-list">
+                  <li class="top3-item"><span class="top3-rank">↑</span><span class="top3-name">Mes con mayor recaudo</span><span class="top3-val">Marzo · $6.751M</span></li>
+                  <li class="top3-item"><span class="top3-rank">↓</span><span class="top3-name">Mes más bajo</span><span class="top3-val">Abril · $4.726M</span></li>
+                  <li class="top3-item"><span class="top3-rank">μ</span><span class="top3-name">Promedio mensual</span><span class="top3-val">$5.980M / mes</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Recaudo país · ene–abr 2026</span>
+            <span class="footer-right">2 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G3 · TOP 10 CLIENTES (recaudo 6 meses) -->
+        <div class="slide" id="slide-G3">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full">
+            <div class="section-label">Top clientes · Recaudo 4 meses</div>
+            <div class="slide-title" style="font-size:26px">¿Quiénes concentran el recaudo país?</div>
+            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Top 10 clientes ordenados por recaudo total enero — abril 2026</div>
+
+            <table class="general-table" style="margin-top:18px">
+              <thead>
+                <tr>
+                  <th style="width:36px">#</th>
+                  <th>Cliente</th>
+                  <th>Región</th>
+                  <th style="text-align:right">Servicios</th>
+                  <th style="text-align:right">Recaudo total ($M)</th>
+                  <th style="text-align:right">Por VH ($M)</th>
+                  <th style="text-align:right">VH activos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>INVERSIONES GRUPO ROAL SAS</td><td>Bogotá-Sabana</td><td style="text-align:right">60</td><td style="text-align:right"><strong>$314,2</strong></td><td style="text-align:right">$11,6</td><td style="text-align:right">27</td></tr>
+                <tr><td>2</td><td>INVERSIONES LA CENTRAL DE CLEMENCIA</td><td>Costa Atlántica</td><td style="text-align:right">27</td><td style="text-align:right"><strong>$132,1</strong></td><td style="text-align:right">$44,0</td><td style="text-align:right">3</td></tr>
+                <tr><td>3</td><td>GUTIERREZ GIL JOSE JAIRO</td><td>Bogotá-Sabana</td><td style="text-align:right">15</td><td style="text-align:right"><strong>$95,6</strong></td><td style="text-align:right">$8,7</td><td style="text-align:right">11</td></tr>
+                <tr><td>4</td><td>ALYAN UNIDOS S.A.S</td><td>Valle del Cauca</td><td style="text-align:right">13</td><td style="text-align:right"><strong>$93,2</strong></td><td style="text-align:right">$15,5</td><td style="text-align:right">6</td></tr>
+                <tr><td>5</td><td>URREA GARCIA JUAN CAMILO</td><td>Costa Atlántica</td><td style="text-align:right">33</td><td style="text-align:right"><strong>$90,7</strong></td><td style="text-align:right">$13,0</td><td style="text-align:right">7</td></tr>
+                <tr><td>6</td><td>BARBOSA GUERRA YOLANDA</td><td>Bogotá-Sabana</td><td style="text-align:right">5</td><td style="text-align:right"><strong>$90,5</strong></td><td style="text-align:right">$30,2</td><td style="text-align:right">3</td></tr>
+                <tr><td>7</td><td>CARDENAS VALENCIA SERGIO ANTONIO</td><td>Antioquia</td><td style="text-align:right">7</td><td style="text-align:right"><strong>$86,7</strong></td><td style="text-align:right">$86,7</td><td style="text-align:right">1</td></tr>
+                <tr><td>8</td><td>RODRIGUEZ FORERO FRANCISCO</td><td>Bogotá-Sabana</td><td style="text-align:right">37</td><td style="text-align:right"><strong>$86,3</strong></td><td style="text-align:right">$10,8</td><td style="text-align:right">8</td></tr>
+                <tr><td>9</td><td>NARANJO DULFARY DEL SOCORRO</td><td>Eje Cafetero</td><td style="text-align:right">5</td><td style="text-align:right"><strong>$85,0</strong></td><td style="text-align:right">$42,5</td><td style="text-align:right">2</td></tr>
+                <tr><td>10</td><td>SUPERMERCADOS LOS PAISAS J J SAS</td><td>Bogotá-Sabana</td><td style="text-align:right">22</td><td style="text-align:right"><strong>$84,2</strong></td><td style="text-align:right">$12,0</td><td style="text-align:right">7</td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:10px;color:var(--exito-muted);margin-top:12px">Fuente: <code>data/db_real_clean_v1.csv</code> · 17.176 servicios · ene–abr 2026.</div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Top clientes · Recaudo 4 meses</span>
+            <span class="footer-right">3 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G4 · TENDENCIA MENSUAL POR REGIÓN -->
+        <div class="slide" id="slide-G4">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full">
+            <div class="section-label">Tendencia · 4 meses · 5 regiones</div>
+            <div class="slide-title" style="font-size:26px">Evolución mensual del recaudo por región</div>
+            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Recaudo $M · enero — abril 2026 · datos reales</div>
+
+            <table class="general-table" style="margin-top:18px">
+              <thead>
+                <tr>
+                  <th>Región</th>
+                  <th style="text-align:right">Ene</th>
+                  <th style="text-align:right">Feb</th>
+                  <th style="text-align:right">Mar</th>
+                  <th style="text-align:right">Abr</th>
+                  <th style="text-align:right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Bogotá-Sabana</td><td style="text-align:right">$2.840</td><td style="text-align:right">$2.180</td><td style="text-align:right">$2.834</td><td style="text-align:right">$2.405</td><td style="text-align:right"><strong>$10.259</strong></td></tr>
+                <tr><td>Antioquia</td><td style="text-align:right">$1.708</td><td style="text-align:right">$1.508</td><td style="text-align:right">$1.207</td><td style="text-align:right">$1.075</td><td style="text-align:right"><strong>$5.497</strong></td></tr>
+                <tr><td>Costa Atlántica</td><td style="text-align:right">$1.101</td><td style="text-align:right">$1.332</td><td style="text-align:right">$1.571</td><td style="text-align:right">$451</td><td style="text-align:right"><strong>$4.454</strong></td></tr>
+                <tr><td>Eje Cafetero</td><td style="text-align:right">$558</td><td style="text-align:right">$495</td><td style="text-align:right">$575</td><td style="text-align:right">$507</td><td style="text-align:right"><strong>$2.135</strong></td></tr>
+                <tr><td>Valle del Cauca</td><td style="text-align:right">$377</td><td style="text-align:right">$345</td><td style="text-align:right">$564</td><td style="text-align:right">$288</td><td style="text-align:right"><strong>$1.573</strong></td></tr>
+                <tr style="border-top:2px solid var(--exito-border);font-weight:700">
+                  <td>País</td>
+                  <td style="text-align:right">$6.584</td>
+                  <td style="text-align:right">$5.860</td>
+                  <td style="text-align:right">$6.751</td>
+                  <td style="text-align:right">$4.726</td>
+                  <td style="text-align:right">$23.919</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="font-size:10px;color:var(--exito-muted);margin-top:10px">Nota: Costa Atlántica muestra caída fuerte en abril; Antioquia en descenso sostenido. Bogotá-Sabana lidera con 42,9% del recaudo país.</div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Tendencia mensual · ene–abr 2026</span>
+            <span class="footer-right">4 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G5 · EFECTIVIDAD COMPARATIVA POR REGIÓN -->
+        <div class="slide" id="slide-G5">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full">
+            <div class="section-label">Calidad de gestión · 5 regiones</div>
+            <div class="slide-title" style="font-size:26px">% Servicios sin riesgo por región</div>
+            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Proxy temporal de efectividad · % Sin riesgo / total · ene–abr 2026 (TODO: ajustar a fórmula real al recibir asignados)</div>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px">
+              <div class="zona-card">
+                <div class="zona-card-label">Bogotá-Sabana</div>
+                <div class="zona-card-value">74,2%</div>
+                <div class="zona-card-sub">5.595 sin riesgo / 7.543 totales</div>
+              </div>
+              <div class="zona-card">
+                <div class="zona-card-label">Costa Atlántica</div>
+                <div class="zona-card-value">72,9%</div>
+                <div class="zona-card-sub">2.307 sin riesgo / 3.166 totales</div>
+              </div>
+              <div class="zona-card">
+                <div class="zona-card-label">Antioquia</div>
+                <div class="zona-card-value">68,2%</div>
+                <div class="zona-card-sub">2.431 sin riesgo / 3.563 totales</div>
+              </div>
+              <div class="zona-card">
+                <div class="zona-card-label">Valle del Cauca</div>
+                <div class="zona-card-value">65,0%</div>
+                <div class="zona-card-sub">869 sin riesgo / 1.337 totales</div>
+              </div>
+              <div class="zona-card">
+                <div class="zona-card-label">Eje Cafetero</div>
+                <div class="zona-card-value" style="color:#c0392b">54,4%</div>
+                <div class="zona-card-sub" style="color:#c0392b">853 sin riesgo / 1.567 · región más crítica</div>
+              </div>
+              <div class="zona-card" style="background:var(--exito-light);border-style:dashed">
+                <div class="zona-card-label">Santanderes</div>
+                <div class="zona-card-value" style="color:var(--exito-muted);font-size:14px">sin datos</div>
+                <div class="zona-card-sub">Sin operación en este período</div>
+              </div>
+            </div>
+
+            <div style="margin-top:22px;font-size:11px;color:var(--exito-slate);background:var(--exito-light);padding:12px 16px;border-radius:6px;border-left:4px solid var(--exito-red)">
+              <strong>Observación:</strong> Eje Cafetero es la región con mayor proporción de servicios en riesgo (45,6%). Bogotá-Sabana es la mejor gestionada con 74,2% sin riesgo. <em>Métrica temporal — pendiente recalcular como cobrados/asignados al recibir base de servicios pendientes.</em>
+            </div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Efectividad comparativa</span>
+            <span class="footer-right">5 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G6 · DETALLE CLIENTE × MES × VH -->
+        <div class="slide" id="slide-G6">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full">
+            <div class="section-label">Detalle por cliente · mes · VH</div>
+            <div class="slide-title" style="font-size:24px">Top 5 clientes · evolución mensual y por vehículo</div>
+            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Total mes ($M) y total por VH ($M) · 4 meses · datos reales ene–abr 2026</div>
+
+            <table class="general-table" style="margin-top:16px;font-size:11px">
+              <thead>
+                <tr>
+                  <th rowspan="2">Cliente</th>
+                  <th colspan="4" style="text-align:center">Total mes ($M)</th>
+                  <th colspan="4" style="text-align:center;background:var(--exito-yellow-soft)">Total por VH ($M)</th>
+                </tr>
+                <tr>
+                  <th style="text-align:right">Ene</th><th style="text-align:right">Feb</th><th style="text-align:right">Mar</th><th style="text-align:right">Abr</th>
+                  <th style="text-align:right;background:var(--exito-yellow-soft)">Ene</th><th style="text-align:right;background:var(--exito-yellow-soft)">Feb</th><th style="text-align:right;background:var(--exito-yellow-soft)">Mar</th><th style="text-align:right;background:var(--exito-yellow-soft)">Abr</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>INVERSIONES GRUPO ROAL SAS</strong></td>
+                    <td style="text-align:right">$93,1</td><td style="text-align:right">$61,3</td><td style="text-align:right">$103,4</td><td style="text-align:right">$56,3</td>
+                    <td style="text-align:right;background:var(--exito-yellow-soft)">$10,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$8,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$9,4</td><td style="text-align:right;background:var(--exito-yellow-soft)">$7,0</td></tr>
+                <tr><td><strong>INVERSIONES LA CENTRAL DE CLEMENCIA</strong></td>
+                    <td style="text-align:right">$38,6</td><td style="text-align:right">$36,1</td><td style="text-align:right">$42,1</td><td style="text-align:right">$15,2</td>
+                    <td style="text-align:right;background:var(--exito-yellow-soft)">$19,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$36,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$21,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$7,6</td></tr>
+                <tr><td><strong>GUTIERREZ GIL JOSE JAIRO</strong></td>
+                    <td style="text-align:right">$25,3</td><td style="text-align:right">$20,6</td><td style="text-align:right">$23,3</td><td style="text-align:right">$26,4</td>
+                    <td style="text-align:right;background:var(--exito-yellow-soft)">$5,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$10,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$7,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$13,2</td></tr>
+                <tr><td><strong>ALYAN UNIDOS S.A.S</strong></td>
+                    <td style="text-align:right">$15,2</td><td style="text-align:right">$30,5</td><td style="text-align:right">$25,0</td><td style="text-align:right">$22,5</td>
+                    <td style="text-align:right;background:var(--exito-yellow-soft)">$7,6</td><td style="text-align:right;background:var(--exito-yellow-soft)">$15,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$12,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$11,3</td></tr>
+                <tr><td><strong>URREA GARCIA JUAN CAMILO</strong></td>
+                    <td style="text-align:right">$22,1</td><td style="text-align:right">$18,8</td><td style="text-align:right">$43,2</td><td style="text-align:right">$6,5</td>
+                    <td style="text-align:right;background:var(--exito-yellow-soft)">$5,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$3,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$6,2</td><td style="text-align:right;background:var(--exito-yellow-soft)">$1,3</td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:10px;color:var(--exito-muted);margin-top:10px">Formato según solicitud: cliente · mes · total mes vs. total por VH. Fuente: <code>data/db_real_clean_v1.csv</code>.</div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Detalle cliente · mes · VH</span>
+            <span class="footer-right">6 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G7 · MAPA INTERACTIVO PAÍS -->
+        <div class="slide" id="slide-G7">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full" style="display:flex;flex-direction:column">
+            <div style="margin-bottom:8px">
+              <div class="section-label">Mapa interactivo · 6 regiones país</div>
+              <div class="slide-title" style="font-size:26px">Click sobre cada región para ver KPIs</div>
+              <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Cobertura nacional Surtimax · centroides aproximados (ajustar con shapefile oficial)</div>
+            </div>
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:6px 36px 16px;min-height:0">
+              <div class="arcgis-map-wrapper">
+                <div id="arcgis-map" role="region" aria-label="Mapa interactivo de regiones país"></div>
+                <div class="arcgis-map-fallback" aria-hidden="true">
+                  <img src="../images/maps/overview_antioquia.png" alt="Mapa de fallback" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text">Surtimax · Mapa interactivo país · 6 regiones</span>
+            <span class="footer-right">7 / 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════
+     SECTION: MEDELLÍN — Operación Antioquia (slides existentes)
+════════════════════════════════════════════════ -->
+      <section class="section-block" data-section="medellin" hidden>
       <!-- ══════════════════════════════════════════════
      SLIDE 1 · COVER PRINCIPAL
 ════════════════════════════════════════════════ -->
-      <div class="slide active" id="slide-1">
+      <div class="slide" id="slide-1">
         <div class="cover-bg"></div>
         <div class="cover-geo"></div>
         <div class="cover-content">
@@ -1687,21 +1987,25 @@
               min-height: 0;
             "
           >
-            <div class="arcgis-map-wrapper">
-              <div id="arcgis-map" role="region" aria-label="Mapa interactivo de regionales Éxito Antioquia"></div>
-              <div class="arcgis-map-fallback" aria-hidden="true">
-                <img
-                  src="assets/charts/chart_3.png"
-                  alt="Mapa overview macrozonas (fallback estático)"
-                />
-              </div>
-            </div>
+            <img
+              src="../images/maps/overview_antioquia.png"
+              alt="Mapa overview macrozonas Antioquia"
+              style="
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+                border: 1px solid #cbd5e1;
+                box-shadow: 0 4px 18px rgba(26, 26, 46, 0.08);
+                object-fit: contain;
+                display: block;
+              "
+            />
           </div>
         </div>
         <div class="footer-bar">
           <span class="footer-text"
             >Operacion Exito Antioquia - Riesgo de recaudo en efectivo - Q1
-            2026 · Click sobre cada regional para ver KPIs</span
+            2026</span
           >
           <span class="footer-right">1 / 13</span>
         </div>
@@ -3841,6 +4145,8 @@
           ><span class="footer-right"></span>
         </div>
       </div>
+      </section>
+      <!-- /SECTION MEDELLÍN -->
     </div>
     <!-- /slideshow -->
 

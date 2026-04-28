@@ -1,18 +1,21 @@
-/* slides.js – Operación Éxito Antioquia */
+/* slides.js – Operación Éxito Antioquia
+ * Soporta dos secciones (GENERAL país / MEDELLÍN) con tab-nav.
+ * Cada sección mantiene su propia navegación de slides.
+ */
 (function () {
   "use strict";
 
   // ── 1. Inject zona-slide maps into existing slides 18-26 ──────────────────
   const maps = {
-    "slide-18": "assets/charts/map_slide-18.jpg",
-    "slide-19": "assets/charts/map_slide-19.jpg",
-    "slide-20": "assets/charts/map_slide-20.jpg",
-    "slide-21": "assets/charts/map_slide-21.jpg",
-    "slide-22": "assets/charts/map_slide-22.jpg",
-    "slide-23": "assets/charts/map_slide-23.jpg",
-    "slide-24": "assets/charts/map_slide-24.jpg",
-    "slide-25": "assets/charts/map_slide-25.jpg",
-    "slide-26": "assets/charts/map_slide-26.jpg",
+    "slide-18": "../images/charts/map_slide-18.jpg",
+    "slide-19": "../images/charts/map_slide-19.jpg",
+    "slide-20": "../images/charts/map_slide-20.jpg",
+    "slide-21": "../images/charts/map_slide-21.jpg",
+    "slide-22": "../images/charts/map_slide-22.jpg",
+    "slide-23": "../images/charts/map_slide-23.jpg",
+    "slide-24": "../images/charts/map_slide-24.jpg",
+    "slide-25": "../images/charts/map_slide-25.jpg",
+    "slide-26": "../images/charts/map_slide-26.jpg",
   };
 
   for (const [slideId, imgSrc] of Object.entries(maps)) {
@@ -27,35 +30,77 @@
     slide.insertBefore(mapFill, slide.firstChild);
   }
 
-  // ── 3. Navigation ─────────────────────────────────────────────────────────
-  const slideshow = document.getElementById("slideshow");
-  const slides = document.querySelectorAll(".slide");
+  // ── 2. Section tabs (GENERAL ↔ MEDELLÍN) ──────────────────────────────────
+  const sectionBlocks = document.querySelectorAll(".section-block");
+  const tabButtons = document.querySelectorAll(".section-tab");
   const counter = document.getElementById("slide-counter");
   const dotNav = document.getElementById("dot-nav");
-  let current = 0;
-  const total = slides.length;
 
-  counter.textContent = "1 / " + total;
+  // Estado por sección
+  const state = { current: 0, slides: [], section: "general" };
 
-  // Build dot nav
-  slides.forEach(function (_, i) {
-    const d = document.createElement("div");
-    d.className = "dot" + (i === 0 ? " active" : "");
-    d.onclick = function () { goTo(i); };
-    dotNav.appendChild(d);
-  });
-
-  function goTo(n) {
-    slides[current].classList.remove("active");
-    dotNav.children[current].classList.remove("active");
-    current = (n + total) % total;
-    slides[current].classList.add("active");
-    dotNav.children[current].classList.add("active");
-    counter.textContent = (current + 1) + " / " + total;
+  function activeBlock() {
+    return document.querySelector(`.section-block[data-section="${state.section}"]`);
   }
 
-  window.nextSlide = function () { goTo(current + 1); };
-  window.prevSlide = function () { goTo(current - 1); };
+  function rebuild() {
+    // Show/hide section blocks
+    sectionBlocks.forEach((b) => {
+      const isActive = b.dataset.section === state.section;
+      b.hidden = !isActive;
+      b.classList.toggle("active", isActive);
+    });
+    tabButtons.forEach((t) => {
+      const isActive = t.dataset.section === state.section;
+      t.classList.toggle("active", isActive);
+      t.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+
+    // Slides de la sección activa
+    state.slides = Array.from(activeBlock().querySelectorAll(".slide"));
+    state.current = 0;
+    state.slides.forEach((s, i) => s.classList.toggle("active", i === 0));
+
+    // Dot-nav rebuild
+    dotNav.innerHTML = "";
+    state.slides.forEach((_, i) => {
+      const d = document.createElement("div");
+      d.className = "dot" + (i === 0 ? " active" : "");
+      d.onclick = () => goTo(i);
+      dotNav.appendChild(d);
+    });
+
+    counter.textContent = "1 / " + state.slides.length;
+  }
+
+  function goTo(n) {
+    if (!state.slides.length) return;
+    state.slides[state.current].classList.remove("active");
+    dotNav.children[state.current].classList.remove("active");
+    state.current = (n + state.slides.length) % state.slides.length;
+    state.slides[state.current].classList.add("active");
+    dotNav.children[state.current].classList.add("active");
+    counter.textContent = (state.current + 1) + " / " + state.slides.length;
+  }
+
+  function switchSection(name) {
+    if (state.section === name) return;
+    state.section = name;
+    rebuild();
+  }
+
+  tabButtons.forEach((t) => {
+    t.addEventListener("click", () => switchSection(t.dataset.section));
+  });
+
+  // Inicializar con la sección por defecto (la del tab .active en el HTML)
+  const defaultTab = document.querySelector(".section-tab.active");
+  if (defaultTab) state.section = defaultTab.dataset.section;
+  rebuild();
+
+  // ── 3. Navigation ─────────────────────────────────────────────────────────
+  window.nextSlide = function () { goTo(state.current + 1); };
+  window.prevSlide = function () { goTo(state.current - 1); };
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight" || e.key === "ArrowDown") window.nextSlide();
@@ -73,4 +118,12 @@
       diff > 0 ? window.nextSlide() : window.prevSlide();
     }
   });
+
+  // Expone API mínima por si arcgis_map.js u otro script la necesita
+  window.QuickSlides = {
+    switchSection,
+    goTo,
+    getSection: () => state.section,
+    getCurrent: () => state.current,
+  };
 })();

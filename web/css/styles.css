@@ -1761,6 +1761,79 @@
       }
 
       /* ═══════════════════════════════════════════════════════════════
+         Section tabs (GENERAL ↔ MEDELLÍN)
+         ═══════════════════════════════════════════════════════════════ */
+      #section-tabs {
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        display: flex;
+        gap: 6px;
+        background: var(--exito-white);
+        border: 1px solid var(--exito-border);
+        border-radius: 999px;
+        padding: 4px;
+        box-shadow: 0 6px 22px rgba(26, 26, 46, 0.10);
+      }
+      .section-tab {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: var(--exito-slate);
+        padding: 8px 22px;
+        font-family: 'Barlow', system-ui, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.18s, color 0.18s;
+      }
+      .section-tab:hover { color: var(--exito-dark); }
+      .section-tab.active {
+        background: var(--exito-dark);
+        color: var(--exito-white);
+      }
+
+      .section-block { display: contents; }
+      .section-block[hidden] { display: none !important; }
+
+      /* ═══════════════════════════════════════════════════════════════
+         Tabla genérica para sección GENERAL
+         ═══════════════════════════════════════════════════════════════ */
+      .general-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        color: var(--exito-charcoal);
+      }
+      .general-table thead {
+        background: var(--exito-light);
+      }
+      .general-table th {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--exito-muted);
+        padding: 10px 10px;
+        border-bottom: 2px solid var(--exito-border);
+        text-align: left;
+      }
+      .general-table td {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--exito-border);
+      }
+      .general-table tbody tr:hover {
+        background: var(--exito-red-soft);
+      }
+      .general-table strong {
+        color: var(--exito-dark);
+      }
+
+      /* ═══════════════════════════════════════════════════════════════
          ArcGIS · Mapa interactivo de regionales (slide-13)
          ═══════════════════════════════════════════════════════════════ */
       .arcgis-map-wrapper {
