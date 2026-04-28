@@ -14,10 +14,37 @@
     <script defer src="https://js.arcgis.com/4.30/"></script>
   </head>
   <body>
-    <!-- TAB NAV país vs Medellín -->
-    <div id="section-tabs" role="tablist">
-      <button class="section-tab active" role="tab" data-section="general" aria-selected="true">GENERAL</button>
+    <!-- LANDING MENU · primera pantalla -->
+    <div id="landing-menu" class="visible">
+      <div class="landing-content">
+        <div class="landing-eyebrow">Operación · Surtimax · Grupo Éxito</div>
+        <h1 class="landing-title">¿Qué reporte querés ver?</h1>
+        <div class="landing-subtitle">Seleccioná una vista para comenzar</div>
+
+        <div class="landing-buttons">
+          <button class="landing-btn" data-section="general">
+            <div class="landing-btn-icon">🌎</div>
+            <div class="landing-btn-label">GENERAL</div>
+            <div class="landing-btn-desc">Vista país · 5 regiones · Recaudo 4 meses</div>
+            <div class="landing-btn-meta">Surtimax · ene–abr 2026</div>
+          </button>
+          <button class="landing-btn" data-section="medellin">
+            <div class="landing-btn-icon">📍</div>
+            <div class="landing-btn-label">MEDELLÍN</div>
+            <div class="landing-btn-desc">Operación Antioquia · Riesgo de recaudo</div>
+            <div class="landing-btn-meta">Éxito Antioquia · Q1 2026</div>
+          </button>
+        </div>
+
+        <div class="landing-footer">Click en una opción para iniciar la presentación</div>
+      </div>
+    </div>
+
+    <!-- TAB NAV (oculta hasta que se elige una sección desde el landing) -->
+    <div id="section-tabs" role="tablist" hidden>
+      <button class="section-tab" role="tab" data-section="general" aria-selected="false">GENERAL</button>
       <button class="section-tab" role="tab" data-section="medellin" aria-selected="false">MEDELLÍN</button>
+      <button class="section-tab section-tab--menu" role="button" id="back-to-menu" title="Volver al menú">☰</button>
     </div>
 
     <div id="slideshow">

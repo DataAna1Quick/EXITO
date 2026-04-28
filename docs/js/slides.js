@@ -30,14 +30,19 @@
     slide.insertBefore(mapFill, slide.firstChild);
   }
 
-  // ── 2. Section tabs (GENERAL ↔ MEDELLÍN) ──────────────────────────────────
+  // ── 2. Section tabs (GENERAL ↔ MEDELLÍN) + landing menu ───────────────────
   const sectionBlocks = document.querySelectorAll(".section-block");
-  const tabButtons = document.querySelectorAll(".section-tab");
+  const tabButtons = document.querySelectorAll(".section-tab[data-section]");
+  const sectionTabsBar = document.getElementById("section-tabs");
+  const landingMenu = document.getElementById("landing-menu");
+  const landingButtons = document.querySelectorAll(".landing-btn[data-section]");
+  const backToMenuBtn = document.getElementById("back-to-menu");
   const counter = document.getElementById("slide-counter");
   const dotNav = document.getElementById("dot-nav");
+  const navBar = document.getElementById("nav");
 
-  // Estado por sección
-  const state = { current: 0, slides: [], section: "general" };
+  // Estado por sección. section=null cuando el landing está visible.
+  const state = { current: 0, slides: [], section: null };
 
   function activeBlock() {
     return document.querySelector(`.section-block[data-section="${state.section}"]`);
@@ -56,8 +61,11 @@
       t.setAttribute("aria-selected", isActive ? "true" : "false");
     });
 
+    const block = activeBlock();
+    if (!block) return;
+
     // Slides de la sección activa
-    state.slides = Array.from(activeBlock().querySelectorAll(".slide"));
+    state.slides = Array.from(block.querySelectorAll(".slide"));
     state.current = 0;
     state.slides.forEach((s, i) => s.classList.toggle("active", i === 0));
 
@@ -83,20 +91,43 @@
     counter.textContent = (state.current + 1) + " / " + state.slides.length;
   }
 
+  function showLanding() {
+    if (landingMenu) landingMenu.classList.add("visible");
+    if (sectionTabsBar) sectionTabsBar.hidden = true;
+    if (navBar) navBar.style.display = "none";
+    state.section = null;
+  }
+
+  function hideLanding() {
+    if (landingMenu) landingMenu.classList.remove("visible");
+    if (sectionTabsBar) sectionTabsBar.hidden = false;
+    if (navBar) navBar.style.display = "";
+  }
+
   function switchSection(name) {
-    if (state.section === name) return;
+    if (state.section === name && landingMenu && !landingMenu.classList.contains("visible")) return;
     state.section = name;
+    hideLanding();
     rebuild();
   }
 
+  // Wire tabs flotantes
   tabButtons.forEach((t) => {
     t.addEventListener("click", () => switchSection(t.dataset.section));
   });
 
-  // Inicializar con la sección por defecto (la del tab .active en el HTML)
-  const defaultTab = document.querySelector(".section-tab.active");
-  if (defaultTab) state.section = defaultTab.dataset.section;
-  rebuild();
+  // Wire botones del landing
+  landingButtons.forEach((b) => {
+    b.addEventListener("click", () => switchSection(b.dataset.section));
+  });
+
+  // Botón ☰ para volver al menú
+  if (backToMenuBtn) {
+    backToMenuBtn.addEventListener("click", showLanding);
+  }
+
+  // Estado inicial: landing visible, slideshow oculto, tabs ocultos.
+  showLanding();
 
   // ── 3. Navigation ─────────────────────────────────────────────────────────
   window.nextSlide = function () { goTo(state.current + 1); };
@@ -123,6 +154,7 @@
   window.QuickSlides = {
     switchSection,
     goTo,
+    showLanding,
     getSection: () => state.section,
     getCurrent: () => state.current,
   };
