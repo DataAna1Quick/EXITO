@@ -150,7 +150,7 @@
     }
   });
 
-  // Expone API mínima por si arcgis_map.js u otro script la necesita
+  // Expone API mínima por si algún script externo la necesita
   window.QuickSlides = {
     switchSection,
     goTo,

@@ -9,9 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- ArcGIS Maps SDK for JS 4.x (mapa interactivo de regionales en slide-13) -->
-    <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css" />
-    <script defer src="https://js.arcgis.com/4.30/"></script>
+    <!-- ArcGIS Embeddable Components 5.0 (mapa interactivo de regionales en slide-G7) -->
+    <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
   </head>
   <body>
     <!-- LANDING MENU · primera pantalla -->
@@ -389,12 +388,15 @@
               <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Cobertura nacional Surtimax · centroides aproximados (ajustar con shapefile oficial)</div>
             </div>
             <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:6px 36px 16px;min-height:0">
-              <div class="arcgis-map-wrapper">
-                <div id="arcgis-map" role="region" aria-label="Mapa interactivo de regiones país"></div>
-                <div class="arcgis-map-fallback" aria-hidden="true">
-                  <img src="images/maps/overview_antioquia.png" alt="Mapa de fallback" />
-                </div>
-              </div>
+              <arcgis-embedded-map
+                style="width:100%;height:100%;border-radius:10px;border:1px solid #cbd5e1;box-shadow:0 4px 18px rgba(26,26,46,0.08);overflow:hidden"
+                item-id="781f76fd8f9b402a82c0b1672cff38c4"
+                theme="light"
+                time-zone-label-enabled
+                center="-71.28533734416226,5.440845913970682"
+                scale="9244648.868618"
+                portal-url="https://www.arcgis.com">
+              </arcgis-embedded-map>
             </div>
           </div>
           <div class="footer-bar">
@@ -4198,6 +4200,5 @@
     </div>
 
     <script src="js/slides.js"></script>
-    <script src="js/arcgis_map.js"></script>
   </body>
 </html>
