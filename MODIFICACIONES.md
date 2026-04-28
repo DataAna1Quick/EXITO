@@ -341,3 +341,34 @@ Genera de nuevo el CSV+JSON desde la fuente. Si la base se actualiza, esto debe 
 - Validar centroides de capitales con shapefile oficial.
 - Considerar `fetch(data/db_real_aggregations_v1.json)` en `arcgis_map.js` para evitar duplicación HTML/JS.
 - Aclarar 11 servicios fuera de las 6 macrozonas (Santander/Tolima/Nariño/Córdoba): incluir o excluir.
+
+---
+
+### 2026-04-28 · `web/` → `docs/` para GitHub Pages
+
+**Motivación:** GitHub Pages plan free solo sirve desde la raíz del repo o desde `/docs`. El dashboard vivía en `/web` (no soportado), por lo que `https://dataana1quick.github.io/EXITO/` mostraba la versión vieja del 24-04 (cuando `index.html` estaba en raíz, antes de la reorg).
+
+**Acción tomada:** copiar `web/` → `docs/` (no rename), porque OneDrive Files-On-Demand tenía la carpeta marcada con atributos `ReadOnly` + `ReparsePoint` y un proceso `node` (Live Server) la retenía. El rename fallaba con `Access denied`.
+
+**Resultado en git:**
+- `docs/` agregada al tracking (con todo el contenido del antiguo `web/`).
+- `web/` removida del index con `git rm -r --cached` (los archivos físicos quedan en disco).
+- `web/` agregada a `.gitignore` para evitar que vuelva al tracking.
+
+**Pendiente de hacer manualmente desde el Explorador de Windows:**
+1. Pausar OneDrive (clic derecho ícono bandeja → Pause syncing → 2 hours).
+2. Cerrar VS Code Live Server si está activo.
+3. Cerrar pestañas del navegador con `web/index.html`.
+4. Eliminar la carpeta `C:\Users\Quick\OneDrive\OneDrive - Quick Help SAS\INFORMES\EXITO\EXITO V2\exito\web\` (clic derecho → Eliminar).
+5. Reanudar OneDrive.
+
+**Configuración pendiente en GitHub UI:**
+1. Ir a `https://github.com/DataAna1Quick/EXITO/settings/pages`.
+2. Source: **Deploy from a branch**.
+3. Branch: **`mapa-arcgis-interactivo`** · Folder: **`/docs`**.
+4. Save.
+5. Esperar ~1 minuto. La URL `https://dataana1quick.github.io/EXITO/` empezará a servir `docs/index.html`.
+
+**Las rutas internas del HTML siguen funcionando** sin cambios: `css/styles.css`, `js/...`, `../images/...` son relativas al HTML, no al repo. La carpeta `images/` no se movió.
+
+**TODO:** después del próximo merge a `main`, considerar si conviene mover Pages back a `main` con `/docs` (para que la URL pública refleje "estable" y no la rama de feature).

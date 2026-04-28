@@ -33,3 +33,8 @@ Thumbs.db
 
 # Claude Code local
 .claude/
+
+# Carpeta web/ — reemplazada por docs/ para que GitHub Pages la sirva.
+# Pendiente de borrado manual desde el Explorador de Windows cuando OneDrive
+# libere los handles (estaba bloqueada por sync + Live Server al hacer el rename).
+web/
