@@ -488,7 +488,8 @@
       }
       .section-cover-right {
         flex: 1;
-        padding: 60px 48px 60px 76px;
+        /* padding-bottom holgado para que las cards no queden tapadas por #nav fijo (bottom: 28px) */
+        padding: 60px 48px 90px 76px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -2466,4 +2467,53 @@
         font-size: 13px;
         color: var(--exito-dark);
         font-weight: 800;
+      }
+
+      /* ─── SLIDE 16 (Distribución de riesgo Medellín) ───
+         Override scoped al slide para deshacer el grid genérico
+         de .risk-row (definido para slide-15 GENERAL) y dar proporciones
+         consistentes a la fila: badge + range + barra + 3 stats. */
+      #slide-16 .risk-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 14px;
+        margin-bottom: 6px;
+        grid-template-columns: none;
+      }
+      #slide-16 .risk-level-badge {
+        width: 80px;
+        flex-shrink: 0;
+      }
+      #slide-16 .risk-range {
+        width: 150px;
+        flex-shrink: 0;
+      }
+      #slide-16 .risk-bar-wrap {
+        flex: 1;
+        min-width: 0;
+        height: 8px;
+        background: var(--exito-border);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      #slide-16 .risk-bar-fill {
+        height: 100%;
+        background: initial; /* permite que el inline style del bar-fill mande */
+        color: inherit;
+        font-size: 0;
+        padding: 0;
+        display: block;
+        border-radius: 4px;
+      }
+      #slide-16 .risk-stats {
+        display: flex;
+        gap: 18px;
+        width: 280px;
+        flex-shrink: 0;
+        justify-content: flex-end;
+      }
+      #slide-16 .risk-stat {
+        text-align: right;
+        min-width: 70px;
       }
