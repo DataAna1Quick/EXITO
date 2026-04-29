@@ -240,6 +240,24 @@
 
   const ITEM_ID = "1f2cbd3463654b97ae1f597431261a62";
 
+  // ── 1b. Alerta cash-only · Antioquia (Medellín-wide) ─────────────────────
+  // Top clientes Medellín con persistencia de días con recaudo CASH > $5M
+  // (Contado + MISURTII + Contraentrega) sobre 95 días operativos Medellín.
+  // Filtros: pct_propio ≥ 20% · días_riesgo ≥ 2 · días_activos ≥ 3.
+  // Total persistentes en Medellín = 12 clientes.
+  // Calculado de RECAUDO_NACIONAL_LIMPIO.xlsx (REGIONAL = MEDELLIN, TIPO ∈ {Contado, Misurti, Contraentrega}).
+  const RIESGO_CASH = {
+    dias_operativos: 95,
+    persistentes_total: 12,
+    top_clientes: [
+      { nombre: "PEREZ GONZALEZ DIANA GIRLESA",   dias_riesgo: 4, dias_activos: 4, pct_propio: 100.0, pct_op: 4.2, recaudo_cash: 25529954, pico_fecha: "05/02/2026", pico_valor:  7306782 },
+      { nombre: "GIRALDO MARIN LILIANA MARIA",    dias_riesgo: 4, dias_activos: 5, pct_propio:  80.0, pct_op: 4.2, recaudo_cash: 47691803, pico_fecha: "04/03/2026", pico_valor: 15056004 },
+      { nombre: "JHOANA HENAO LOAIZA",            dias_riesgo: 4, dias_activos: 6, pct_propio:  66.7, pct_op: 4.2, recaudo_cash: 27254950, pico_fecha: "09/03/2026", pico_valor:  7042838 },
+      { nombre: "MALOKA AUTOSERVICIO S.A.S",      dias_riesgo: 3, dias_activos: 3, pct_propio: 100.0, pct_op: 3.2, recaudo_cash: 24702093, pico_fecha: "18/02/2026", pico_valor: 12572972 },
+      { nombre: "VALDERRAMA RAMIREZ JUAN DIEGO",  dias_riesgo: 3, dias_activos: 5, pct_propio:  60.0, pct_op: 3.2, recaudo_cash: 31808947, pico_fecha: "05/02/2026", pico_valor: 11104498 },
+    ],
+  };
+
   // ── 2. Estado interno ────────────────────────────────────────────────────
   let view = null;
   let layer = null;
@@ -286,6 +304,57 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
+  }
+
+  // formato pesos colombianos: 25529954 -> "$25,529,954"
+  function fmtCOPshort(val) {
+    return "$" + Math.round(val).toLocaleString("en-US");
+  }
+
+  // formato % con coma decimal estilo "76,9%"
+  function fmtPct(val) {
+    return val.toFixed(1).replace(".", ",") + "%";
+  }
+
+  // Render del listado de clientes persistentes en zona crítica (cash-only).
+  // Mismo patrón visual que gen-alert-card del mapa General. Cada item:
+  //   <nombre> — <dias_riesgo>/<dias_activos> días = <pct_propio>%
+  //   Recaudo cash período + día pico físico (fecha y valor).
+  function renderAlertaMedellin() {
+    const ul = $(".med-alert-list");
+    if (!ul) return;
+    ul.innerHTML = "";
+    RIESGO_CASH.top_clientes.forEach(function (it, idx) {
+      const li = document.createElement("li");
+      li.className = "gen-alert-item";
+      const pctClamp = Math.max(0, Math.min(100, it.pct_propio));
+      li.innerHTML =
+        '<div class="gen-alert-row">' +
+          '<span class="gen-alert-rank">' + (idx + 1) + "</span>" +
+          '<span class="gen-alert-name">' + escapeHtml(it.nombre) + "</span>" +
+          '<span class="gen-alert-days">' + it.dias_riesgo + "/" + it.dias_activos + " días</span>" +
+          '<span class="gen-alert-val">' + fmtPct(it.pct_propio) + "</span>" +
+        "</div>" +
+        '<div class="gen-alert-meta">' +
+          'Recaudo efectivo: ' + escapeHtml(fmtCOPshort(it.recaudo_cash)) +
+          ' · pico ' + escapeHtml(it.pico_fecha) + ' = ' + escapeHtml(fmtCOPshort(it.pico_valor)) +
+        "</div>" +
+        '<div class="gen-alert-bar" role="progressbar" aria-valuenow="' + pctClamp +
+          '" aria-valuemin="0" aria-valuemax="100">' +
+          '<div class="gen-alert-bar-fill" style="width:' + pctClamp + '%"></div>' +
+        "</div>";
+      ul.appendChild(li);
+    });
+    setText(
+      ".med-alert-headline",
+      RIESGO_CASH.persistentes_total + " clientes persistentes en zona crítica"
+    );
+    setText(
+      ".med-alert-sub",
+      "≥20% de sus días con recaudo cash > $5,000,000 (" +
+        RIESGO_CASH.dias_operativos +
+        " días op Medellín · solo Contado + Contraentrega)"
+    );
   }
 
   // ── 4. Update cards al click ─────────────────────────────────────────────
@@ -434,6 +503,9 @@
             // Estado inicial
             updateCards(ZONAS_MEDELLIN[0]);
             highlightZona(Graphic, ZONAS_MEDELLIN[0]);
+
+            // Alerta cash-only (Medellín-wide, una sola vez en init)
+            renderAlertaMedellin();
           },
           function (err) {
             console.warn("[medellin_map] view.when error:", err);
