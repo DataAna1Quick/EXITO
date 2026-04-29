@@ -5,11 +5,7 @@
 (function () {
   "use strict";
 
-  // ── 1. Zona-slide maps (slides 18-26) ────────────────────────────────────
-  // Los mapas ahora son <arcgis-embedded-map> embebidos directamente en el
-  // HTML dentro de <div class="zona-map-fill">. Ya no inyectamos <img>.
-
-  // ── 2. Section tabs (GENERAL ↔ MEDELLÍN) + landing menu ───────────────────
+  // ── 1. Section tabs (GENERAL ↔ MEDELLÍN) + landing menu ───────────────────
   const sectionBlocks = document.querySelectorAll(".section-block");
   const tabButtons = document.querySelectorAll(".section-tab[data-section]");
   const sectionTabsBar = document.getElementById("section-tabs");
@@ -108,7 +104,7 @@
   // Estado inicial: landing visible, slideshow oculto, tabs ocultos.
   showLanding();
 
-  // ── 3. Navigation ─────────────────────────────────────────────────────────
+  // ── 2. Navigation ─────────────────────────────────────────────────────────
   window.nextSlide = function () { goTo(state.current + 1); };
   window.prevSlide = function () { goTo(state.current - 1); };
 

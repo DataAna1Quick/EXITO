@@ -1143,97 +1143,127 @@
         gap: 10px;
       }
 
-      /* ─── FICHAS DE ZONA (slides 18-26, atributo data-map) ─── */
-      /* Mapa full-bleed de fondo, barra glassmorphism inferior con las cards */
-
-      /* Mapa full-bleed de fondo */
-      .zona-map-fill {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
+      /* ─── SLIDE 13 · MAPA INTERACTIVO MEDELLIN + PANEL FICHA DINAMICA ───
+         Layout 2 columnas: mapa SDK a la izq (~58%), panel cards a la der (~42%).
+         Click sobre un marker actualiza las cards. */
+      .med-layout {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 58% 42%;
+        gap: 14px;
+        padding: 4px 28px 12px;
+        min-height: 0;
+      }
+      .med-map-wrap {
+        position: relative;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 4px 18px rgba(26, 26, 46, 0.08);
         overflow: hidden;
-        background: #08131f;
+        background: #eef2f7;
       }
-      .zona-map-fill img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        display: block;
-      }
-      .zona-map-fill arcgis-embedded-map {
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-      .zona-map-fill::after {
-        content: '';
+      #medellin-map {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(8, 15, 35, 0.92) 0%,
-          rgba(8, 15, 35, 0.60) 22%,
-          rgba(8, 15, 35, 0.05) 50%,
-          transparent 100%
-        );
+        width: 100%;
+        height: 100%;
+      }
+      .med-map-hint {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(46, 134, 193, 0.25);
+        border-radius: 6px;
+        padding: 6px 10px;
+        font-size: 10px;
+        color: #1a5276;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
         pointer-events: none;
+        backdrop-filter: blur(4px);
       }
-
-      /* Barra inferior flotante con las cards */
-      .slide[data-map] .zona-body {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 36px;
-        z-index: 4;
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        gap: 10px;
-        padding: 10px 28px;
-        background: rgba(8, 15, 35, 0.80);
-        backdrop-filter: blur(14px);
-        border-top: 1px solid rgba(255, 255, 255, 0.10);
-        max-height: 135px;
-        overflow: hidden;
+      .med-map-hint-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #2e86c1;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 0 1px rgba(46, 134, 193, 0.4);
       }
-      .slide[data-map] .zona-kpi-col {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        flex-shrink: 0;
-      }
-      .slide[data-map] .zona-kpi-col + .zona-card {
-        border-left: 1px solid rgba(255, 255, 255, 0.10);
-        padding-left: 18px;
-        margin-left: 2px;
-      }
-      .slide[data-map] .zona-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.10);
-        border-radius: 8px;
-        padding: 8px 12px;
-        color: white;
-        min-width: 130px;
-        max-width: 200px;
-        flex-shrink: 0;
+      .med-panel {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        gap: 8px;
+        min-height: 0;
+        overflow: hidden;
       }
-      .slide[data-map] .zona-card-label  { color: rgba(255, 255, 255, 0.50); font-size: 8px; }
-      .slide[data-map] .zona-card-value  { color: #ffffff; font-size: 20px; }
-      .slide[data-map] .zona-card-sub    { color: rgba(255, 255, 255, 0.55); font-size: 9px; line-height: 1.3; }
-      .slide[data-map] .zona-card-red    { background: rgba(46, 134, 193, 0.55); border-color: rgba(93, 173, 226, 0.30); }
-      .slide[data-map] .zona-card-yellow { background: rgba(174, 214, 241, 0.18); border-color: rgba(174, 214, 241, 0.30); }
-      .slide[data-map] .zona-card-yellow .zona-card-value { color: #aed6f1; }
-      .slide[data-map] .zona-card:not(.zona-kpi-col .zona-card) { min-width: 200px; max-width: 260px; flex: 1; }
-      .slide[data-map] .top3-item        { border-bottom-color: rgba(255, 255, 255, 0.08); padding: 3px 0; }
-      .slide[data-map] .top3-name        { color: rgba(255, 255, 255, 0.80); font-size: 9.5px; }
-      .slide[data-map] .top3-rank        { color: #5dade2; font-size: 13px; }
-      .slide[data-map] .top3-val         { color: rgba(255, 255, 255, 0.65); font-size: 11px; }
-      .slide[data-map] .distrib-legend-text { color: rgba(255, 255, 255, 0.65); }
+      .med-panel-header {
+        padding: 6px 4px 4px;
+        border-bottom: 1px solid var(--exito-border);
+        margin-bottom: 2px;
+      }
+      .med-zona-eyebrow {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #5dade2;
+        margin-bottom: 4px;
+      }
+      .med-zona-name {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        color: #1a5276;
+        line-height: 1.1;
+      }
+      .med-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+      }
+      .med-card {
+        padding: 10px 12px;
+      }
+      .med-card .zona-card-label {
+        font-size: 8px;
+        margin-bottom: 4px;
+      }
+      .med-card .zona-card-value {
+        font-size: 22px;
+      }
+      .med-card .zona-card-sub {
+        font-size: 9.5px;
+        margin-top: 4px;
+      }
+      .med-card.med-top3-card {
+        grid-column: 1 / -1;
+        padding: 10px 14px;
+      }
+      .med-card.med-top3-card .top3-item {
+        padding: 5px 0;
+      }
+      .med-card.med-top3-card .top3-name {
+        font-size: 9.5px;
+      }
+      .med-card.med-top3-card .top3-val {
+        font-size: 12px;
+      }
+      .med-card .distrib-legend-text {
+        font-size: 8.5px;
+      }
+      /* La 3era card (distribución) ocupa ancho completo */
+      .med-cards > .med-card:nth-child(3) {
+        grid-column: 1 / -1;
+      }
       .zona-card {
         background: var(--exito-light);
         border: 1px solid var(--exito-border);

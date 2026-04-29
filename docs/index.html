@@ -11,6 +11,9 @@
     />
     <!-- ArcGIS Embeddable Components 5.0 (mapa interactivo de regionales en slide-G7) -->
     <script type="module" src="https://js.arcgis.com/5.0/embeddable-components/"></script>
+    <!-- ArcGIS Maps SDK 4.31 (mapa interactivo full SDK con markers en slide-13 Medellín) -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.31/esri/themes/light/main.css" />
+    <script defer src="https://js.arcgis.com/4.31/"></script>
   </head>
   <body>
     <!-- LANDING MENU · primera pantalla -->
@@ -1999,7 +2002,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 13 - MAPA OVERVIEW ANTIOQUIA -->
+      <!-- SLIDE 13 - MAPA INTERACTIVO ANTIOQUIA + FICHA DINAMICA -->
       <div class="slide" id="slide-13">
         <div class="slide-header-bar"></div>
         <div
@@ -2008,43 +2011,73 @@
         >
           <div style="margin-bottom: 8px">
             <div class="section-label">
-              Riesgo de Efectivo - Mapa Consolidado
+              Riesgo de Efectivo · Mapa Interactivo
             </div>
-            <div class="slide-title" style="font-size: 26px">
-              Macrozonas de la Operacion Exito Antioquia
+            <div class="slide-title" style="font-size: 24px">
+              Macrozonas de la Operación Éxito Antioquia
             </div>
             <div style="font-size: 11px; color: #64748b; margin-top: 3px">
-              Distribucion geografica de las 9 macrozonas que concentran el 87%
-              de los servicios con recaudo en efectivo
+              Click sobre un punto del mapa para ver el detalle de la macrozona
+              · 9 macrozonas que concentran el 87% del recaudo en efectivo
             </div>
           </div>
-          <div
-            style="
-              flex: 1;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              padding: 6px 36px 16px;
-              min-height: 0;
-            "
-          >
-            <arcgis-embedded-map
-              style="width:100%;height:100%;border-radius:10px;border:1px solid #cbd5e1;box-shadow:0 4px 18px rgba(26,26,46,0.08);overflow:hidden;display:block"
-              item-id="1f2cbd3463654b97ae1f597431261a62"
-              theme="light"
-              time-zone-label-enabled
-              center="-75.53563907518547,6.205598758851309"
-              scale="288895.277144"
-              portal-url="https://www.arcgis.com">
-            </arcgis-embedded-map>
+          <div class="med-layout">
+            <!-- Mapa interactivo (izquierda) -->
+            <div class="med-map-wrap">
+              <div id="medellin-map"></div>
+              <div class="med-map-hint">
+                <span class="med-map-hint-dot"></span>
+                Click sobre una zona del mapa para ver el detalle
+              </div>
+            </div>
+            <!-- Panel de cards dinamicas (derecha) -->
+            <div class="med-panel">
+              <div class="med-panel-header">
+                <div class="med-zona-eyebrow">
+                  Operación Éxito Antioquia · <span class="med-zona-ficha">Ficha 1 de 9</span>
+                </div>
+                <div class="med-zona-name">—</div>
+              </div>
+              <div class="med-cards">
+                <div class="zona-card zona-card-red med-card">
+                  <div class="zona-card-label">Servicios totales</div>
+                  <div class="zona-card-value med-servicios-totales">—</div>
+                  <div class="zona-card-sub med-servicios-sub">—</div>
+                </div>
+                <div class="zona-card zona-card-yellow med-card">
+                  <div class="zona-card-label">Recaudo en efectivo</div>
+                  <div class="zona-card-value med-recaudo-valor">—</div>
+                  <div class="zona-card-sub med-recaudo-sub">—</div>
+                </div>
+                <div class="zona-card med-card">
+                  <div class="zona-card-label">Distribución del efectivo</div>
+                  <div class="distrib-bar">
+                    <div class="distrib-bar-a med-bar-contado" style="width: 50%"></div>
+                    <div class="distrib-bar-b med-bar-contraentrega" style="width: 50%"></div>
+                  </div>
+                  <div class="distrib-legend">
+                    <span><span class="distrib-dot" style="background: #2e86c1"></span><span class="distrib-legend-text med-leg-contado">Contado: —</span></span>
+                    <span><span class="distrib-dot" style="background: #aed6f1"></span><span class="distrib-legend-text med-leg-contraentrega">Contraentrega: —</span></span>
+                  </div>
+                </div>
+                <div class="zona-card med-card med-top3-card">
+                  <div class="zona-card-label">Top 3 clientes · # servicios</div>
+                  <ul class="top3-list med-top3-servicios"></ul>
+                </div>
+                <div class="zona-card med-card med-top3-card">
+                  <div class="zona-card-label">Top 3 clientes · valor recaudado</div>
+                  <ul class="top3-list med-top3-recaudo"></ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="footer-bar">
           <span class="footer-text"
-            >Operacion Exito Antioquia - Riesgo de recaudo en efectivo - Q1
+            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
             2026</span
           >
-          <span class="footer-right">1 / 13</span>
+          <span class="footer-right">1 / 5</span>
         </div>
       </div>
 
@@ -2139,9 +2172,9 @@
         </div>
         <div class="footer-bar">
           <span class="footer-text"
-            >Operación Éxito Antioquia · Análisis consolidado Q1 2026</span
+            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1 2026</span
           >
-          <span class="footer-right">4 / 7</span>
+          <span class="footer-right">2 / 5</span>
         </div>
       </div>
 
@@ -2366,7 +2399,7 @@
             >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
             2026</span
           >
-          <span class="footer-right"></span>
+          <span class="footer-right">3 / 5</span>
         </div>
       </div>
 
@@ -2499,10 +2532,10 @@
               border: 1px solid var(--exito-border);
             "
           >
-            Lo que sigue son 9 fichas — una por cada macrozona del Valle. Cada
-            ficha muestra el mapa de la zona, los servicios totales, el recaudo
-            en efectivo, los 3 clientes que más servicios reciben y los 3 que
-            más recaudan en efectivo.
+            Las 9 macrozonas del Valle se consolidan en el mapa interactivo
+            (primera lámina del módulo). Click sobre un marker para ver, por
+            zona, los servicios totales, el recaudo en efectivo y los 3
+            clientes que más servicios reciben y más recaudan en efectivo.
           </div>
         </div>
         <div class="footer-bar">
@@ -2510,1111 +2543,10 @@
             >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
             2026</span
           >
-          <span class="footer-right">2 / 12</span>
+          <span class="footer-right">4 / 5</span>
         </div>
       </div>
 
-      <!-- ══════════════════════════════════════════════
-     SLIDES 18–26 · FICHAS DE ZONA (template)
-════════════════════════════════════════════════ -->
-
-      <!-- helper macro via JS generation below -->
-
-      <!-- SLIDE 18 · ABURRÁ NORTE -->
-      <div class="slide" id="slide-18" data-map="slide-18">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 2 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Aburrá Norte</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 4 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">538</div>
-              <div class="zona-card-sub">
-                88% Asignado a zona de Riesgo (474)
-              </div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$275.000.000</div>
-              <div class="zona-card-sub">
-                296 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 49%"></div>
-                <div class="distrib-bar-b" style="width: 51%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 145 svc (49%)</span
-                  ></span
-                >
-                <span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 151 svc (51%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Ciro Noreña Martin Andres</span
-                ><span class="top3-val">22 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Ruiz Wiliam</span
-                ><span class="top3-val">16 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Hernandez Toro Ana Lucia</span
-                ><span class="top3-val">13 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Ciro Noreña Martin Andres</span
-                ><span class="top3-val" style="color: #2e86c1">$30.500.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Supermercado Comercial SAS</span
-                ><span class="top3-val" style="color: #2e86c1">$17.300.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Herrera Ortiz Albeiro</span
-                ><span class="top3-val" style="color: #2e86c1">$16.000.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">4 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 19 · ABURRÁ SUR -->
-      <div class="slide" id="slide-19" data-map="slide-19">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 1 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Aburrá Sur</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 3 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">636</div>
-              <div class="zona-card-sub">92% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$364.000.000</div>
-              <div class="zona-card-sub">
-                379 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 46%"></div>
-                <div class="distrib-bar-b" style="width: 54%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 174 svc (46%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 205 svc (54%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Rojas Agudelo Fernando</span
-                ><span class="top3-val">20 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Morales Marco</span
-                ><span class="top3-val">15 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Ramirez Jhon</span
-                ><span class="top3-val">15 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Rojas Agudelo Fernando</span
-                ><span class="top3-val" style="color: #2e86c1">$31.900.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Perez Gonzalez Diana Girlesa</span
-                ><span class="top3-val" style="color: #2e86c1">$25.500.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Perez Taborda Albeiro de Jesus</span
-                ><span class="top3-val" style="color: #2e86c1">$20.300.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">3 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 20 · NOROCCIDENTE -->
-      <div class="slide" id="slide-20" data-map="slide-20">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 3 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Medellín – Noroccidente (C5-7)</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 5 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">608</div>
-              <div class="zona-card-sub">75% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$282.000.000</div>
-              <div class="zona-card-sub">
-                270 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 51%"></div>
-                <div class="distrib-bar-b" style="width: 49%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 139 svc (51%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 131 svc (49%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Segura Marmol Juan David</span
-                ><span class="top3-val">29 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Arango Montoya Alirio</span
-                ><span class="top3-val">17 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Loaiza Arango Sorani</span
-                ><span class="top3-val">16 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Posada Ricardo</span
-                ><span class="top3-val" style="color: #2e86c1">$27.500.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Ciro Noreña Nancy Carolina</span
-                ><span class="top3-val" style="color: #2e86c1">$18.600.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Lopez Noreña Lina Marcela</span
-                ><span class="top3-val" style="color: #2e86c1">$14.200.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">5 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 21 · NORORIENTE -->
-      <div class="slide" id="slide-21" data-map="slide-21">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 4 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Medellín – Nororiente (C1-4)</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 6 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">459</div>
-              <div class="zona-card-sub">96% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$167.000.000</div>
-              <div class="zona-card-sub">
-                237 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 58%"></div>
-                <div class="distrib-bar-b" style="width: 42%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 137 svc (58%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 100 svc (42%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Supermercado Merca Ahorro S.A.S.</span
-                ><span class="top3-val">16 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Villegas Vargas Juan David</span
-                ><span class="top3-val">16 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Yineth Polania</span
-                ><span class="top3-val">13 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Castaño Wilson de Jesús</span
-                ><span class="top3-val" style="color: #2e86c1">$13.100.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Thejais SAS</span
-                ><span class="top3-val" style="color: #2e86c1">$8.500.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Arias Holguin Claudia Yaned</span
-                ><span class="top3-val" style="color: #2e86c1">$7.100.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">6 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 22 · CENTRORIENTE -->
-      <div class="slide" id="slide-22" data-map="slide-22">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 5 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Medellín – Centroriente (C8-10)</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 7 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">264</div>
-              <div class="zona-card-sub">77% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$255.000.000</div>
-              <div class="zona-card-sub">
-                112 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 51%"></div>
-                <div class="distrib-bar-b" style="width: 49%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 57 svc (51%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 55 svc (49%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Henao Loaiza Manuela</span
-                ><span class="top3-val">10 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Gomez Mejia Ana Lucia</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Montoya Edgar Alberto</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Lescano Juan Pablo</span
-                ><span class="top3-val" style="color: #2e86c1">$29.400.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Jhоana Henao Loaiza</span
-                ><span class="top3-val" style="color: #2e86c1">$17.700.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Inversiones Diyanvima SAS</span
-                ><span class="top3-val" style="color: #2e86c1">$15.900.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">7 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 23 · CENTROCCIDENTE -->
-      <div class="slide" id="slide-23" data-map="slide-23">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 6 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Medellín – Centroccidente (C11-13)</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 8 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">172</div>
-              <div class="zona-card-sub">65% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$83.800.000</div>
-              <div class="zona-card-sub">
-                79 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 56%"></div>
-                <div class="distrib-bar-b" style="width: 44%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 44 svc (56%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 35 svc (44%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Torres Martinez Jesus Eduardo</span
-                ><span class="top3-val">9 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Jimenez Janneth</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Castaño Giraldo Mario de Jesus</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Gomez Julian</span
-                ><span class="top3-val" style="color: #2e86c1">$8.500.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Salazar Alzate Efrain Onesimo</span
-                ><span class="top3-val" style="color: #2e86c1">$8.000.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Lopez Velasquez Maria Jose</span
-                ><span class="top3-val" style="color: #2e86c1">$7.200.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">8 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 24 · SUROCCIDENTE -->
-      <div class="slide" id="slide-24" data-map="slide-24">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 7 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Medellín – Suroccidente (C15-16)</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 9 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">218</div>
-              <div class="zona-card-sub">83% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$141.000.000</div>
-              <div class="zona-card-sub">
-                92 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 51%"></div>
-                <div class="distrib-bar-b" style="width: 49%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 47 svc (51%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 45 svc (49%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Merka Rey SAS</span
-                ><span class="top3-val">9 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Garcia Daniel</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Duque Damian</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Garcia Daniel</span
-                ><span class="top3-val" style="color: #2e86c1">$17.100.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Ramirez Quintero Juan David</span
-                ><span class="top3-val" style="color: #2e86c1">$12.900.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Maloka Autoservicio S.A.S</span
-                ><span class="top3-val" style="color: #2e86c1">$12.600.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">9 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 25 · CORREGIMIENTOS -->
-      <div class="slide" id="slide-25" data-map="slide-25">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 8 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">Medellín – Corregimientos</div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 10 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">185</div>
-              <div class="zona-card-sub">100% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$139.000.000</div>
-              <div class="zona-card-sub">
-                112 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 50%"></div>
-                <div class="distrib-bar-b" style="width: 50%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 56 svc (50%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 56 svc (50%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Cardona Alex</span
-                ><span class="top3-val">13 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Zuluaga Martinez Maria Alejandra</span
-                ><span class="top3-val">11 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Cardona Orozco Henry</span
-                ><span class="top3-val">10 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Giraldo Marin Liliana Maria</span
-                ><span class="top3-val" style="color: #2e86c1">$44.500.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Vélez Zapata Miguel Ángel</span
-                ><span class="top3-val" style="color: #2e86c1">$10.800.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Ceballos Giraldo de Jesus</span
-                ><span class="top3-val" style="color: #2e86c1">$10.000.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">10 / 12</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 26 · OTROS MUNICIPIOS -->
-      <div class="slide" id="slide-26" data-map="slide-26">
-        <div class="slide-header-bar"></div>
-        <div class="zona-map-fill">
-          <arcgis-embedded-map
-            item-id="1f2cbd3463654b97ae1f597431261a62"
-            theme="light"
-            time-zone-label-enabled
-            center="-75.53563907518547,6.205598758851309"
-            scale="288895.277144"
-            portal-url="https://www.arcgis.com">
-          </arcgis-embedded-map>
-        </div>
-        <div class="zona-header">
-          <div>
-            <div
-              style="
-                font-size: 9px;
-                font-weight: 700;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #5dade2;
-                margin-bottom: 4px;
-              "
-            >
-              Ficha 9 de 9 · Operación Éxito Antioquia
-            </div>
-            <div class="zona-name">
-              Otros Municipios y Medellín No Clasificado
-            </div>
-          </div>
-          <div class="zona-ficha">
-            Riesgo de recaudo en efectivo · Q1 2026 · 11 / 12
-          </div>
-        </div>
-        <div class="zona-body">
-          <div class="zona-kpi-col">
-            <div class="zona-card zona-card-red">
-              <div class="zona-card-label">Servicios totales</div>
-              <div class="zona-card-value">101</div>
-              <div class="zona-card-sub">61% en zona de riesgo</div>
-            </div>
-            <div class="zona-card zona-card-yellow">
-              <div class="zona-card-label">Recaudo en efectivo</div>
-              <div class="zona-card-value">$105.000.000</div>
-              <div class="zona-card-sub">
-                50 servicios · Contado + Contraentrega
-              </div>
-            </div>
-            <div class="zona-card">
-              <div class="zona-card-label">Distribución del efectivo</div>
-              <div class="distrib-bar">
-                <div class="distrib-bar-a" style="width: 26%"></div>
-                <div class="distrib-bar-b" style="width: 74%"></div>
-              </div>
-              <div class="distrib-legend">
-                <span
-                  ><span class="distrib-dot" style="background: #2e86c1"></span
-                  ><span class="distrib-legend-text"
-                    >Contado: 13 svc (26%)</span
-                  ></span
-                ><span
-                  ><span class="distrib-dot" style="background: #aed6f1"></span
-                  ><span class="distrib-legend-text"
-                    >Contraentrega: 37 svc (74%)</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por # servicios a la zona
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Jesus Alberto Usuga Sanchez</span
-                ><span class="top3-val">11 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name"
-                  >Maximax Supermercados Asociados ZOM</span
-                ><span class="top3-val">8 svc</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name">Valderrama Ramirez Juan Diego</span
-                ><span class="top3-val">6 svc</span>
-              </li>
-            </ul>
-          </div>
-          <div class="zona-card" style="padding: 16px 18px">
-            <div class="zona-card-label" style="margin-bottom: 10px">
-              Top 3 clientes por valor recaudado en efectivo
-            </div>
-            <ul class="top3-list">
-              <li class="top3-item">
-                <span class="top3-rank">1</span
-                ><span class="top3-name">Valderrama Ramirez Juan Diego</span
-                ><span class="top3-val" style="color: #2e86c1">$26.200.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">2</span
-                ><span class="top3-name">Jesus Alberto Usuga Sanchez</span
-                ><span class="top3-val" style="color: #2e86c1">$12.300.000</span>
-              </li>
-              <li class="top3-item">
-                <span class="top3-rank">3</span
-                ><span class="top3-name"
-                  >Velasquez Atehortua Dannover de Jesús</span
-                ><span class="top3-val" style="color: #2e86c1">$10.400.000</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bar">
-          <span class="footer-text"
-            >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
-            2026</span
-          ><span class="footer-right">11 / 12</span>
-        </div>
-      </div>
 
       <!-- ══════════════════════════════════════════════
      SLIDE 27 · CONCLUSIONES
@@ -3743,7 +2675,7 @@
           <span class="footer-text"
             >Operación Éxito Antioquia · Riesgo de recaudo en efectivo · Q1
             2026</span
-          ><span class="footer-right">12 / 12</span>
+          ><span class="footer-right">5 / 5</span>
         </div>
       </div>
 
@@ -4286,5 +3218,6 @@
     </div>
 
     <script src="js/slides.js"></script>
+    <script src="js/medellin_map.js"></script>
   </body>
 </html>
