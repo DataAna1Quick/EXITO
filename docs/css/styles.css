@@ -1161,6 +1161,11 @@
         object-position: center;
         display: block;
       }
+      .zona-map-fill arcgis-embedded-map {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
       .zona-map-fill::after {
         content: '';
         position: absolute;
