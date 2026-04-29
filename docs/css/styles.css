@@ -2596,3 +2596,285 @@
         object-fit: contain;
         display: block;
       }
+
+      /* ═══════════════════════════════════════════════════
+         SLIDE G8 · CIERRE QUICK PAY (cierre comercial GENERAL)
+         Prefix: qp- · scope: #slide-G8
+         ═══════════════════════════════════════════════════ */
+      #slide-G8 .qp-content {
+        height: 100%;
+        padding: 28px 44px 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      #slide-G8 .qp-header {
+        flex: 0 0 auto;
+      }
+      #slide-G8 .qp-title {
+        font-size: 28px;
+        margin-top: 2px;
+      }
+      #slide-G8 .qp-subtitle {
+        font-size: 11px;
+        color: var(--exito-muted);
+        margin-top: 4px;
+        line-height: 1.4;
+      }
+      #slide-G8 .qp-body {
+        flex: 1 1 auto;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        gap: 20px;
+        min-height: 0;
+      }
+
+      /* ── Columna izquierda ── */
+      #slide-G8 .qp-left {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 0;
+      }
+      #slide-G8 .qp-bridge {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--exito-charcoal);
+        background: var(--exito-yellow-soft);
+        border-left: 3px solid var(--exito-yellow-dark);
+        padding: 9px 12px;
+        border-radius: 4px;
+      }
+      #slide-G8 .qp-bridge strong {
+        color: var(--exito-dark);
+        font-weight: 700;
+      }
+
+      #slide-G8 .qp-benefits {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+      #slide-G8 .qp-benefit {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        background: var(--exito-light);
+        border: 1px solid var(--exito-border);
+        border-left: 3px solid var(--exito-yellow);
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      #slide-G8 .qp-benefit-icon {
+        font-size: 18px;
+        line-height: 1;
+        color: var(--exito-yellow-dark);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      #slide-G8 .qp-benefit-body {
+        flex: 1;
+        min-width: 0;
+      }
+      #slide-G8 .qp-benefit-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--exito-dark);
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+      }
+      #slide-G8 .qp-benefit-desc {
+        font-size: 10.5px;
+        color: var(--exito-muted);
+        line-height: 1.35;
+        margin-top: 2px;
+      }
+
+      #slide-G8 .qp-cycle-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      #slide-G8 .qp-cycle-label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--exito-muted);
+      }
+      #slide-G8 .qp-cycle {
+        display: flex;
+        align-items: stretch;
+        gap: 2px;
+        background: var(--exito-charcoal);
+        border-radius: 6px;
+        padding: 8px 6px;
+        overflow: hidden;
+      }
+      #slide-G8 .qp-step {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        padding: 4px 2px;
+        text-align: center;
+        min-width: 0;
+      }
+      #slide-G8 .qp-step-num {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--exito-yellow);
+        line-height: 1;
+        letter-spacing: 0.04em;
+      }
+      #slide-G8 .qp-step-text {
+        font-size: 9px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 0.02em;
+        line-height: 1.1;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 100%;
+      }
+      #slide-G8 .qp-step--end .qp-step-num {
+        color: var(--exito-yellow-dark);
+      }
+      #slide-G8 .qp-step-arrow {
+        align-self: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(251, 191, 36, 0.45);
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
+      /* ── Columna derecha ── */
+      #slide-G8 .qp-right {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+      }
+      #slide-G8 .qp-fare-card {
+        background: var(--exito-charcoal);
+        color: #fff;
+        border-radius: 8px;
+        padding: 16px 18px 14px;
+        position: relative;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 6px 18px rgba(27, 38, 49, 0.18);
+      }
+      #slide-G8 .qp-fare-eyebrow {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--exito-yellow);
+        margin-bottom: 4px;
+      }
+      #slide-G8 .qp-fare-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+      #slide-G8 .qp-fare-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: "JetBrains Mono", "Consolas", monospace;
+      }
+      #slide-G8 .qp-fare-table td {
+        padding: 7px 0;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.88);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      #slide-G8 .qp-fare-table tr:last-child td {
+        border-bottom: none;
+      }
+      #slide-G8 .qp-fare-vol {
+        text-align: left;
+        letter-spacing: 0.02em;
+      }
+      #slide-G8 .qp-fare-price {
+        text-align: right;
+        font-weight: 700;
+        color: #fff;
+      }
+      #slide-G8 .qp-fare-row--featured td {
+        color: var(--exito-yellow);
+      }
+      #slide-G8 .qp-fare-row--featured .qp-fare-price {
+        color: var(--exito-yellow);
+        font-weight: 800;
+        font-size: 13px;
+      }
+      #slide-G8 .qp-fare-note {
+        font-size: 9.5px;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.04em;
+        margin-top: 8px;
+        line-height: 1.4;
+      }
+      #slide-G8 .qp-cobrand {
+        margin-top: auto;
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      #slide-G8 .qp-cobrand-label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      #slide-G8 .qp-cobrand-logo {
+        height: 22px;
+        width: auto;
+        opacity: 0.95;
+      }
+
+      #slide-G8 .qp-cta {
+        flex: 0 0 auto;
+        background: var(--exito-yellow-soft);
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        border-left: 4px solid var(--exito-yellow-dark);
+        border-radius: 6px;
+        padding: 12px 14px 12px 18px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      #slide-G8 .qp-cta-mark {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--exito-yellow-dark);
+        line-height: 0.7;
+        flex-shrink: 0;
+      }
+      #slide-G8 .qp-cta-text {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--exito-dark);
+        line-height: 1.25;
+        letter-spacing: 0.01em;
+      }
