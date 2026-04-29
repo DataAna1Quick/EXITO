@@ -19,7 +19,12 @@
     <!-- LANDING MENU · primera pantalla -->
     <div id="landing-menu" class="visible">
       <div class="landing-content">
-        <div class="landing-eyebrow">Operación · Surtimax · Grupo Éxito</div>
+        <div class="landing-cobrand">
+          <img src="images/logo_exito.png" alt="Éxito · Surtimax" class="landing-logo landing-logo--exito" />
+          <span class="landing-cobrand-sep"></span>
+          <img src="images/logo_quick.png" alt="Quick Help" class="landing-logo landing-logo--quick" />
+        </div>
+        <div class="landing-eyebrow">Operación · Surtimax · Grupo Éxito · Quick Help</div>
         <h1 class="landing-title">¿Qué reporte querés ver?</h1>
         <div class="landing-subtitle">Seleccioná una vista para comenzar</div>
 
@@ -59,13 +64,18 @@
           <div class="cover-bg"></div>
           <div class="cover-geo"></div>
           <div class="cover-content">
+            <div class="cover-logo-row">
+              <img src="images/logo_exito.png" alt="Éxito · Surtimax" style="background:rgba(255,255,255,0.92);padding:4px 10px;border-radius:4px;height:24px"/>
+              <span class="cover-logo-sep"></span>
+              <img src="images/logo_quick.png" alt="Quick Help" style="height:30px"/>
+            </div>
             <div class="cover-eyebrow">
               <span class="exito-logo-text">Surtimax · Grupo Éxito</span>
               <span style="color: rgba(255, 255, 255, 0.2); font-size: 18px">·</span>
-              <span style="font-size: 11px; color: rgba(255,255,255,.7); letter-spacing:.15em">RECAUDO PAÍS · 6 MESES</span>
+              <span style="font-size: 11px; color: rgba(255,255,255,.7); letter-spacing:.15em">RECAUDO PAÍS · 6 MESES · OPERADO POR QUICK HELP</span>
             </div>
             <h1 class="cover-title" style="font-size:56px;line-height:1.05">Operación de Recaudo · Vista País</h1>
-            <div class="cover-subtitle" style="font-size:16px">Estadística por cliente · últimos 4 meses · enero — abril 2026</div>
+            <div class="cover-subtitle" style="font-size:16px">Cobertura nacional Quick Help para Surtimax · enero — abril 2026</div>
             <div class="cover-meta" style="margin-top:36px">
               <span class="cover-meta-item"><strong>5</strong> regiones país</span>
               <span class="cover-meta-item"><strong>3.453</strong> clientes activos</span>
@@ -81,7 +91,7 @@
         <!-- SLIDE G2 · TENDENCIA MENSUAL POR REGIÓN (banda KPIs país arriba) -->
         <div class="slide" id="slide-G2">
           <div class="slide-header-bar"></div>
-          <div class="slide-content-full" style="display:flex;flex-direction:column;gap:12px">
+          <div class="slide-content-full" style="display:flex;flex-direction:column;gap:14px">
             <!-- Header -->
             <div>
               <div class="section-label">Tendencia · 4 meses · 5 regiones</div>
@@ -235,7 +245,7 @@
             <div style="font-size:10px;color:var(--exito-muted);margin-top:10px">Fuente: <code>data/db_real_clean_v1.csv</code> · 17.176 servicios · ene–abr 2026.</div>
 
             <!-- Bloque inferior · Evaluación mensual de recaudo (absorbido del antiguo G6) -->
-            <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--exito-light)">
+            <div style="margin-top:22px;padding-top:18px;border-top:2px solid var(--exito-yellow-soft)">
               <div class="section-label">Detalle por cliente · mes · VH</div>
               <div class="slide-title" style="font-size:18px;margin-top:2px">Top 5 clientes · evolución mensual y por vehículo</div>
               <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Total mes ($M) y total por VH ($M) · 4 meses · datos reales ene–abr 2026</div>
@@ -381,12 +391,12 @@
                   </div>
                   <div class="zona-card gen-card">
                     <div class="zona-card-label">Promedio mensual</div>
-                    <div class="zona-card-value gen-prom-mensual" style="color:#1a5276">—</div>
+                    <div class="zona-card-value gen-prom-mensual" style="color:#1f2937">—</div>
                     <div class="zona-card-sub">/ 4 meses (ene–abr 2026)</div>
                   </div>
                   <div class="zona-card gen-card">
                     <div class="zona-card-label">Promedio diario</div>
-                    <div class="zona-card-value gen-prom-diario" style="color:#1a5276">—</div>
+                    <div class="zona-card-value gen-prom-diario" style="color:#1f2937">—</div>
                     <div class="zona-card-sub">/ días operativos región</div>
                   </div>
                   <div class="zona-card gen-card gen-top3-card">
@@ -439,12 +449,17 @@
         <div class="cover-bg"></div>
         <div class="cover-geo"></div>
         <div class="cover-content">
+          <div class="cover-logo-row">
+            <img src="images/logo_exito.png" alt="Éxito · Surtimax" style="background:rgba(255,255,255,0.92);padding:4px 10px;border-radius:4px;height:24px"/>
+            <span class="cover-logo-sep"></span>
+            <img src="images/logo_quick.png" alt="Quick Help" style="height:30px"/>
+          </div>
           <div class="cover-eyebrow">
             <span class="exito-logo-text">Éxito Antioquia</span>
             <span style="color: rgba(255, 255, 255, 0.2); font-size: 18px"
               >·</span
             >
-            <span class="quick-logo-text">Quick Logistics</span>
+            <span class="quick-logo-text">Operado por Quick Help</span>
           </div>
           <div class="cover-title-main">
             OPERACIÓN<br /><span class="cover-title-accent">MEDELLÍN</span>
@@ -463,7 +478,7 @@
             </div>
             <div class="cover-meta-item">
               <div class="cover-meta-label">Estado</div>
-              <div class="cover-meta-value" style="color: #5dade2">
+              <div class="cover-meta-value" style="color: #FBBF24">
                 Versión aprobada
               </div>
             </div>
@@ -471,12 +486,12 @@
         </div>
         <div class="cover-tags">
           <div class="cover-tag">
-            <span class="cover-tag-dot" style="background: #aed6f1"></span
+            <span class="cover-tag-dot" style="background: #FEF3C7"></span
             >Colocación de flota
           </div>
           <!-- TEMPORALMENTE OCULTO para opp Éxito-Surtimax 2026-04 -->
           <div class="cover-tag" style="display:none">
-            <span class="cover-tag-dot" style="background: #2e86c1"></span
+            <span class="cover-tag-dot" style="background: #F59E0B"></span
             >Indicador Loyalty
           </div>
           <div class="cover-tag">
@@ -502,7 +517,7 @@
           <div class="section-cover-left">
             <div
               class="section-label"
-              style="color: #5dade2; margin-bottom: 20px"
+              style="color: #FBBF24; margin-bottom: 20px"
             >
               Módulo 1 · Colocación
             </div>
@@ -541,7 +556,7 @@
                 font-family: &quot;Barlow Condensed&quot;, sans-serif;
                 font-size: 20px;
                 font-weight: 800;
-                color: #1a5276;
+                color: #1f2937;
                 margin-bottom: 28px;
               "
             >
@@ -560,7 +575,7 @@
               <div style="width: 2px; background: var(--exito-border)"></div>
               <div>
                 <div class="kpi-label">Colocados</div>
-                <div class="big-number" style="color: #1a5276">
+                <div class="big-number" style="color: #1f2937">
                   <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->427
                   <span style="font-size: 28px; color: var(--exito-slate)"
                     >placas</span
@@ -568,9 +583,9 @@
                 </div>
               </div>
             </div>
-            <div class="kpi-card" style="border-left: 4px solid #5dade2">
+            <div class="kpi-card" style="border-left: 4px solid #FBBF24">
               <div class="kpi-label">Colocación promedio Q1</div>
-              <div class="kpi-value" style="font-size: 48px; color: #2e86c1">
+              <div class="kpi-value" style="font-size: 48px; color: #F59E0B">
                 <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%
               </div>
               <div class="kpi-sub">Brecha de −27,9 pp vs. target 95%</div>
@@ -591,10 +606,10 @@
                 padding: 10px 14px;
                 background: var(--exito-red-soft);
                 border-radius: 6px;
-                border-left: 3px solid #2e86c1;
+                border-left: 3px solid #F59E0B;
               "
             >
-              <strong style="color: #2e86c1"
+              <strong style="color: #F59E0B"
                 >Documento de trabajo · Versión aprobada 22-abr-2026</strong
               ><br />
               Reemplaza la metodología anterior basada en listado maestro
@@ -610,25 +625,25 @@
                   <div style="font-size:9px;color:var(--exito-muted);margin-bottom:4px">Enero</div>
                   <div style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:#e67e22;line-height:1">87,3%</div>
                   <div style="font-size:8px;color:var(--exito-muted);margin-top:3px">142 sol · 124 pos</div>
-                  <div style="margin-top:6px;height:5px;background:#e8edf3;border-radius:3px;overflow:hidden"><div style="width:87.3%;height:100%;background:#e67e22;border-radius:3px"></div></div>
+                  <div style="margin-top:6px;height:5px;background:#FEF3C7;border-radius:3px;overflow:hidden"><div style="width:87.3%;height:100%;background:#e67e22;border-radius:3px"></div></div>
                 </div>
                 <div style="background:var(--exito-light);border:1px solid var(--exito-border);border-radius:8px;padding:12px 14px;text-align:center">
                   <div style="font-size:9px;color:var(--exito-muted);margin-bottom:4px">Febrero</div>
                   <div style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:#e67e22;line-height:1">86,4%</div>
                   <div style="font-size:8px;color:var(--exito-muted);margin-top:3px">118 sol · 102 pos</div>
-                  <div style="margin-top:6px;height:5px;background:#e8edf3;border-radius:3px;overflow:hidden"><div style="width:86.4%;height:100%;background:#e67e22;border-radius:3px"></div></div>
+                  <div style="margin-top:6px;height:5px;background:#FEF3C7;border-radius:3px;overflow:hidden"><div style="width:86.4%;height:100%;background:#e67e22;border-radius:3px"></div></div>
                 </div>
                 <div style="background:var(--exito-light);border:1px solid var(--exito-border);border-radius:8px;padding:12px 14px;text-align:center">
                   <div style="font-size:9px;color:var(--exito-muted);margin-bottom:4px">Marzo</div>
-                  <div style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:#2e86c1;line-height:1">68,5%</div>
+                  <div style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:#F59E0B;line-height:1">68,5%</div>
                   <div style="font-size:8px;color:var(--exito-muted);margin-top:3px">143 sol · 98 pos</div>
-                  <div style="margin-top:6px;height:5px;background:#e8edf3;border-radius:3px;overflow:hidden"><div style="width:68.5%;height:100%;background:#2e86c1;border-radius:3px"></div></div>
+                  <div style="margin-top:6px;height:5px;background:#FEF3C7;border-radius:3px;overflow:hidden"><div style="width:68.5%;height:100%;background:#F59E0B;border-radius:3px"></div></div>
                 </div>
-                <div style="background:rgba(46,134,193,0.06);border:1px solid rgba(46,134,193,0.3);border-radius:8px;padding:12px 14px;text-align:center">
+                <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:12px 14px;text-align:center">
                   <div style="font-size:9px;color:var(--exito-muted);margin-bottom:4px">Abril</div>
                   <div style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;color:#8e44ad;line-height:1">38,9%</div>
                   <div style="font-size:8px;color:var(--exito-muted);margin-top:3px">208 sol · 81 pos</div>
-                  <div style="margin-top:6px;height:5px;background:#e8edf3;border-radius:3px;overflow:hidden"><div style="width:38.9%;height:100%;background:#8e44ad;border-radius:3px"></div></div>
+                  <div style="margin-top:6px;height:5px;background:#FEF3C7;border-radius:3px;overflow:hidden"><div style="width:38.9%;height:100%;background:#8e44ad;border-radius:3px"></div></div>
                 </div>
               </div>
               <div style="font-size:9px;color:var(--exito-muted);margin-top:8px">Target 95% · Deterioro progresivo · S12 (16 mar) marca el inicio del colapso operativo</div>
@@ -674,7 +689,7 @@
                 style="text-align: center; padding: 12px 20px"
               >
                 <div class="kpi-label">Total período</div>
-                <div class="kpi-value" style="color: #2e86c1"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%</div>
+                <div class="kpi-value" style="color: #F59E0B"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%</div>
                 <div class="kpi-sub">−27,9pp vs. target 95%</div>
               </div>
             </div>
@@ -702,8 +717,8 @@
                   <td>
                     <span
                       style="
-                        background: #ebf5fb;
-                        color: #154360;
+                        background: #FEF3C7;
+                        color: #0f172a;
                         padding: 2px 8px;
                         border-radius: 10px;
                         font-weight: 700;
@@ -724,8 +739,8 @@
                   <td>
                     <span
                       style="
-                        background: #ebf5fb;
-                        color: #154360;
+                        background: #FEF3C7;
+                        color: #0f172a;
                         padding: 2px 8px;
                         border-radius: 10px;
                         font-weight: 700;
@@ -742,12 +757,12 @@
                   <td><strong>Marzo</strong></td>
                   <td>143</td>
                   <td>98</td>
-                  <td style="color: #2e86c1; font-weight: 700">−45</td>
+                  <td style="color: #F59E0B; font-weight: 700">−45</td>
                   <td>
                     <span
                       style="
-                        background: #ebf5fb;
-                        color: #1a5276;
+                        background: #FEF3C7;
+                        color: #1f2937;
                         padding: 2px 8px;
                         border-radius: 10px;
                         font-weight: 700;
@@ -756,7 +771,7 @@
                       >68,5%</span
                     >
                   </td>
-                  <td style="color: #2e86c1; font-size: 10px; font-weight: 600">
+                  <td style="color: #F59E0B; font-size: 10px; font-weight: 600">
                     Punto de quiebre · S12 colapsa
                   </td>
                 </tr>
@@ -768,8 +783,8 @@
                   <td>
                     <span
                       style="
-                        background: #ebf5fb;
-                        color: #1a5276;
+                        background: #FEF3C7;
+                        color: #1f2937;
                         padding: 2px 8px;
                         border-radius: 10px;
                         font-weight: 700;
@@ -782,7 +797,7 @@
                     Crisis · demanda ×2, capacidad cae
                   </td>
                 </tr>
-                <tr style="background: #1a5276">
+                <tr style="background: #1f2937">
                   <td style="color: white; font-weight: 700; border: none">
                     TOTAL
                   </td>
@@ -808,13 +823,13 @@
                   >
                     <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->427
                   </td>
-                  <td style="color: #5dade2; border: none; font-weight: 700">
+                  <td style="color: #FBBF24; border: none; font-weight: 700">
                     −209
                   </td>
                   <td style="border: none">
                     <span
                       style="
-                        background: #2e86c1;
+                        background: #F59E0B;
                         color: white;
                         padding: 2px 10px;
                         border-radius: 10px;
@@ -845,7 +860,7 @@
               promedio) manejan prácticamente el mismo volumen solicitado (306
               vs. 305 unidades). Lo que cambia no es la demanda, es la capacidad
               de colocación. Por eso el diagnóstico es
-              <strong style="color: #5dade2"
+              <strong style="color: #FBBF24"
                 >estructural, no estacional.</strong
               >
             </div>
@@ -860,7 +875,7 @@
               <span style="display:inline-flex;align-items:center;gap:4px;background:#d5f5e3;color:#1e8449;border-radius:12px;padding:3px 10px;font-size:10px;font-weight:700">Costa 86,6%</span>
               <span style="display:inline-flex;align-items:center;gap:4px;background:#d5f5e3;color:#1e8449;border-radius:12px;padding:3px 10px;font-size:10px;font-weight:700">Eje Cafetero 99,0%</span>
               <span style="display:inline-flex;align-items:center;gap:4px;background:#d5f5e3;color:#1e8449;border-radius:12px;padding:3px 10px;font-size:10px;font-weight:700">Funza 100,9%</span>
-              <span style="display:inline-flex;align-items:center;gap:4px;background:#ebf5fb;color:#1a5276;border:1px solid rgba(46,134,193,0.4);border-radius:12px;padding:3px 10px;font-size:10px;font-weight:700">Medellín 67,1% ⚠</span>
+              <span style="display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#1f2937;border:1px solid rgba(245,158,11,0.4);border-radius:12px;padding:3px 10px;font-size:10px;font-weight:700">Medellín 67,1% ⚠</span>
               <span style="display:inline-flex;align-items:center;gap:4px;background:var(--exito-light);color:var(--exito-slate);border:1px solid var(--exito-border);border-radius:12px;padding:3px 10px;font-size:10px;font-weight:700">Red total 86,1%</span>
             </div>
             <div style="font-size:9px;color:var(--exito-muted);margin-top:5px">Target 95% · Medellín es la única regional crítica · brecha −29pp vs. red excluyendo Medellín (~95,4%)</div>
@@ -932,7 +947,7 @@
               </div>
               <div class="bar-group">
                 <div class="bar-value">80%</div>
-                <div class="bar" style="height: 80%; background: #5dade2"></div>
+                <div class="bar" style="height: 80%; background: #FBBF24"></div>
                 <div class="bar-label">
                   S04
                   <div class="bar-date">19 ene</div>
@@ -940,7 +955,7 @@
               </div>
               <div class="bar-group">
                 <div class="bar-value">80%</div>
-                <div class="bar" style="height: 80%; background: #5dade2"></div>
+                <div class="bar" style="height: 80%; background: #FBBF24"></div>
                 <div class="bar-label">
                   S05
                   <div class="bar-date">26 ene</div>
@@ -967,7 +982,7 @@
               </div>
               <div class="bar-group">
                 <div class="bar-value">76%</div>
-                <div class="bar" style="height: 76%; background: #5dade2"></div>
+                <div class="bar" style="height: 76%; background: #FBBF24"></div>
                 <div class="bar-label">
                   S08
                   <div class="bar-date">16 feb</div>
@@ -975,7 +990,7 @@
               </div>
               <div class="bar-group">
                 <div class="bar-value">80%</div>
-                <div class="bar" style="height: 80%; background: #5dade2"></div>
+                <div class="bar" style="height: 80%; background: #FBBF24"></div>
                 <div class="bar-label">
                   S09
                   <div class="bar-date">23 feb</div>
@@ -1002,7 +1017,7 @@
               </div>
               <div class="bar-group">
                 <div class="bar-value">77%</div>
-                <div class="bar" style="height: 77%; background: #5dade2"></div>
+                <div class="bar" style="height: 77%; background: #FBBF24"></div>
                 <div class="bar-label">
                   S12
                   <div class="bar-date">16 mar</div>
@@ -1014,27 +1029,27 @@
                   class="bar"
                   style="
                     height: 42%;
-                    background: #2e86c1;
-                    border: 2px solid #1a5276;
+                    background: #F59E0B;
+                    border: 2px solid #1f2937;
                   "
                 ></div>
-                <div class="bar-label" style="color: #2e86c1; font-weight: 700">
+                <div class="bar-label" style="color: #F59E0B; font-weight: 700">
                   S13
                   <div class="bar-date">23 mar</div>
                 </div>
               </div>
               <div class="bar-group">
                 <div class="bar-value">32%</div>
-                <div class="bar" style="height: 32%; background: #2e86c1"></div>
-                <div class="bar-label" style="color: #2e86c1; font-weight: 700">
+                <div class="bar" style="height: 32%; background: #F59E0B"></div>
+                <div class="bar-label" style="color: #F59E0B; font-weight: 700">
                   S14
                   <div class="bar-date">30 mar</div>
                 </div>
               </div>
               <div class="bar-group">
                 <div class="bar-value">30%</div>
-                <div class="bar" style="height: 30%; background: #2e86c1"></div>
-                <div class="bar-label" style="color: #2e86c1; font-weight: 700">
+                <div class="bar" style="height: 30%; background: #F59E0B"></div>
+                <div class="bar-label" style="color: #F59E0B; font-weight: 700">
                   S15
                   <div class="bar-date">06 abr</div>
                 </div>
@@ -1097,7 +1112,7 @@
                     display: inline-block;
                     width: 10px;
                     height: 10px;
-                    background: #5dade2;
+                    background: #FBBF24;
                     border-radius: 2px;
                   "
                 ></span
@@ -1109,7 +1124,7 @@
                     display: inline-block;
                     width: 10px;
                     height: 10px;
-                    background: #2e86c1;
+                    background: #F59E0B;
                     border-radius: 2px;
                   "
                 ></span
@@ -1120,7 +1135,7 @@
             </div>
 
             <div class="chart-reading">
-              <strong style="color: #1a5276">26 / 31 · Lectura:</strong> S01–S11
+              <strong style="color: #1f2937">26 / 31 · Lectura:</strong> S01–S11
               oscilan en zona amarilla/verde · S12 marca el quiebre · S13–S15
               caen a zona roja sostenida · S17 muestra recuperación parcial pero
               sigue en naranja-rojo. No es un mes malo, son
@@ -1239,9 +1254,9 @@
                 <div class="kpi-value" style="color:#27ae60;font-size:28px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->86,1%</div>
                 <div class="kpi-sub">excl. MDE: ~95,4%</div>
               </div>
-              <div class="kpi-card" style="text-align:center;padding:10px 18px;border-left:4px solid #2e86c1">
+              <div class="kpi-card" style="text-align:center;padding:10px 18px;border-left:4px solid #F59E0B">
                 <div class="kpi-label">Medellín vs red</div>
-                <div class="kpi-value" style="color:#2e86c1;font-size:28px">−28pp</div>
+                <div class="kpi-value" style="color:#F59E0B;font-size:28px">−28pp</div>
                 <div class="kpi-sub">única regional crítica</div>
               </div>
             </div>
@@ -1252,67 +1267,67 @@
 
             <!-- CALI -->
             <div style="background:var(--exito-light);border:1px solid var(--exito-border);border-top:3px solid #27ae60;border-radius:10px;padding:12px 14px">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1a5276;letter-spacing:.07em;text-transform:uppercase">Cali</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1f2937;letter-spacing:.07em;text-transform:uppercase">Cali</div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#27ae60;line-height:1;margin:4px 0 2px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->98,4%</div>
               <div style="font-size:8.5px;color:var(--exito-muted);margin-bottom:10px">195 sol · 180 pos</div>
               <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:98.1%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">98,1%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:81.8%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">81,8%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:98.1%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">98,1%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:81.8%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">81,8%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
               </div>
             </div>
 
             <!-- COSTA -->
             <div style="background:var(--exito-light);border:1px solid var(--exito-border);border-top:3px solid #27ae60;border-radius:10px;padding:12px 14px">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1a5276;letter-spacing:.07em;text-transform:uppercase">Costa</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1f2937;letter-spacing:.07em;text-transform:uppercase">Costa</div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#27ae60;line-height:1;margin:4px 0 2px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->86,6%</div>
               <div style="font-size:8.5px;color:var(--exito-muted);margin-bottom:10px">388 sol · 323 pos</div>
               <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:70.8%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">70,8%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:93.9%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">93,9%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:71.6%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">71,6%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:70.8%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">70,8%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:93.9%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">93,9%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:71.6%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">71,6%</span></div>
               </div>
             </div>
 
             <!-- EJE CAFETERO -->
             <div style="background:var(--exito-light);border:1px solid var(--exito-border);border-top:3px solid #27ae60;border-radius:10px;padding:12px 14px">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1a5276;letter-spacing:.07em;text-transform:uppercase">Eje Cafetero</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1f2937;letter-spacing:.07em;text-transform:uppercase">Eje Cafetero</div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#27ae60;line-height:1;margin:4px 0 2px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->99,0%</div>
               <div style="font-size:8.5px;color:var(--exito-muted);margin-bottom:10px">208 sol · 206 pos</div>
               <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:96.9%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">96,9%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:96.9%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">96,9%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">100%</span></div>
               </div>
             </div>
 
             <!-- FUNZA -->
             <div style="background:var(--exito-light);border:1px solid var(--exito-border);border-top:3px solid #27ae60;border-radius:10px;padding:12px 14px">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1a5276;letter-spacing:.07em;text-transform:uppercase">Funza</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1f2937;letter-spacing:.07em;text-transform:uppercase">Funza</div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#27ae60;line-height:1;margin:4px 0 2px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->100,9%</div>
               <div style="font-size:8.5px;color:var(--exito-muted);margin-bottom:10px">1.098 sol · 1.038 pos</div>
               <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:97%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">97,0%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">101,8%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:88.5%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">88,5%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:95.5%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">95,5%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:97%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">97,0%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">101,8%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:88.5%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">88,5%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:95.5%;background:#27ae60;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#1e8449;width:34px;text-align:right">95,5%</span></div>
               </div>
             </div>
 
             <!-- MEDELLIN crítica -->
-            <div style="background:rgba(46,134,193,0.06);border:1px solid rgba(46,134,193,0.35);border-top:3px solid #2e86c1;border-radius:10px;padding:12px 14px;position:relative">
-              <div style="position:absolute;top:10px;right:10px;font-size:7px;font-weight:800;letter-spacing:.1em;background:#2e86c1;color:white;border-radius:3px;padding:2px 5px;text-transform:uppercase">Crítica</div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1a5276;letter-spacing:.07em;text-transform:uppercase">Medellín</div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#2e86c1;line-height:1;margin:4px 0 2px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%</div>
+            <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.35);border-top:3px solid #F59E0B;border-radius:10px;padding:12px 14px;position:relative">
+              <div style="position:absolute;top:10px;right:10px;font-size:7px;font-weight:800;letter-spacing:.1em;background:#F59E0B;color:white;border-radius:3px;padding:2px 5px;text-transform:uppercase">Crítica</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;color:#1f2937;letter-spacing:.07em;text-transform:uppercase">Medellín</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#F59E0B;line-height:1;margin:4px 0 2px"><!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%</div>
               <div style="font-size:8.5px;color:var(--exito-muted);margin-bottom:10px">636 sol · 427 pos</div>
               <div style="display:flex;flex-direction:column;gap:4px">
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:87.3%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">87,3%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:86.4%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">86,4%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:68.5%;background:#2e86c1;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#2e86c1;width:34px;text-align:right">68,5%</span></div>
-                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#e8edf3;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:38.9%;background:#8e44ad;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#8e44ad;width:34px;text-align:right">38,9%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">E</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:87.3%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">87,3%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">F</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:86.4%;background:#e67e22;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#e67e22;width:34px;text-align:right">86,4%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">M</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:68.5%;background:#F59E0B;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#F59E0B;width:34px;text-align:right">68,5%</span></div>
+                <div style="display:flex;align-items:center;gap:5px"><span style="font-size:8px;color:#888;width:10px">A</span><div style="flex:1;height:14px;background:#FEF3C7;border-radius:3px;overflow:hidden;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:38.9%;background:#8e44ad;border-radius:3px"></div></div><span style="font-size:9px;font-weight:700;color:#8e44ad;width:34px;text-align:right">38,9%</span></div>
               </div>
             </div>
           </div>
@@ -1320,18 +1335,18 @@
           <!-- Total red footer -->
           <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->
           <div style="margin-top:18px;padding:10px 18px;background:var(--exito-light);border:1px solid var(--exito-border);border-radius:8px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
-            <span style="font-size:10px;font-weight:800;letter-spacing:.08em;color:#1a5276;text-transform:uppercase">Total red Q1</span>
+            <span style="font-size:10px;font-weight:800;letter-spacing:.08em;color:#1f2937;text-transform:uppercase">Total red Q1</span>
             <span style="font-size:11px;color:var(--exito-muted)">Ene <strong style="color:#27ae60">93,2%</strong></span>
             <span style="font-size:11px;color:var(--exito-muted)">Feb <strong style="color:#27ae60">98,4%</strong></span>
             <span style="font-size:11px;color:var(--exito-muted)">Mar <strong style="color:#27ae60">92,3%</strong></span>
             <span style="font-size:11px;color:var(--exito-muted)">Abr <strong style="color:#e67e22">84,2%</strong></span>
-            <span style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#1a5276">86,1% Q1</span>
+            <span style="margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#1f2937">86,1% Q1</span>
             <span style="font-size:9px;color:var(--exito-muted)">Target 95% · brecha −8,9pp · caída en abril</span>
           </div>
 
           <!-- Sparkline semanal Medellín S01–S17 -->
           <div style="margin-top:14px;padding:12px 18px 8px;background:var(--exito-light);border:1px solid var(--exito-border);border-radius:8px">
-            <div style="font-size:10px;font-weight:800;letter-spacing:.08em;color:#1a5276;text-transform:uppercase;margin-bottom:6px">Tendencia semanal · Medellín (S01–S17) · quiebre S12</div>
+            <div style="font-size:10px;font-weight:800;letter-spacing:.08em;color:#1f2937;text-transform:uppercase;margin-bottom:6px">Tendencia semanal · Medellín (S01–S17) · quiebre S12</div>
             <svg viewBox="0 0 800 72" width="100%" height="78" style="overflow:visible;display:block">
               <!-- Background zones -->
               <rect x="20" y="23" width="768" height="44" fill="rgba(231,76,60,0.07)" rx="2"/>
@@ -1342,9 +1357,9 @@
               <!-- 70% line -->
               <line x1="20" y1="23" x2="788" y2="23" stroke="#e67e22" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
               <!-- S12 breakpoint vertical -->
-              <line x1="548" y1="2" x2="548" y2="67" stroke="#2e86c1" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+              <line x1="548" y1="2" x2="548" y2="67" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
               <!-- Path S01–S02 -->
-              <path d="M 20,2 L 68,7" fill="none" stroke="#2e86c1" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M 20,2 L 68,7" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
               <!-- Path S04–S11 (green/yellow zone) -->
               <path d="M 164,15 L 212,15 L 260,7 L 308,2 L 356,20 L 404,15 L 452,2 L 500,4" fill="none" stroke="#27ae60" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
               <!-- Path S12–S17 (critical zone) -->
@@ -1361,7 +1376,7 @@
               <circle cx="404" cy="15" r="3.5" fill="#e67e22"/>
               <circle cx="452" cy="2"  r="3.5" fill="#27ae60"/>
               <circle cx="500" cy="4"  r="3.5" fill="#27ae60"/>
-              <circle cx="548" cy="18" r="5"   fill="#2e86c1" stroke="white" stroke-width="1.5"/>
+              <circle cx="548" cy="18" r="5"   fill="#F59E0B" stroke="white" stroke-width="1.5"/>
               <circle cx="596" cy="41" r="4"   fill="#e74c3c"/>
               <circle cx="644" cy="48" r="4"   fill="#e74c3c"/>
               <circle cx="692" cy="50" r="4"   fill="#e74c3c"/>
@@ -1379,7 +1394,7 @@
               <text x="404" y="64" font-size="7" fill="#888" text-anchor="middle">S09</text>
               <text x="452" y="64" font-size="7" fill="#888" text-anchor="middle">S10</text>
               <text x="500" y="64" font-size="7" fill="#888" text-anchor="middle">S11</text>
-              <text x="548" y="64" font-size="7" fill="#2e86c1" text-anchor="middle" font-weight="700">S12⚡</text>
+              <text x="548" y="64" font-size="7" fill="#F59E0B" text-anchor="middle" font-weight="700">S12⚡</text>
               <text x="596" y="64" font-size="7" fill="#e74c3c" text-anchor="middle">S13</text>
               <text x="644" y="64" font-size="7" fill="#e74c3c" text-anchor="middle">S14</text>
               <text x="692" y="64" font-size="7" fill="#e74c3c" text-anchor="middle">S15</text>
@@ -1388,7 +1403,7 @@
               <!-- Value labels on key points -->
               <text x="20"  y="0"  font-size="6.5" fill="#27ae60" text-anchor="middle">100%</text>
               <text x="308" y="0"  font-size="6.5" fill="#27ae60" text-anchor="middle">100%</text>
-              <text x="548" y="16" font-size="6.5" fill="#2e86c1" text-anchor="middle">77%</text>
+              <text x="548" y="16" font-size="6.5" fill="#F59E0B" text-anchor="middle">77%</text>
               <text x="692" y="48" font-size="6.5" fill="#e74c3c" text-anchor="middle">30%</text>
               <text x="788" y="26" font-size="6.5" fill="#e67e22" text-anchor="middle">62%</text>
             </svg>
@@ -1600,25 +1615,25 @@
                     <td style="text-align:center">12</td>
                     <td style="text-align:center">10</td>
                     <td style="text-align:center"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">83,3%</span></td>
-                    <td style="text-align:center;color:#2e86c1;font-weight:700">2</td>
+                    <td style="text-align:center;color:#F59E0B;font-weight:700">2</td>
                     <td style="text-align:center;color:#27ae60;font-weight:700">+2</td>
                     <td style="font-size:10px;color:var(--exito-slate)">Comportamiento estable</td>
                   </tr>
-                  <tr style="background:rgba(46,134,193,0.05)">
+                  <tr style="background:rgba(245,158,11,0.05)">
                     <td><strong>Feb → Mar</strong></td>
                     <td style="text-align:center">12</td>
                     <td style="text-align:center">8</td>
-                    <td style="text-align:center"><span style="background:#ebf5fb;color:#1a5276;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">66,7%</span></td>
-                    <td style="text-align:center;color:#2e86c1;font-weight:700;font-size:15px">4</td>
+                    <td style="text-align:center"><span style="background:#FEF3C7;color:#1f2937;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">66,7%</span></td>
+                    <td style="text-align:center;color:#F59E0B;font-weight:700;font-size:15px">4</td>
                     <td style="text-align:center;color:#27ae60;font-weight:700">+2</td>
-                    <td style="font-size:10px;color:#2e86c1;font-weight:600">Pérdida de 4 placas que sostenían volumen</td>
+                    <td style="font-size:10px;color:#F59E0B;font-weight:600">Pérdida de 4 placas que sostenían volumen</td>
                   </tr>
                   <tr>
                     <td><strong>Mar → Abr*</strong></td>
                     <td style="text-align:center">10</td>
                     <td style="text-align:center">9</td>
                     <td style="text-align:center"><span style="background:#e8f5e9;color:#2e7d32;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">90,0%</span></td>
-                    <td style="text-align:center;color:#2e86c1;font-weight:700">3</td>
+                    <td style="text-align:center;color:#F59E0B;font-weight:700">3</td>
                     <td style="text-align:center;color:#27ae60;font-weight:700">+4</td>
                     <td style="font-size:10px;color:var(--exito-slate)">7 retenidas + 2 nuevas fijas (regla)</td>
                   </tr>
@@ -1968,7 +1983,7 @@
       <div
         class="slide"
         id="slide-12"
-        style="background: #1a5276; color: white; flex-direction: row"
+        style="background: #1f2937; color: white; flex-direction: row"
       >
         <div
           style="
@@ -1977,7 +1992,7 @@
             background:
               radial-gradient(
                 ellipse at 20% 50%,
-                rgba(46, 134, 193, 0.2) 0%,
+                rgba(245, 158, 11, 0.2) 0%,
                 transparent 60%
               ),
               radial-gradient(
@@ -1996,14 +2011,14 @@
                 font-weight: 700;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
-                color: #2e86c1;
+                color: #F59E0B;
                 margin-bottom: 16px;
               "
             >
               Módulo 2 · Riesgo de Recaudo
             </div>
             <div class="dark-cover-title">
-              RIESGO DE<br />EFECTIVO<br /><span style="color: #5dade2"
+              RIESGO DE<br />EFECTIVO<br /><span style="color: #FBBF24"
                 >POR MACROZONA</span
               >
             </div>
@@ -2030,7 +2045,7 @@
             </div>
             <div class="dark-kpi">
               <div class="dark-kpi-label">Efectivo expuesto</div>
-              <div class="dark-kpi-value" style="color: #5dade2">$1.50MM</div>
+              <div class="dark-kpi-value" style="color: #FBBF24">$1.50MM</div>
               <div class="dark-kpi-sub">COP · Contado + Contraentrega</div>
             </div>
           </div>
@@ -2091,8 +2106,8 @@
                     <div class="distrib-bar-b med-bar-contraentrega" style="width: 50%"></div>
                   </div>
                   <div class="distrib-legend">
-                    <span><span class="distrib-dot" style="background: #2e86c1"></span><span class="distrib-legend-text med-leg-contado">Contado: —</span></span>
-                    <span><span class="distrib-dot" style="background: #aed6f1"></span><span class="distrib-legend-text med-leg-contraentrega">Contraentrega: —</span></span>
+                    <span><span class="distrib-dot" style="background: #F59E0B"></span><span class="distrib-legend-text med-leg-contado">Contado: —</span></span>
+                    <span><span class="distrib-dot" style="background: #FEF3C7"></span><span class="distrib-legend-text med-leg-contraentrega">Contraentrega: —</span></span>
                   </div>
                 </div>
                 <div class="zona-card med-card med-top3-card">
@@ -2151,8 +2166,8 @@
                   <td><strong>PUN256</strong></td>
                   <td><span class="risk-tag risk-critico">Crítico</span></td>
                   <td>$408.000.000</td><td>47</td><td>$6.300.000</td><td>$12.000.000</td><td>$18.500.000</td>
-                  <td style="color:#2e86c1;font-weight:700">$31.200.000</td>
-                  <td><span style="background:#ebf5fb;color:#1a5276;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">17</span></td>
+                  <td style="color:#F59E0B;font-weight:700">$31.200.000</td>
+                  <td><span style="background:#FEF3C7;color:#1f2937;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">17</span></td>
                   <td style="font-weight:700">7</td>
                 </tr>
                 <tr>
@@ -2160,15 +2175,15 @@
                   <td><span class="risk-tag risk-alto">Alto</span></td>
                   <td>$358.000.000</td><td>72</td><td>$4.100.000</td><td>$6.700.000</td><td>$11.200.000</td>
                   <td>$16.000.000</td>
-                  <td><span style="background:#ebf5fb;color:#1a5276;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">14</span></td>
+                  <td><span style="background:#FEF3C7;color:#1f2937;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">14</span></td>
                   <td>1</td>
                 </tr>
                 <tr>
                   <td><strong>TRH279</strong></td>
                   <td><span class="risk-tag risk-critico">Crítico</span></td>
                   <td>$227.000.000</td><td>45</td><td>$4.000.000</td><td>$6.000.000</td><td>$8.800.000</td>
-                  <td style="color:#2e86c1;font-weight:700">$28.500.000</td>
-                  <td><span style="background:#ebf5fb;color:#154360;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">8</span></td>
+                  <td style="color:#F59E0B;font-weight:700">$28.500.000</td>
+                  <td><span style="background:#FEF3C7;color:#0f172a;padding:2px 8px;border-radius:10px;font-weight:700;font-size:11px">8</span></td>
                   <td>3</td>
                 </tr>
                 <tr>
@@ -2181,7 +2196,7 @@
                   <td><strong>TFW188</strong></td>
                   <td><span class="risk-tag risk-critico">Crítico</span></td>
                   <td>$143.000.000</td><td>43</td><td>$2.400.000</td><td>$4.100.000</td><td>$5.000.000</td>
-                  <td style="color:#2e86c1;font-weight:700">$22.200.000</td><td>2</td><td>1</td>
+                  <td style="color:#F59E0B;font-weight:700">$22.200.000</td><td>2</td><td>1</td>
                 </tr>
                 <tr>
                   <td><strong>EQW902</strong></td>
@@ -2289,7 +2304,7 @@
           <div class="risk-row">
             <div
               class="risk-level-badge"
-              style="background: #ebf5fb; color: #154360"
+              style="background: #FEF3C7; color: #0f172a"
             >
               MODERADO
             </div>
@@ -2297,7 +2312,7 @@
             <div class="risk-bar-wrap">
               <div
                 class="risk-bar-fill"
-                style="width: 17.8%; background: #5dade2"
+                style="width: 17.8%; background: #FBBF24"
               ></div>
             </div>
             <div class="risk-stats">
@@ -2353,13 +2368,13 @@
           <div
             class="risk-row"
             style="
-              background: rgba(46, 134, 193, 0.06);
-              border-color: rgba(46, 134, 193, 0.2);
+              background: rgba(245, 158, 11, 0.06);
+              border-color: rgba(245, 158, 11, 0.2);
             "
           >
             <div
               class="risk-level-badge"
-              style="background: #ebf5fb; color: #1a5276"
+              style="background: #FEF3C7; color: #1f2937"
             >
               CRÍTICO
             </div>
@@ -2367,7 +2382,7 @@
             <div class="risk-bar-wrap">
               <div
                 class="risk-bar-fill"
-                style="width: 5%; background: #2e86c1"
+                style="width: 5%; background: #F59E0B"
               ></div>
             </div>
             <div class="risk-stats">
@@ -2470,7 +2485,7 @@
           >
             <div
               style="
-                background: #1a5276;
+                background: #1f2937;
                 color: white;
                 border-radius: 10px;
                 padding: 18px 20px;
@@ -2483,7 +2498,7 @@
                   font-weight: 700;
                   letter-spacing: 0.15em;
                   text-transform: uppercase;
-                  color: #5dade2;
+                  color: #FBBF24;
                   margin-bottom: 4px;
                 "
               >
@@ -2538,9 +2553,9 @@
                   >
                 </div>
               </div>
-              <div class="kpi-card" style="border-left: 3px solid #2e86c1">
+              <div class="kpi-card" style="border-left: 3px solid #F59E0B">
                 <div class="kpi-label">Servicios efectivo en riesgo</div>
-                <div class="kpi-value" style="color: #2e86c1">
+                <div class="kpi-value" style="color: #F59E0B">
                   1.434 <span style="font-size: 16px">(87%)</span>
                 </div>
               </div>
@@ -2550,9 +2565,9 @@
                 <div class="kpi-label">Recaudo efectivo total</div>
                 <div class="kpi-value">$1.84MM</div>
               </div>
-              <div class="kpi-card" style="border-left: 3px solid #2e86c1">
+              <div class="kpi-card" style="border-left: 3px solid #F59E0B">
                 <div class="kpi-label">Recaudo efectivo en riesgo</div>
-                <div class="kpi-value" style="color: #2e86c1">$1.50MM</div>
+                <div class="kpi-value" style="color: #F59E0B">$1.50MM</div>
               </div>
             </div>
           </div>
@@ -2613,10 +2628,10 @@
                   font-weight: 800;
                   letter-spacing: 0.12em;
                   text-transform: uppercase;
-                  color: #1a5276;
+                  color: #1f2937;
                   margin-bottom: 10px;
                   padding: 6px 12px;
-                  background: #1a5276;
+                  background: #1f2937;
                   color: white;
                   border-radius: 6px;
                 "
@@ -2670,7 +2685,7 @@
                   font-weight: 800;
                   letter-spacing: 0.12em;
                   text-transform: uppercase;
-                  background: #2e86c1;
+                  background: #F59E0B;
                   color: white;
                   border-radius: 6px;
                   padding: 6px 12px;
@@ -2725,7 +2740,7 @@
             background:
               radial-gradient(
                 ellipse at 30% 60%,
-                rgba(93, 173, 226, 0.2) 0%,
+                rgba(251, 191, 36, 0.2) 0%,
                 transparent 60%
               ),
               linear-gradient(135deg, #0f1117, #1a1a2e);
@@ -2740,14 +2755,14 @@
                 font-weight: 700;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
-                color: #5dade2;
+                color: #FBBF24;
                 margin-bottom: 16px;
               "
             >
               Módulo 3 · Escoltas operativos
             </div>
             <div class="dark-cover-title">
-              ESCOLTAS<br />OPERATIVOS<br /><span style="color: #aed6f1"
+              ESCOLTAS<br />OPERATIVOS<br /><span style="color: #FEF3C7"
                 >COBERTURA Y BRECHA</span
               >
             </div>
@@ -2768,7 +2783,7 @@
             </div>
             <div class="dark-kpi">
               <div class="dark-kpi-label">Inversión trimestre</div>
-              <div class="dark-kpi-value" style="color: #5dade2">$26.800.000</div>
+              <div class="dark-kpi-value" style="color: #FBBF24">$26.800.000</div>
             </div>
           </div>
         </div>
@@ -2806,7 +2821,7 @@
           >
             <div
               style="
-                background: #1a5276;
+                background: #1f2937;
                 color: white;
                 border-radius: 10px;
                 padding: 18px 20px;
@@ -2821,7 +2836,7 @@
                   font-weight: 700;
                   letter-spacing: 0.15em;
                   text-transform: uppercase;
-                  color: #5dade2;
+                  color: #FBBF24;
                   margin-bottom: 4px;
                 "
               >
@@ -2864,9 +2879,9 @@
                   >
                 </div>
               </div>
-              <div class="kpi-card" style="border-left: 3px solid #2e86c1">
+              <div class="kpi-card" style="border-left: 3px solid #F59E0B">
                 <div class="kpi-label">Svc en riesgo sin escolta</div>
-                <div class="kpi-value" style="color: #2e86c1">
+                <div class="kpi-value" style="color: #F59E0B">
                   1.894 <span style="font-size: 14px">(69%)</span>
                 </div>
               </div>
@@ -2876,9 +2891,9 @@
                 <div class="kpi-label">Costo promedio / jornada</div>
                 <div class="kpi-value" style="font-size: 22px">$241.527</div>
               </div>
-              <div class="kpi-card" style="border-left: 3px solid #5dade2">
+              <div class="kpi-card" style="border-left: 3px solid #FBBF24">
                 <div class="kpi-label">Cobertura del riesgo</div>
-                <div class="kpi-value" style="color: #5dade2; font-size: 36px">
+                <div class="kpi-value" style="color: #FBBF24; font-size: 36px">
                   31%
                 </div>
               </div>
@@ -2890,8 +2905,8 @@
               color: var(--exito-charcoal);
               line-height: 1.6;
               padding: 12px 16px;
-              background: rgba(46, 134, 193, 0.06);
-              border-left: 3px solid #2e86c1;
+              background: rgba(245, 158, 11, 0.08);
+              border-left: 3px solid #F59E0B;
               border-radius: 0 8px 8px 0;
             "
           >
@@ -3034,7 +3049,7 @@
             </div>
             <div
               class="kpi-card"
-              style="flex: 2; border-left: 3px solid #5dade2"
+              style="flex: 2; border-left: 3px solid #FBBF24"
             >
               <div class="kpi-label">Zona con más inversión</div>
               <div class="kpi-value" style="font-size: 20px">
@@ -3100,7 +3115,7 @@
               </div>
               <div
                 class="plan-kpi-value plan-kpi-light-value"
-                style="color: #2e86c1; font-size: 28px"
+                style="color: #F59E0B; font-size: 28px"
               >
                 95%
               </div>
@@ -3247,10 +3262,10 @@
         <div class="slide-header-bar"></div>
         <div class="slide-content-full" style="display:flex;flex-direction:column">
           <div style="margin-bottom:8px">
-            <div class="section-label">Riesgo Operativo · Data nacional Quick</div>
+            <div class="section-label">Sensibilización · Riesgo operativo · Data nacional Quick</div>
             <div class="slide-title" style="font-size:26px">Incidentes registrados — operación nacional Quick Help</div>
             <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">
-              Histórico nacional · contexto del riesgo de manejo de efectivo en operación logística
+              Histórico nacional · contexto del riesgo de manejo de efectivo. Justifica el control de tope de efectivo, escoltas y cobertura preventiva propuestos por Quick Help para Éxito-Surtimax.
             </div>
           </div>
           <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:6px 36px 16px;min-height:0">

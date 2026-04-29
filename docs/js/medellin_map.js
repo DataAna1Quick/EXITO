@@ -262,7 +262,7 @@
     items.forEach((it, idx) => {
       const li = document.createElement("li");
       li.className = "top3-item";
-      const valStyle = isMoney ? ' style="color: #2e86c1"' : "";
+      const valStyle = isMoney ? ' style="color: #F59E0B"' : "";
       li.innerHTML =
         '<span class="top3-rank">' + (idx + 1) + "</span>" +
         '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +

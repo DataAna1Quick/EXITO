@@ -206,7 +206,7 @@
       li.innerHTML =
         '<span class="top3-rank">' + (idx + 1) + "</span>" +
         '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
-        '<span class="top3-val" style="color:#2e86c1">' + escapeHtml(fmtCOPshort(it.val)) + "</span>";
+        '<span class="top3-val" style="color:#F59E0B">' + escapeHtml(fmtCOPshort(it.val)) + "</span>";
       ul.appendChild(li);
     });
   }
