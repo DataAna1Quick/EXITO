@@ -20,6 +20,7 @@
       riesgo_count: 585, // 92% de 636
       recaudo_efectivo: "$364.000.000",
       recaudo_servicios: 379,
+      pico_fisico: "Día pico físico: 05/02/2026 · $20.453.657",
       contado_pct: 46,
       contado_svc: 174,
       contraentrega_pct: 54,
@@ -44,6 +45,7 @@
       riesgo_count: 474,
       recaudo_efectivo: "$275.000.000",
       recaudo_servicios: 296,
+      pico_fisico: "Día pico físico: 19/03/2026 · $16.583.727",
       contado_pct: 49,
       contado_svc: 145,
       contraentrega_pct: 51,
@@ -68,6 +70,7 @@
       riesgo_count: 456, // 75% de 608
       recaudo_efectivo: "$282.000.000",
       recaudo_servicios: 270,
+      pico_fisico: "Día pico físico: 18/02/2026 · $20.092.846",
       contado_pct: 51,
       contado_svc: 139,
       contraentrega_pct: 49,
@@ -92,6 +95,7 @@
       riesgo_count: 441, // 96% de 459
       recaudo_efectivo: "$167.000.000",
       recaudo_servicios: 237,
+      pico_fisico: "Día pico físico: 23/02/2026 · $14.882.893",
       contado_pct: 58,
       contado_svc: 137,
       contraentrega_pct: 42,
@@ -116,6 +120,7 @@
       riesgo_count: 203, // 77% de 264
       recaudo_efectivo: "$255.000.000",
       recaudo_servicios: 112,
+      pico_fisico: "Día pico físico: 09/03/2026 · $9.930.336",
       contado_pct: 51,
       contado_svc: 57,
       contraentrega_pct: 49,
@@ -140,6 +145,7 @@
       riesgo_count: 112, // 65% de 172
       recaudo_efectivo: "$83.800.000",
       recaudo_servicios: 79,
+      pico_fisico: "Día pico físico: 12/03/2026 · $13.540.839",
       contado_pct: 56,
       contado_svc: 44,
       contraentrega_pct: 44,
@@ -164,6 +170,7 @@
       riesgo_count: 181, // 83% de 218
       recaudo_efectivo: "$141.000.000",
       recaudo_servicios: 92,
+      pico_fisico: "Día pico físico: 05/02/2026 · $6.682.620",
       contado_pct: 51,
       contado_svc: 47,
       contraentrega_pct: 49,
@@ -188,6 +195,7 @@
       riesgo_count: 185,
       recaudo_efectivo: "$139.000.000",
       recaudo_servicios: 112,
+      pico_fisico: "Día pico físico: 04/02/2026 · $10.345.869",
       contado_pct: 50,
       contado_svc: 56,
       contraentrega_pct: 50,
@@ -212,6 +220,7 @@
       riesgo_count: 62, // 61% de 101
       recaudo_efectivo: "$105.000.000",
       recaudo_servicios: 50,
+      pico_fisico: "Día pico físico: 20/03/2026 · $49.014.921",
       contado_pct: 26,
       contado_svc: 13,
       contraentrega_pct: 74,
@@ -294,6 +303,10 @@
     setText(
       ".med-recaudo-sub",
       zona.recaudo_servicios + " servicios · Contado + Contraentrega"
+    );
+    setText(
+      ".med-pico-fisico",
+      zona.pico_fisico || "Día pico físico: pendiente de cargar desde Excel"
     );
     setWidth(".med-bar-contado", zona.contado_pct);
     setWidth(".med-bar-contraentrega", zona.contraentrega_pct);

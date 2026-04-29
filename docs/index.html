@@ -57,7 +57,7 @@
             <div class="landing-btn-icon">📍</div>
             <div class="landing-btn-label">MEDELLÍN</div>
             <div class="landing-btn-desc">
-              Operación Antioquia · Riesgo de recaudo
+              Operación Antioquia · Riesgo de recaudo físico
             </div>
             <div class="landing-btn-meta">Éxito Antioquia · Q1 2026</div>
           </button>
@@ -1514,15 +1514,31 @@
                 <div class="kpi-sub">Brecha de −27,9 pp vs. target 95%</div>
               </div>
               <div
-                class="kpi-card"
-                style="border-left: 4px solid #27ae60; margin-top: 12px"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px"
               >
-                <div class="kpi-label">Promedio recaudo por placa</div>
-                <div class="kpi-value" style="font-size: 28px; color: #1e8449">
-                  <!-- RECAUDO_NACIONAL_LIMPIO.xlsx 2026-04 -->$206,900,000
+                <div
+                  class="kpi-card"
+                  style="border-left: 4px solid #27ae60; margin-top: 0"
+                >
+                  <div class="kpi-label">Ticket promedio por vehículo único</div>
+                  <div class="kpi-value" style="font-size: 28px; color: #1e8449">
+                    <!-- RECAUDO_NACIONAL_LIMPIO.xlsx 2026-04 -->$206,900,000
+                  </div>
+                  <div class="kpi-sub">
+                    Contado + Contraentrega · ene–abr 2026
+                  </div>
                 </div>
-                <div class="kpi-sub">
-                  Por placa · ene–abr 2026 · 27 placas activas
+                <div
+                  class="kpi-card"
+                  style="border-left: 4px solid #f59e0b; margin-top: 0"
+                >
+                  <div class="kpi-label">Máximo recaudado por vehículo</div>
+                  <div class="kpi-value" style="font-size: 28px; color: #f59e0b">
+                    $408,000,000
+                  </div>
+                  <div class="kpi-sub">
+                    Mayor exposición del período · contado + contraentrega
+                  </div>
                 </div>
               </div>
               <div
@@ -1557,7 +1573,7 @@
                     margin-bottom: 10px;
                   "
                 >
-                  Efectividad mensual · Medellín
+                  Efectividad mensual · Posicionamiento Medellín
                 </div>
                 <div
                   style="
@@ -4828,17 +4844,17 @@
             style="display: flex; flex-direction: column"
           >
             <div style="margin-bottom: 8px">
-              <div class="section-label">
-                Riesgo de Efectivo · Mapa Interactivo
-              </div>
-              <div class="slide-title" style="font-size: 24px">
-                Macrozonas de la Operación Éxito Antioquia
-              </div>
-              <div style="font-size: 11px; color: #64748b; margin-top: 3px">
-                Click sobre un punto del mapa para ver el detalle de la
-                macrozona · 9 macrozonas que concentran el 87% del recaudo en
-                efectivo
-              </div>
+                <div class="section-label">
+                  Riesgo de Efectivo · Mapa Interactivo
+                </div>
+                <div class="slide-title" style="font-size: 24px">
+                  Macrozonas de la Operación Éxito Antioquia
+                </div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 3px">
+                  Click sobre un punto del mapa para ver el detalle de la
+                  macrozona · 9 macrozonas que concentran el 87% del recaudo
+                  físico en riesgo
+                </div>
             </div>
             <div class="med-layout">
               <!-- Mapa interactivo (izquierda) -->
@@ -4865,12 +4881,18 @@
                     <div class="zona-card-sub med-servicios-sub">—</div>
                   </div>
                   <div class="zona-card zona-card-yellow med-card">
-                    <div class="zona-card-label">Recaudo en efectivo</div>
+                    <div class="zona-card-label">Recaudo físico en riesgo</div>
                     <div class="zona-card-value med-recaudo-valor">—</div>
                     <div class="zona-card-sub med-recaudo-sub">—</div>
+                    <div
+                      class="zona-card-sub med-pico-fisico"
+                      style="margin-top: 4px; color: #92400e"
+                    >
+                      —
+                    </div>
                   </div>
                   <div class="zona-card med-card">
-                    <div class="zona-card-label">Distribución del efectivo</div>
+                    <div class="zona-card-label">Tipo de recaudo en riesgo</div>
                     <div class="distrib-bar">
                       <div
                         class="distrib-bar-a med-bar-contado"
@@ -5360,10 +5382,11 @@
                   color: var(--exito-muted);
                   margin-top: 3px;
                 "
-              >
-                Foco en los recaudos que sí implican riesgo: CONTADO + PAGO
-                CONTRAENTREGA (efectivo físico)
-              </div>
+                >
+                  Foco en lo que sí implica riesgo: CONTADO + CONTRAENTREGA
+                  (efectivo físico). Aliados / Crédito queda fuera de este
+                  cálculo.
+                </div>
             </div>
             <div
               style="
@@ -5392,7 +5415,7 @@
                     margin-bottom: 4px;
                   "
                 >
-                  Efectivo en zonas de riesgo
+                  Recaudo físico en zonas de riesgo
                 </div>
                 <div
                   style="
@@ -5413,7 +5436,7 @@
                     line-height: 1.5;
                   "
                 >
-                  en efectivo facturado (Contado + Contraentrega) entró a zonas
+                  de contado y contraentrega entró a zonas
                   marcadas como riesgo durante el Q1 2026.
                 </div>
                 <div
@@ -5425,7 +5448,7 @@
                     padding-top: 8px;
                   "
                 >
-                  Equivalente al 82% del recaudo en efectivo total ($1,840,000,000
+                  Equivalente al 82% del recaudo físico total ($1,840,000,000
                   COP) y al 87% de los 1.643 servicios que recaudan efectivo.
                 </div>
               </div>
@@ -5452,13 +5475,13 @@
               </div>
               <div style="display: flex; flex-direction: column; gap: 10px">
                 <div class="kpi-card">
-                  <div class="kpi-label">Recaudo efectivo total</div>
+                  <div class="kpi-label">Recaudo físico total</div>
                   <div class="kpi-value" style="font-size: 22px">
                     $1,840,000,000
                   </div>
                 </div>
                 <div class="kpi-card" style="border-left: 3px solid #f59e0b">
-                  <div class="kpi-label">Recaudo efectivo en riesgo</div>
+                  <div class="kpi-label">Recaudo físico en riesgo</div>
                   <div
                     class="kpi-value"
                     style="color: #f59e0b; font-size: 22px"
@@ -5479,9 +5502,9 @@
                 border: 1px solid var(--exito-border);
               "
             >
-              Las 9 macrozonas del Valle se consolidan en el mapa interactivo
+              Las 9 macrozonas de Antioquia se consolidan en el mapa interactivo
               (primera lámina del módulo). Click sobre un marker para ver, por
-              zona, los servicios totales, el recaudo en efectivo y los 3
+              zona, los servicios totales, el recaudo físico en riesgo y los 3
               clientes que más servicios reciben y más recaudan en efectivo.
             </div>
           </div>
@@ -6094,16 +6117,6 @@
                 <div class="agenda-item">
                   <div class="agenda-num">1</div>
                   <div class="agenda-content">
-                    <div class="agenda-title">Quick Pay</div>
-                    <div class="agenda-desc">
-                      Implementación como herramienta de control del recaudo,
-                      seguridad y bienestar del transportador.
-                    </div>
-                  </div>
-                </div>
-                <div class="agenda-item">
-                  <div class="agenda-num">2</div>
-                  <div class="agenda-content">
                     <div class="agenda-title">
                       Tope máximo de recaudo por ruta
                     </div>
@@ -6114,7 +6127,7 @@
                   </div>
                 </div>
                 <div class="agenda-item">
-                  <div class="agenda-num">3</div>
+                  <div class="agenda-num">2</div>
                   <div class="agenda-content">
                     <div class="agenda-title">
                       Volumen mínimo mensual por placa
@@ -6126,10 +6139,10 @@
                   </div>
                 </div>
                 <div class="agenda-item">
-                  <div class="agenda-num">4</div>
+                  <div class="agenda-num">3</div>
                   <div class="agenda-content">
                     <div class="agenda-title">
-                      Reporte diario de posicionamiento
+                      Reporte diario de posicionamiento de flota
                     </div>
                     <div class="agenda-desc">
                       Reporte Quick-Cliente por placa y cierre con cumplimiento
@@ -6138,7 +6151,7 @@
                   </div>
                 </div>
                 <div class="agenda-item">
-                  <div class="agenda-num">5</div>
+                  <div class="agenda-num">4</div>
                   <div class="agenda-content">
                     <div class="agenda-title">
                       Pago de escoltas en rutas de alto riesgo
@@ -6146,6 +6159,16 @@
                     <div class="agenda-desc">
                       Esquema de seguridad sobre rutas con recaudo en efectivo
                       en zonas identificadas.
+                    </div>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-num">5</div>
+                  <div class="agenda-content">
+                    <div class="agenda-title">Quick Pay</div>
+                    <div class="agenda-desc">
+                      Implementación como herramienta de control del recaudo,
+                      seguridad y bienestar del transportador.
                     </div>
                   </div>
                 </div>
