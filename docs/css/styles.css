@@ -390,6 +390,14 @@
         margin-bottom: 8px;
         text-transform: uppercase;
       }
+      .cover-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 900;
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 12px 0;
+        text-transform: none;
+      }
       .cover-title-accent {
         color: #FBBF24;
       }

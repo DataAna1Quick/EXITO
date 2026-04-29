@@ -215,76 +215,47 @@
           <div class="slide-content-full">
             <div class="section-label">Top clientes · Recaudo 4 meses</div>
             <div class="slide-title" style="font-size:26px">¿Quiénes concentran el recaudo país?</div>
-            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Top 10 clientes ordenados por recaudo total enero — abril 2026</div>
+            <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">
+              Top 10 clientes nacional · recaudo total + evolución mensual + día pico + ticket promedio · enero — abril 2026
+            </div>
 
-            <table class="general-table" style="margin-top:18px">
+            <table class="general-table" style="margin-top:18px;font-size:11px">
               <thead>
                 <tr>
-                  <th style="width:36px">#</th>
-                  <th>Cliente</th>
-                  <th>Región</th>
-                  <th style="text-align:right">Servicios</th>
-                  <th style="text-align:right">Recaudo total ($M)</th>
-                  <th style="text-align:right">Por VH ($M)</th>
-                  <th style="text-align:right">VH activos</th>
+                  <th rowspan="2" style="width:32px">#</th>
+                  <th rowspan="2">Cliente</th>
+                  <th rowspan="2">Región</th>
+                  <th rowspan="2" style="text-align:right">Svc</th>
+                  <th rowspan="2" style="text-align:right">Recaudo total ($M)</th>
+                  <th colspan="4" style="text-align:center;background:var(--exito-yellow-soft)">Total mes ($M)</th>
+                  <th rowspan="2" style="text-align:center">Día mayor recaudo</th>
+                  <th rowspan="2" style="text-align:right">Rec. día ($M)</th>
+                  <th rowspan="2" style="text-align:right">Ticket prom día ($M)</th>
+                </tr>
+                <tr>
+                  <th style="text-align:right;background:var(--exito-yellow-soft)">Ene</th>
+                  <th style="text-align:right;background:var(--exito-yellow-soft)">Feb</th>
+                  <th style="text-align:right;background:var(--exito-yellow-soft)">Mar</th>
+                  <th style="text-align:right;background:var(--exito-yellow-soft)">Abr</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>1</td><td>INVERSIONES GRUPO ROAL SAS</td><td>Bogotá-Sabana</td><td style="text-align:right">60</td><td style="text-align:right"><strong>$314,2</strong></td><td style="text-align:right">$11,6</td><td style="text-align:right">27</td></tr>
-                <tr><td>2</td><td>INVERSIONES LA CENTRAL DE CLEMENCIA</td><td>Costa Atlántica</td><td style="text-align:right">27</td><td style="text-align:right"><strong>$132,1</strong></td><td style="text-align:right">$44,0</td><td style="text-align:right">3</td></tr>
-                <tr><td>3</td><td>GUTIERREZ GIL JOSE JAIRO</td><td>Bogotá-Sabana</td><td style="text-align:right">15</td><td style="text-align:right"><strong>$95,6</strong></td><td style="text-align:right">$8,7</td><td style="text-align:right">11</td></tr>
-                <tr><td>4</td><td>ALYAN UNIDOS S.A.S</td><td>Valle del Cauca</td><td style="text-align:right">13</td><td style="text-align:right"><strong>$93,2</strong></td><td style="text-align:right">$15,5</td><td style="text-align:right">6</td></tr>
-                <tr><td>5</td><td>URREA GARCIA JUAN CAMILO</td><td>Costa Atlántica</td><td style="text-align:right">33</td><td style="text-align:right"><strong>$90,7</strong></td><td style="text-align:right">$13,0</td><td style="text-align:right">7</td></tr>
-                <tr><td>6</td><td>BARBOSA GUERRA YOLANDA</td><td>Bogotá-Sabana</td><td style="text-align:right">5</td><td style="text-align:right"><strong>$90,5</strong></td><td style="text-align:right">$30,2</td><td style="text-align:right">3</td></tr>
-                <tr><td>7</td><td>CARDENAS VALENCIA SERGIO ANTONIO</td><td>Antioquia</td><td style="text-align:right">7</td><td style="text-align:right"><strong>$86,7</strong></td><td style="text-align:right">$86,7</td><td style="text-align:right">1</td></tr>
-                <tr><td>8</td><td>RODRIGUEZ FORERO FRANCISCO</td><td>Bogotá-Sabana</td><td style="text-align:right">37</td><td style="text-align:right"><strong>$86,3</strong></td><td style="text-align:right">$10,8</td><td style="text-align:right">8</td></tr>
-                <tr><td>9</td><td>NARANJO DULFARY DEL SOCORRO</td><td>Eje Cafetero</td><td style="text-align:right">5</td><td style="text-align:right"><strong>$85,0</strong></td><td style="text-align:right">$42,5</td><td style="text-align:right">2</td></tr>
-                <tr><td>10</td><td>SUPERMERCADOS LOS PAISAS J J SAS</td><td>Bogotá-Sabana</td><td style="text-align:right">22</td><td style="text-align:right"><strong>$84,2</strong></td><td style="text-align:right">$12,0</td><td style="text-align:right">7</td></tr>
+                <tr><td>1</td><td>INVERSIONES GRUPO ROAL SAS</td><td>Bogotá-Sabana</td><td style="text-align:right">60</td><td style="text-align:right"><strong>$314,2</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$93,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$61,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$103,4</td><td style="text-align:right;background:var(--exito-yellow-soft)">$56,3</td><td style="text-align:center">17/03/2026</td><td style="text-align:right">$47,1</td><td style="text-align:right">$11,77</td></tr>
+                <tr><td>2</td><td>INVERSIONES LA CENTRAL DE CLEMENCIA</td><td>Costa Atlántica</td><td style="text-align:right">29</td><td style="text-align:right"><strong>$134,0</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$38,6</td><td style="text-align:right;background:var(--exito-yellow-soft)">$36,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$44,0</td><td style="text-align:right;background:var(--exito-yellow-soft)">$15,2</td><td style="text-align:center">27/02/2026</td><td style="text-align:right">$18,9</td><td style="text-align:right">$6,31</td></tr>
+                <tr><td>3</td><td>GUTIERREZ GIL JOSE JAIRO</td><td>Bogotá-Sabana</td><td style="text-align:right">15</td><td style="text-align:right"><strong>$95,6</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$25,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$20,6</td><td style="text-align:right;background:var(--exito-yellow-soft)">$23,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$26,4</td><td style="text-align:center">08/01/2026</td><td style="text-align:right">$11,3</td><td style="text-align:right">$11,27</td></tr>
+                <tr><td>4</td><td>ALYAN UNIDOS S.A.S</td><td>Valle del Cauca</td><td style="text-align:right">13</td><td style="text-align:right"><strong>$93,2</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$15,2</td><td style="text-align:right;background:var(--exito-yellow-soft)">$30,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$25,0</td><td style="text-align:right;background:var(--exito-yellow-soft)">$22,5</td><td style="text-align:center">15/04/2026</td><td style="text-align:right">$20,2</td><td style="text-align:right">$20,22</td></tr>
+                <tr><td>5</td><td>URREA GARCIA JUAN CAMILO</td><td>Costa Atlántica</td><td style="text-align:right">33</td><td style="text-align:right"><strong>$90,7</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$22,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$18,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$43,2</td><td style="text-align:right;background:var(--exito-yellow-soft)">$6,5</td><td style="text-align:center">19/03/2026</td><td style="text-align:right">$8,4</td><td style="text-align:right">$8,44</td></tr>
+                <tr><td>6</td><td>BARBOSA GUERRA YOLANDA</td><td>Bogotá-Sabana</td><td style="text-align:right">5</td><td style="text-align:right"><strong>$90,5</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$35,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$0,0</td><td style="text-align:right;background:var(--exito-yellow-soft)">$33,9</td><td style="text-align:right;background:var(--exito-yellow-soft)">$21,1</td><td style="text-align:center">14/03/2026</td><td style="text-align:right">$25,2</td><td style="text-align:right">$25,24</td></tr>
+                <tr><td>7</td><td>CARDENAS VALENCIA SERGIO ANTONIO</td><td>Antioquia</td><td style="text-align:right">7</td><td style="text-align:right"><strong>$86,7</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$19,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$5,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$42,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$18,7</td><td style="text-align:center">18/03/2026</td><td style="text-align:right">$21,7</td><td style="text-align:right">$10,85</td></tr>
+                <tr><td>8</td><td>RODRIGUEZ FORERO FRANCISCO</td><td>Bogotá-Sabana</td><td style="text-align:right">37</td><td style="text-align:right"><strong>$86,3</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$31,0</td><td style="text-align:right;background:var(--exito-yellow-soft)">$14,6</td><td style="text-align:right;background:var(--exito-yellow-soft)">$26,7</td><td style="text-align:right;background:var(--exito-yellow-soft)">$14,0</td><td style="text-align:center">15/04/2026</td><td style="text-align:right">$10,0</td><td style="text-align:right">$4,99</td></tr>
+                <tr><td>9</td><td>NARANJO DULFARY DEL SOCORRO</td><td>Eje Cafetero</td><td style="text-align:right">5</td><td style="text-align:right"><strong>$85,0</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$0,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$42,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$42,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$0,3</td><td style="text-align:center">28/02/2026</td><td style="text-align:right">$42,1</td><td style="text-align:right">$42,08</td></tr>
+                <tr><td>10</td><td>SUPERMERCADOS LOS PAISAS J J SAS</td><td>Bogotá-Sabana</td><td style="text-align:right">22</td><td style="text-align:right"><strong>$84,2</strong></td><td style="text-align:right;background:var(--exito-yellow-soft)">$29,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$14,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$24,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$16,3</td><td style="text-align:center">28/01/2026</td><td style="text-align:right">$17,0</td><td style="text-align:right">$8,51</td></tr>
               </tbody>
             </table>
-            <div style="font-size:10px;color:var(--exito-muted);margin-top:10px">Fuente: <code>data/db_real_clean_v1.csv</code> · 17.176 servicios · ene–abr 2026.</div>
-
-            <!-- Bloque inferior · Evaluación mensual de recaudo (absorbido del antiguo G6) -->
-            <div style="margin-top:22px;padding-top:18px;border-top:2px solid var(--exito-yellow-soft)">
-              <div class="section-label">Detalle por cliente · mes · VH</div>
-              <div class="slide-title" style="font-size:18px;margin-top:2px">Top 5 clientes · evolución mensual y por vehículo</div>
-              <div style="font-size:11px;color:var(--exito-muted);margin-top:3px">Total mes ($M) y total por VH ($M) · 4 meses · datos reales ene–abr 2026</div>
-
-              <table class="general-table" style="margin-top:10px;font-size:11px">
-                <thead>
-                  <tr>
-                    <th rowspan="2">Cliente</th>
-                    <th colspan="4" style="text-align:center">Total mes ($M)</th>
-                    <th colspan="4" style="text-align:center;background:var(--exito-yellow-soft)">Total por VH ($M)</th>
-                  </tr>
-                  <tr>
-                    <th style="text-align:right">Ene</th><th style="text-align:right">Feb</th><th style="text-align:right">Mar</th><th style="text-align:right">Abr</th>
-                    <th style="text-align:right;background:var(--exito-yellow-soft)">Ene</th><th style="text-align:right;background:var(--exito-yellow-soft)">Feb</th><th style="text-align:right;background:var(--exito-yellow-soft)">Mar</th><th style="text-align:right;background:var(--exito-yellow-soft)">Abr</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>INVERSIONES GRUPO ROAL SAS</strong></td>
-                      <td style="text-align:right">$93,1</td><td style="text-align:right">$61,3</td><td style="text-align:right">$103,4</td><td style="text-align:right">$56,3</td>
-                      <td style="text-align:right;background:var(--exito-yellow-soft)">$10,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$8,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$9,4</td><td style="text-align:right;background:var(--exito-yellow-soft)">$7,0</td></tr>
-                  <tr><td><strong>INVERSIONES LA CENTRAL DE CLEMENCIA</strong></td>
-                      <td style="text-align:right">$38,6</td><td style="text-align:right">$36,1</td><td style="text-align:right">$42,1</td><td style="text-align:right">$15,2</td>
-                      <td style="text-align:right;background:var(--exito-yellow-soft)">$19,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$36,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$21,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$7,6</td></tr>
-                  <tr><td><strong>GUTIERREZ GIL JOSE JAIRO</strong></td>
-                      <td style="text-align:right">$25,3</td><td style="text-align:right">$20,6</td><td style="text-align:right">$23,3</td><td style="text-align:right">$26,4</td>
-                      <td style="text-align:right;background:var(--exito-yellow-soft)">$5,1</td><td style="text-align:right;background:var(--exito-yellow-soft)">$10,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$7,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$13,2</td></tr>
-                  <tr><td><strong>ALYAN UNIDOS S.A.S</strong></td>
-                      <td style="text-align:right">$15,2</td><td style="text-align:right">$30,5</td><td style="text-align:right">$25,0</td><td style="text-align:right">$22,5</td>
-                      <td style="text-align:right;background:var(--exito-yellow-soft)">$7,6</td><td style="text-align:right;background:var(--exito-yellow-soft)">$15,3</td><td style="text-align:right;background:var(--exito-yellow-soft)">$12,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$11,3</td></tr>
-                  <tr><td><strong>URREA GARCIA JUAN CAMILO</strong></td>
-                      <td style="text-align:right">$22,1</td><td style="text-align:right">$18,8</td><td style="text-align:right">$43,2</td><td style="text-align:right">$6,5</td>
-                      <td style="text-align:right;background:var(--exito-yellow-soft)">$5,5</td><td style="text-align:right;background:var(--exito-yellow-soft)">$3,8</td><td style="text-align:right;background:var(--exito-yellow-soft)">$6,2</td><td style="text-align:right;background:var(--exito-yellow-soft)">$1,3</td></tr>
-                </tbody>
-              </table>
-              <div style="font-size:10px;color:var(--exito-muted);margin-top:8px">Formato según solicitud: cliente · mes · total mes vs. total por VH. Fuente: <code>data/db_real_clean_v1.csv</code>.</div>
-            </div>
+            <div style="font-size:10px;color:var(--exito-muted);margin-top:8px">Fuente: <code>data/db_real/RECAUDO_NACIONAL_LIMPIO.xlsx</code> · 17.176 servicios · ene–abr 2026. Día mayor recaudo = fecha en que el cliente registró la suma más alta de recaudo. Ticket promedio día = recaudo de ese día / servicios de ese día.</div>
           </div>
           <div class="footer-bar">
-            <span class="footer-text">Surtimax · Top clientes · Recaudo 4 meses + Detalle mensual</span>
+            <span class="footer-text">Surtimax · Top 10 clientes país · evolución mensual y día pico</span>
             <span class="footer-right">3 / 5</span>
           </div>
         </div>
