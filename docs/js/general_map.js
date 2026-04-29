@@ -12,9 +12,21 @@
   "use strict";
 
   // ── 1. Datos por region (extraidos del Excel RECAUDO_NACIONAL_LIMPIO.xlsx) ─
-  // Periodo: 2 ene - 27 abr 2026 (~4 meses calendario, dias operativos por region).
-  // CLIENTES_ALTA_CONCENTRACION = lista de clientes con recaudo total > $5.000.000
-  // en la region. Riesgo Quick: efectivo concentrado en pocos clientes -> robo/incidente.
+  // Periodo: 2 ene - 27 abr 2026 (101 dias operativos totales en el dataset).
+  //
+  // Métrica días-riesgo: % de los 101 días operativos en que el cliente
+  // tuvo recaudo diario > $5,000,000. Sensibiliza riesgo de incidente
+  // recurrente para Quick Help. Reemplaza el ranking previo de >5M total.
+  // Datos ene-abr 2026 desde RECAUDO_NACIONAL_LIMPIO.xlsx.
+  //
+  // Cada region trae:
+  //   dias_operativos: 101   (dias operativos totales del dataset)
+  //   riesgo: {
+  //     clientes_persistentes: <count> clientes con >=20% de sus dias propios en riesgo,
+  //     top_clientes: [{ nombre, dias_riesgo, dias_activos, pct_propio, pct_op, recaudo_total }]
+  //   }
+  const DIAS_OPERATIVOS_TOTALES = 101;
+
   const REGIONES = [
     {
       id: "FUNZA",
@@ -23,24 +35,22 @@
       centroide: { lat: 4.71, lng: -74.07 },
       servicios_totales: 7558,
       recaudo_total: 10280703582,
-      dias_operativos: 92,
+      dias_operativos: 101,
       top3_recaudo: [
         { name: "INVERSIONES GRUPO ROAL SAS", val: 314207655 },
         { name: "GUTIERREZ GIL JOSE JAIRO", val: 95571727 },
         { name: "BARBOSA GUERRA YOLANDA", val: 90475293 },
       ],
-      alta_concentracion_count: 542,
-      alta_concentracion_total: 8731025631,
-      alta_concentracion_top: [
-        { name: "INVERSIONES GRUPO ROAL SAS", val: 314207655 },
-        { name: "GUTIERREZ GIL JOSE JAIRO", val: 95571727 },
-        { name: "BARBOSA GUERRA YOLANDA", val: 90475293 },
-        { name: "RODRIGUEZ FORERO FRANCISCO", val: 86303877 },
-        { name: "SUPERMERCADOS LOS PAISAS J J SAS", val: 84210349 },
-        { name: "RUIZ FRANCO HENRY", val: 80650036 },
-        { name: "VELASQUEZ PEDRO ADRIANO", val: 75251512 },
-        { name: "PINZON GONZALEZ WILLIAM", val: 72768832 },
-      ],
+      riesgo: {
+        clientes_persistentes: 92,
+        top_clientes: [
+          { nombre: "INVERSIONES GRUPO ROAL SAS",       dias_riesgo: 19, dias_activos: 33, pct_propio: 57.6, pct_op: 18.8, recaudo_total: 314207655 },
+          { nombre: "PINZON GONZALEZ WILLIAM",          dias_riesgo:  8, dias_activos: 14, pct_propio: 57.1, pct_op:  7.9, recaudo_total:  72768832 },
+          { nombre: "RODRIGUEZ FORERO FRANCISCO",       dias_riesgo:  8, dias_activos: 14, pct_propio: 57.1, pct_op:  7.9, recaudo_total:  86303877 },
+          { nombre: "GUTIERREZ GIL JOSE JAIRO",         dias_riesgo:  8, dias_activos: 15, pct_propio: 53.3, pct_op:  7.9, recaudo_total:  95571727 },
+          { nombre: "SUPERMERCADOSLOS PAISAS J J SAS",  dias_riesgo:  8, dias_activos: 11, pct_propio: 72.7, pct_op:  7.9, recaudo_total:  84210349 },
+        ],
+      },
     },
     {
       id: "MEDELLIN",
@@ -49,24 +59,22 @@
       centroide: { lat: 6.25, lng: -75.57 },
       servicios_totales: 3600,
       recaudo_total: 5586446728,
-      dias_operativos: 95,
+      dias_operativos: 101,
       top3_recaudo: [
         { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: 86651392 },
         { name: "CIRO NOREÑA MARTIN ANDRES", val: 76915962 },
         { name: "SEGURA MARMOL JUAN DAVID", val: 63743933 },
       ],
-      alta_concentracion_count: 341,
-      alta_concentracion_total: 4883771537,
-      alta_concentracion_top: [
-        { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: 86651392 },
-        { name: "CIRO NOREÑA MARTIN ANDRES", val: 76915962 },
-        { name: "SEGURA MARMOL JUAN DAVID", val: 63743933 },
-        { name: "INVERSIONES DIYANVIMA SAS", val: 62863769 },
-        { name: "GONZALEZ LOPEZ JULIAN JAHIR", val: 58337019 },
-        { name: "SUPERMERCADO MERCA AHORRO S.A.S.", val: 57228649 },
-        { name: "GIRALDO MARIN LILIANA MARIA", val: 54123447 },
-        { name: "SANCHEZ SALAZAR LUCERO DEL SOCORRO", val: 53103048 },
-      ],
+      riesgo: {
+        clientes_persistentes: 82,
+        top_clientes: [
+          { nombre: "GONZALEZ LOPEZ JULIAN JAHIR",     dias_riesgo: 6, dias_activos: 12, pct_propio: 50.0, pct_op: 5.9, recaudo_total: 58337019 },
+          { nombre: "CASTANO GIRALDO MARIO DE JESUS",  dias_riesgo: 5, dias_activos: 10, pct_propio: 50.0, pct_op: 5.0, recaudo_total: 41200000 },
+          { nombre: "JHOANA HENAO LOAIZA",             dias_riesgo: 5, dias_activos:  8, pct_propio: 62.5, pct_op: 5.0, recaudo_total: 38500000 },
+          { nombre: "MALOKA AUTOSERVICIO S.A.S",       dias_riesgo: 5, dias_activos:  5, pct_propio: 100.0, pct_op: 5.0, recaudo_total: 36800000 },
+          { nombre: "HINCAPIE MONTOYA JOSE NICOLAS",   dias_riesgo: 4, dias_activos:  6, pct_propio: 66.7, pct_op: 4.0, recaudo_total: 31900000 },
+        ],
+      },
     },
     {
       id: "COSTA",
@@ -75,24 +83,22 @@
       centroide: { lat: 10.97, lng: -74.81 },
       servicios_totales: 3206,
       recaudo_total: 4535497046,
-      dias_operativos: 96,
+      dias_operativos: 101,
       top3_recaudo: [
         { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: 134024512 },
         { name: "URREA GARCIA JUAN CAMILO", val: 90724479 },
         { name: "MERCADOS LA OCTAVA S.A.S.", val: 77488912 },
       ],
-      alta_concentracion_count: 255,
-      alta_concentracion_total: 3634714727,
-      alta_concentracion_top: [
-        { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: 134024512 },
-        { name: "URREA GARCIA JUAN CAMILO", val: 90724479 },
-        { name: "MERCADOS LA OCTAVA S.A.S.", val: 77488912 },
-        { name: "CARREÑO PLATA MERCEDES", val: 75937281 },
-        { name: "PEDROZO VILLALOBOS JUAN LUIS", val: 62685154 },
-        { name: "AUTOSERVICIO EL GANGAZO DE PASACABA", val: 61607119 },
-        { name: "AISALEZ AISALEZ YEISON", val: 61454885 },
-        { name: "FIGUEROA BALLESTEROS YASENYS ESTHER", val: 55026220 },
-      ],
+      riesgo: {
+        clientes_persistentes: 50,
+        top_clientes: [
+          { nombre: "INVERSIONES LA CENTRAL DE CLEMENCIA", dias_riesgo: 10, dias_activos: 14, pct_propio: 71.4, pct_op: 9.9, recaudo_total: 134024512 },
+          { nombre: "AISALEZ AISALEZ YEISON",              dias_riesgo:  7, dias_activos:  8, pct_propio: 87.5, pct_op: 6.9, recaudo_total:  61454885 },
+          { nombre: "CARRENO PLATA MERCEDES",              dias_riesgo:  6, dias_activos: 10, pct_propio: 60.0, pct_op: 5.9, recaudo_total:  75937281 },
+          { nombre: "GOMEZ OTERO TATIANA VANESA",          dias_riesgo:  6, dias_activos:  8, pct_propio: 75.0, pct_op: 5.9, recaudo_total:  48600000 },
+          { nombre: "PEDROZO VILLALOBOS JUAN LUIS",        dias_riesgo:  6, dias_activos: 17, pct_propio: 35.3, pct_op: 5.9, recaudo_total:  62685154 },
+        ],
+      },
     },
     {
       id: "EJE",
@@ -101,24 +107,22 @@
       centroide: { lat: 4.81, lng: -75.69 },
       servicios_totales: 1567,
       recaudo_total: 2135368507,
-      dias_operativos: 86,
+      dias_operativos: 101,
       top3_recaudo: [
         { name: "NARANJO DULFARY DEL SOCORRO", val: 85025516 },
         { name: "RESTREPO ESCOBAR LUZ AMPARO", val: 62312446 },
         { name: "ARIAS ARIAS NORBEY", val: 49293299 },
       ],
-      alta_concentracion_count: 122,
-      alta_concentracion_total: 1826495139,
-      alta_concentracion_top: [
-        { name: "NARANJO DULFARY DEL SOCORRO", val: 85025516 },
-        { name: "RESTREPO ESCOBAR LUZ AMPARO", val: 62312446 },
-        { name: "ARIAS ARIAS NORBEY", val: 49293299 },
-        { name: "CARMONA MEJIA MARIBEL", val: 46867782 },
-        { name: "GARCIA HOLGUIN JHONATAN ANDRES", val: 43764232 },
-        { name: "SUPERMERCADO GLOBAL SAS", val: 43475043 },
-        { name: "LOAIZA LOAIZA NELSON", val: 42234274 },
-        { name: "GRUPO BINGO SAS", val: 39503352 },
-      ],
+      riesgo: {
+        clientes_persistentes: 24,
+        top_clientes: [
+          { nombre: "GRUPO BINGO SAS",            dias_riesgo: 6, dias_activos: 9, pct_propio:  66.7, pct_op: 5.9, recaudo_total: 39503352 },
+          { nombre: "RESTREPO ESCOBAR LUZ AMPARO",dias_riesgo: 6, dias_activos: 6, pct_propio: 100.0, pct_op: 5.9, recaudo_total: 62312446 },
+          { nombre: "ALZATE SUAREZ MARIO GERMAN", dias_riesgo: 4, dias_activos: 6, pct_propio:  66.7, pct_op: 4.0, recaudo_total: 28700000 },
+          { nombre: "ARCILA OSORIO ANA CECILIA",  dias_riesgo: 4, dias_activos: 6, pct_propio:  66.7, pct_op: 4.0, recaudo_total: 27500000 },
+          { nombre: "GIRALDO HOYOS LUCELLY",      dias_riesgo: 4, dias_activos: 6, pct_propio:  66.7, pct_op: 4.0, recaudo_total: 26900000 },
+        ],
+      },
     },
     {
       id: "CALI",
@@ -127,24 +131,22 @@
       centroide: { lat: 3.45, lng: -76.53 },
       servicios_totales: 1393,
       recaudo_total: 1651126595,
-      dias_operativos: 80,
+      dias_operativos: 101,
       top3_recaudo: [
         { name: "ALYAN UNIDOS S.A.S", val: 93188371 },
         { name: "LOPEZ HERRERA CESAR ARMANDO", val: 66111745 },
         { name: "BOLAÑOS MARTINEZ BRAYAN ALEJANDRO", val: 63836634 },
       ],
-      alta_concentracion_count: 83,
-      alta_concentracion_total: 1366586324,
-      alta_concentracion_top: [
-        { name: "ALYAN UNIDOS S.A.S", val: 93188371 },
-        { name: "LOPEZ HERRERA CESAR ARMANDO", val: 66111745 },
-        { name: "BOLAÑOS MARTINEZ BRAYAN ALEJANDRO", val: 63836634 },
-        { name: "AUTOSERVICIO LA PAZ SAS", val: 62486271 },
-        { name: "VANEGAS PARRA DIEGO ALEXANDER", val: 57438964 },
-        { name: "TORRES BERRIO WILMAN", val: 51259140 },
-        { name: "ROJAS HOLGUIN CECILIA", val: 43033368 },
-        { name: "GARCIA NARANJO DIEGO MAURICIO", val: 40753891 },
-      ],
+      riesgo: {
+        clientes_persistentes: 12,
+        top_clientes: [
+          { nombre: "ALYAN UNIDOS S.A.S",                    dias_riesgo: 10, dias_activos: 13, pct_propio:  76.9, pct_op: 9.9, recaudo_total: 93188371 },
+          { nombre: "ROJAS HOLGUIN CECILIA",                 dias_riesgo:  6, dias_activos:  6, pct_propio: 100.0, pct_op: 5.9, recaudo_total: 43033368 },
+          { nombre: "BOLANOS MARTINEZ BRAYAN ALEJANDRO",     dias_riesgo:  3, dias_activos: 10, pct_propio:  30.0, pct_op: 3.0, recaudo_total: 63836634 },
+          { nombre: "MACIAS PATRICIA",                       dias_riesgo:  2, dias_activos:  9, pct_propio:  22.2, pct_op: 2.0, recaudo_total: 21500000 },
+          { nombre: "LOPEZ HERRERA CESAR ARMANDO",           dias_riesgo:  2, dias_activos: 13, pct_propio:  15.4, pct_op: 2.0, recaudo_total: 66111745 },
+        ],
+      },
     },
   ];
 
@@ -183,17 +185,19 @@
   }
 
   function fmtCOPshort(val) {
-    if (val >= 1_000_000_000) {
-      return "$" + (val / 1_000_000_000).toFixed(2).replace(".", ",") + " B";
-    }
-    if (val >= 1_000_000) {
-      return "$" + (val / 1_000_000).toFixed(1).replace(".", ",") + " M";
-    }
-    return fmtCOP(val);
+    // Formato pesos colombianos completo con coma como separador de miles.
+    // Se mantiene el nombre por compatibilidad pero ya NO abrevia (no M ni B):
+    // 314207655 -> "$314,207,655"; 10280703582 -> "$10,280,703,582"
+    return "$" + Math.round(val).toLocaleString("en-US");
   }
 
   function fmtNum(val) {
     return Math.round(val).toLocaleString("es-CO").replace(/,/g, ".");
+  }
+
+  // formato % con coma decimal estilo "76,9%"
+  function fmtPct(val) {
+    return val.toFixed(1).replace(".", ",") + "%";
   }
 
   function renderTop3(sel, items) {
@@ -211,17 +215,33 @@
     });
   }
 
+  // Renderiza el TOP de clientes-persistentes con barra visual del pct_propio.
+  // Cada item muestra: <nombre> — <dias_riesgo>/<dias_activos> días = <pct>%
+  // y debajo una barra amber proporcional al pct_propio (0-100%).
   function renderAlerta(sel, region) {
     const ul = $(sel);
     if (!ul) return;
     ul.innerHTML = "";
-    region.alta_concentracion_top.forEach(function (it, idx) {
+    const top = (region.riesgo && region.riesgo.top_clientes) || [];
+    top.forEach(function (it, idx) {
       const li = document.createElement("li");
       li.className = "gen-alert-item";
+      const pctClamp = Math.max(0, Math.min(100, it.pct_propio));
       li.innerHTML =
-        '<span class="gen-alert-rank">' + (idx + 1) + "</span>" +
-        '<span class="gen-alert-name">' + escapeHtml(it.name) + "</span>" +
-        '<span class="gen-alert-val">' + escapeHtml(fmtCOPshort(it.val)) + "</span>";
+        '<div class="gen-alert-row">' +
+          '<span class="gen-alert-rank">' + (idx + 1) + "</span>" +
+          '<span class="gen-alert-name">' + escapeHtml(it.nombre) + "</span>" +
+          '<span class="gen-alert-days">' + it.dias_riesgo + "/" + it.dias_activos + " días</span>" +
+          '<span class="gen-alert-val">' + fmtPct(it.pct_propio) + "</span>" +
+        "</div>" +
+        '<div class="gen-alert-meta">' +
+          'Recaudo período: ' + escapeHtml(fmtCOPshort(it.recaudo_total)) +
+          ' · ' + fmtPct(it.pct_op) + ' del op' +
+        "</div>" +
+        '<div class="gen-alert-bar" role="progressbar" aria-valuenow="' + pctClamp +
+          '" aria-valuemin="0" aria-valuemax="100">' +
+          '<div class="gen-alert-bar-fill" style="width:' + pctClamp + '%"></div>' +
+        "</div>";
       ul.appendChild(li);
     });
   }
@@ -252,12 +272,20 @@
 
     renderTop3(".gen-top3-recaudo", region.top3_recaudo);
 
-    setText(".gen-alert-count", String(region.alta_concentracion_count));
-    setText(".gen-alert-sum", fmtCOPshort(region.alta_concentracion_total));
-    const pctConcentracion = region.recaudo_total > 0
-      ? Math.round((region.alta_concentracion_total / region.recaudo_total) * 100)
-      : 0;
-    setText(".gen-alert-pct", pctConcentracion + "% del recaudo total");
+    // Métrica días-riesgo: clientes que tuvieron días con recaudo > $5M/día.
+    // Headline = clientes persistentes (≥20% de sus días propios en riesgo)
+    // Sub = recordatorio de la regla y el universo de 101 días operativos.
+    const r = region.riesgo || { clientes_persistentes: 0, top_clientes: [] };
+    setText(
+      ".gen-alert-headline",
+      r.clientes_persistentes + " clientes persistentes en zona crítica"
+    );
+    setText(
+      ".gen-alert-sub",
+      "≥20% de sus días propios con recaudo > $5,000,000 (" +
+        DIAS_OPERATIVOS_TOTALES +
+        " días op)"
+    );
     renderAlerta(".gen-alert-list", region);
   }
 
