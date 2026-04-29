@@ -39,8 +39,8 @@
     const block = activeBlock();
     if (!block) return;
 
-    // Slides de la sección activa
-    state.slides = Array.from(block.querySelectorAll(".slide"));
+    // Slides de la sección activa (omite los marcados como hidden)
+    state.slides = Array.from(block.querySelectorAll(".slide:not([hidden])"));
     state.current = 0;
     state.slides.forEach((s, i) => s.classList.toggle("active", i === 0));
 

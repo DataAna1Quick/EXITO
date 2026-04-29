@@ -1387,6 +1387,221 @@
         flex-shrink: 0;
       }
 
+      /* ─── SLIDE G7 · MAPA INTERACTIVO PAIS + PANEL CARDS DINAMICO ───
+         Layout 2 columnas igual a slide-13 Medellin pero con clases gen-*. */
+      .gen-layout {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 56% 44%;
+        gap: 14px;
+        padding: 4px 28px 12px;
+        min-height: 0;
+      }
+      .gen-map-wrap {
+        position: relative;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 4px 18px rgba(26, 26, 46, 0.08);
+        overflow: hidden;
+        background: #eef2f7;
+      }
+      #general-map {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .gen-map-hint {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(46, 134, 193, 0.25);
+        border-radius: 6px;
+        padding: 6px 10px;
+        font-size: 10px;
+        color: #1a5276;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        pointer-events: none;
+        backdrop-filter: blur(4px);
+      }
+      .gen-map-hint-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #2e86c1;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 0 1px rgba(46, 134, 193, 0.4);
+      }
+      .gen-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-height: 0;
+        overflow: hidden;
+      }
+      .gen-panel-header {
+        padding: 6px 4px 4px;
+        border-bottom: 1px solid var(--exito-border);
+        margin-bottom: 2px;
+      }
+      .gen-region-eyebrow {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #5dade2;
+        margin-bottom: 4px;
+      }
+      .gen-region-name {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        color: #1a5276;
+        line-height: 1.1;
+      }
+      .gen-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+      }
+      .gen-card {
+        padding: 10px 12px;
+      }
+      .gen-card .zona-card-label {
+        font-size: 8px;
+        margin-bottom: 4px;
+      }
+      .gen-card .zona-card-value {
+        font-size: 22px;
+      }
+      .gen-card .zona-card-sub {
+        font-size: 9.5px;
+        margin-top: 4px;
+      }
+      .gen-card.gen-top3-card {
+        grid-column: 1 / -1;
+        padding: 10px 14px;
+      }
+      .gen-card.gen-top3-card .top3-item {
+        padding: 5px 0;
+      }
+      .gen-card.gen-top3-card .top3-name {
+        font-size: 9.5px;
+      }
+      .gen-card.gen-top3-card .top3-val {
+        font-size: 12px;
+      }
+      /* ALERTA card · destaca riesgo de concentracion de efectivo */
+      .gen-alert-card {
+        grid-column: 1 / -1;
+        background: linear-gradient(135deg, #fff8e1 0%, #ffe9b3 100%);
+        border: 1px solid #f4b942;
+        border-left: 4px solid #d97706;
+        border-radius: 8px;
+        padding: 12px 14px;
+        box-shadow: 0 2px 8px rgba(217, 119, 6, 0.12);
+      }
+      .gen-alert-header {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+      .gen-alert-icon {
+        font-size: 22px;
+        line-height: 1;
+        color: #d97706;
+        flex-shrink: 0;
+      }
+      .gen-alert-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        color: #92400e;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 1.1;
+      }
+      .gen-alert-subtitle {
+        font-size: 9.5px;
+        color: #7c2d12;
+        margin-top: 2px;
+        line-height: 1.3;
+      }
+      .gen-alert-kpis {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
+        margin-bottom: 8px;
+        padding: 6px 0;
+        border-top: 1px dashed rgba(217, 119, 6, 0.4);
+        border-bottom: 1px dashed rgba(217, 119, 6, 0.4);
+      }
+      .gen-alert-kpi-label {
+        font-size: 7.5px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #92400e;
+        margin-bottom: 1px;
+      }
+      .gen-alert-kpi-val {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        color: #b45309;
+        line-height: 1.05;
+      }
+      .gen-alert-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-height: 110px;
+        overflow-y: auto;
+      }
+      .gen-alert-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 3px 0;
+        border-bottom: 1px dashed rgba(180, 83, 9, 0.18);
+        font-size: 9.5px;
+      }
+      .gen-alert-item:last-child {
+        border-bottom: none;
+      }
+      .gen-alert-rank {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        color: #d97706;
+        width: 14px;
+        flex-shrink: 0;
+      }
+      .gen-alert-name {
+        flex: 1;
+        font-weight: 600;
+        color: #7c2d12;
+        text-transform: capitalize;
+        line-height: 1.3;
+      }
+      .gen-alert-val {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: #b45309;
+        flex-shrink: 0;
+      }
+
       /* ─── CONCLUSIONES ─── */
       .conclusiones-layout {
         display: grid;
