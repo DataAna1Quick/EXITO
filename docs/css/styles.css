@@ -2480,6 +2480,9 @@
         padding: 10px 14px;
         margin-bottom: 6px;
         grid-template-columns: none;
+        background: var(--exito-light);
+        border: 1px solid var(--exito-border);
+        border-radius: 8px;
       }
       #slide-16 .risk-level-badge {
         width: 80px;
@@ -2492,7 +2495,7 @@
       #slide-16 .risk-bar-wrap {
         flex: 1;
         min-width: 0;
-        height: 8px;
+        height: 16px;
         background: var(--exito-border);
         border-radius: 4px;
         overflow: hidden;
@@ -2500,10 +2503,15 @@
       #slide-16 .risk-bar-fill {
         height: 100%;
         background: initial; /* permite que el inline style del bar-fill mande */
-        color: inherit;
-        font-size: 0;
-        padding: 0;
-        display: block;
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        color: #fff;
+        font-weight: 800;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        font-family: "Barlow Condensed", sans-serif;
+        letter-spacing: 0.04em;
+        font-size: 10px !important;
         border-radius: 4px;
       }
       #slide-16 .risk-stats {
@@ -2516,4 +2524,11 @@
       #slide-16 .risk-stat {
         text-align: right;
         min-width: 70px;
+      }
+      #slide-16 .risk-stat-label {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+      }
+      #slide-16 .risk-stat-val {
+        font-size: 15px;
       }
