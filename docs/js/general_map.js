@@ -36,6 +36,9 @@
       servicios_totales: 7558,
       recaudo_total: 10280703582,
       dias_operativos: 101,
+      dia_pico_fisico: { fecha: "26/03/2026", valor: 104914849 },
+      efectivo_total: 4280639016,
+      vh_efectivo: 70,
       top3_recaudo: [
         { name: "INVERSIONES GRUPO ROAL SAS", val: 314207655 },
         { name: "GUTIERREZ GIL JOSE JAIRO", val: 95571727 },
@@ -60,6 +63,9 @@
       servicios_totales: 3600,
       recaudo_total: 5586446728,
       dias_operativos: 101,
+      dia_pico_fisico: { fecha: "19/02/2026", valor: 68906031 },
+      efectivo_total: 2242590745,
+      vh_efectivo: 27,
       top3_recaudo: [
         { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: 86651392 },
         { name: "CIRO NOREÑA MARTIN ANDRES", val: 76915962 },
@@ -84,6 +90,9 @@
       servicios_totales: 3206,
       recaudo_total: 4535497046,
       dias_operativos: 101,
+      dia_pico_fisico: { fecha: "31/03/2026", valor: 78712120 },
+      efectivo_total: 1311792888,
+      vh_efectivo: 11,
       top3_recaudo: [
         { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: 134024512 },
         { name: "URREA GARCIA JUAN CAMILO", val: 90724479 },
@@ -108,6 +117,9 @@
       servicios_totales: 1567,
       recaudo_total: 2135368507,
       dias_operativos: 101,
+      dia_pico_fisico: { fecha: "28/02/2026", valor: 44844591 },
+      efectivo_total: 586533953,
+      vh_efectivo: 5,
       top3_recaudo: [
         { name: "NARANJO DULFARY DEL SOCORRO", val: 85025516 },
         { name: "RESTREPO ESCOBAR LUZ AMPARO", val: 62312446 },
@@ -132,6 +144,9 @@
       servicios_totales: 1393,
       recaudo_total: 1651126595,
       dias_operativos: 101,
+      dia_pico_fisico: { fecha: "09/03/2026", valor: 26275303 },
+      efectivo_total: 220265766,
+      vh_efectivo: 10,
       top3_recaudo: [
         { name: "ALYAN UNIDOS S.A.S", val: 93188371 },
         { name: "LOPEZ HERRERA CESAR ARMANDO", val: 66111745 },
@@ -260,7 +275,7 @@
     );
 
     setText(".gen-recaudo-valor", fmtCOPshort(region.recaudo_total));
-    setText(".gen-recaudo-sub", "Total efectivo recaudado · 4 meses");
+    setText(".gen-recaudo-sub", "Total recaudado · 4 meses (todos los tipos)");
 
     const promMensual = region.recaudo_total / MESES_PERIODO;
     const promDiario = region.dias_operativos > 0
@@ -269,6 +284,26 @@
 
     setText(".gen-prom-mensual", fmtCOPshort(promMensual));
     setText(".gen-prom-diario", fmtCOPshort(promDiario));
+
+    // Día con mayor recaudo físico (Contado + Contraentrega) — exposición pico
+    const pico = region.dia_pico_fisico;
+    if (pico) {
+      setText(".gen-pico-fecha", pico.fecha);
+      setText(".gen-pico-valor", fmtCOPshort(pico.valor));
+    } else {
+      setText(".gen-pico-fecha", "—");
+      setText(".gen-pico-valor", "—");
+    }
+    if (region.efectivo_total && region.vh_efectivo) {
+      setText(
+        ".gen-pico-sub",
+        "Efectivo regional 4 meses: " +
+          fmtCOPshort(region.efectivo_total) +
+          " · " + region.vh_efectivo + " vehículos con efectivo"
+      );
+    } else {
+      setText(".gen-pico-sub", "—");
+    }
 
     renderTop3(".gen-top3-recaudo", region.top3_recaudo);
 
