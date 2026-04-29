@@ -400,10 +400,13 @@
       ".med-recaudo-sub",
       zona.recaudo_servicios + " servicios · Contado + Contraentrega"
     );
-    setText(
-      ".med-pico-fisico",
-      zona.pico_fisico || "Día pico físico: pendiente de cargar desde Excel"
-    );
+    // pico_fisico viene como "Día pico físico: 05/02/2026 · $X" — la mini-tabla
+    // ya etiqueta la fila ("Día con max recaudo físico"), así que limpiamos
+    // el prefijo redundante para que solo quede "05/02/2026 · $X".
+    const picoTexto = zona.pico_fisico
+      ? zona.pico_fisico.replace(/^Día pico físico:\s*/i, "")
+      : "—";
+    setText(".med-pico-fisico", picoTexto);
     setWidth(".med-bar-contado", zona.contado_pct);
     setWidth(".med-bar-contraentrega", zona.contraentrega_pct);
     setText(

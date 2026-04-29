@@ -1175,68 +1175,38 @@
                     </div>
                     <div class="zona-card-sub">/ días operativos región</div>
                   </div>
-                  <div
-                    class="zona-card gen-card"
-                    style="
-                      border-left: 4px solid #c0392b;
-                      background: var(--exito-red-soft);
-                    "
-                  >
-                    <div class="zona-card-label" style="color: #92400e">
-                      Día con mayor recaudo físico
-                    </div>
-                    <div
-                      class="zona-card-value gen-pico-valor"
-                      style="color: #c0392b; font-size: 24px"
-                    >
-                      —
-                    </div>
-                    <div
-                      class="zona-card-sub gen-pico-fecha"
-                      style="color: #92400e; font-weight: 700"
-                    >
-                      —
-                    </div>
-                    <div
-                      class="zona-card-sub gen-pico-sub"
-                      style="margin-top: 4px"
-                    >
-                      —
-                    </div>
-                  </div>
                   <div class="zona-card gen-card gen-top3-card">
                     <div class="zona-card-label">
                       Top 3 clientes · valor recaudado
                     </div>
                     <ul class="top3-list gen-top3-recaudo"></ul>
-                  </div>
-                  <!-- Placa con máximo efectivo en una sola jornada · región -->
-                  <div
-                    class="zona-card gen-card"
-                    style="
-                      border-left: 4px solid #c0392b;
-                      background: var(--exito-red-soft);
-                    "
-                  >
-                    <div class="zona-card-label" style="color: #92400e">
-                      Placa con máximo efectivo en un solo día
-                    </div>
-                    <div
-                      class="zona-card-value gen-placa-max-placa"
-                      style="color: #c0392b; font-size: 22px; letter-spacing: 0.05em"
-                    >
-                      —
-                    </div>
-                    <div
-                      class="zona-card-sub"
-                      style="color: #92400e; font-weight: 700"
-                    >
-                      <span class="gen-placa-max-fecha">—</span>
-                      ·
-                      <span class="gen-placa-max-valor">—</span>
-                    </div>
-                    <div class="zona-card-sub" style="margin-top: 4px">
-                      Pico de exposición individual cash · región
+                    <!-- Mini-tabla recaudo físico · jornada crítica · región -->
+                    <div class="top3-extra">
+                      <div class="top3-extra-label">
+                        Recaudo físico · jornada crítica
+                      </div>
+                      <table class="top3-extra-table">
+                        <tbody>
+                          <tr>
+                            <td>Día con max recaudo físico</td>
+                            <td>
+                              <span class="gen-pico-fecha">—</span>
+                              ·
+                              <strong class="gen-pico-valor">—</strong>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Placa (vh) max efectivo en un día</td>
+                            <td>
+                              <strong class="gen-placa-max-placa">—</strong>
+                              ·
+                              <span class="gen-placa-max-fecha">—</span>
+                              ·
+                              <span class="gen-placa-max-valor">—</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                   <div class="gen-card gen-alert-card">
@@ -4897,23 +4867,6 @@
                     <div class="zona-card-value med-recaudo-valor">—</div>
                     <div class="zona-card-sub med-recaudo-sub">—</div>
                   </div>
-                  <div
-                    class="zona-card med-card"
-                    style="
-                      border-left: 4px solid #c0392b;
-                      background: var(--exito-red-soft);
-                    "
-                  >
-                    <div class="zona-card-label" style="color: #92400e">
-                      Día con mayor recaudo físico
-                    </div>
-                    <div
-                      class="zona-card-value med-pico-fisico"
-                      style="color: #c0392b; font-size: 18px; line-height: 1.25"
-                    >
-                      —
-                    </div>
-                  </div>
                   <div class="zona-card med-card">
                     <div class="zona-card-label">Tipo de recaudo en riesgo</div>
                     <div class="distrib-bar">
@@ -4958,34 +4911,31 @@
                       Top 3 clientes · valor recaudado
                     </div>
                     <ul class="top3-list med-top3-recaudo"></ul>
-                  </div>
-                  <!-- Placa con máximo efectivo en una sola jornada (Medellín-wide) -->
-                  <div
-                    class="zona-card med-card"
-                    style="
-                      border-left: 4px solid #c0392b;
-                      background: var(--exito-red-soft);
-                    "
-                  >
-                    <div class="zona-card-label" style="color: #92400e">
-                      Placa con máximo efectivo en un solo día
-                    </div>
-                    <div
-                      class="zona-card-value med-placa-max-placa"
-                      style="color: #c0392b; font-size: 22px; letter-spacing: 0.05em"
-                    >
-                      —
-                    </div>
-                    <div
-                      class="zona-card-sub"
-                      style="color: #92400e; font-weight: 700"
-                    >
-                      <span class="med-placa-max-fecha">—</span>
-                      ·
-                      <span class="med-placa-max-valor">—</span>
-                    </div>
-                    <div class="zona-card-sub" style="margin-top: 4px">
-                      Pico de exposición individual cash · Antioquia
+                    <!-- Mini-tabla recaudo físico · jornada crítica -->
+                    <div class="top3-extra">
+                      <div class="top3-extra-label">
+                        Recaudo físico · jornada crítica
+                      </div>
+                      <table class="top3-extra-table">
+                        <tbody>
+                          <tr>
+                            <td>Día con max recaudo físico</td>
+                            <td>
+                              <strong class="med-pico-fisico">—</strong>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Placa (vh) max efectivo en un día</td>
+                            <td>
+                              <strong class="med-placa-max-placa">—</strong>
+                              ·
+                              <span class="med-placa-max-fecha">—</span>
+                              ·
+                              <span class="med-placa-max-valor">—</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                   <!-- Alerta cash-only Medellín (compartida en todas las zonas) -->
