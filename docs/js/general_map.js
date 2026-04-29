@@ -39,10 +39,11 @@
       dia_pico_fisico: { fecha: "26/03/2026", valor: 104914849 },
       efectivo_total: 4280639016,
       vh_efectivo: 70,
+      placa_max_dia: { placa: "LCO705", fecha: "28/01/2026", valor: 28864091 },
       top3_recaudo: [
-        { name: "INVERSIONES GRUPO ROAL SAS", val: 314207655 },
-        { name: "GUTIERREZ GIL JOSE JAIRO", val: 95571727 },
-        { name: "BARBOSA GUERRA YOLANDA", val: 90475293 },
+        { name: "INVERSIONES GRUPO ROAL SAS", val: 314207655, dia_max: { fecha: "17/03/2026", valor: 47075627 } },
+        { name: "GUTIERREZ GIL JOSE JAIRO",   val:  95571727, dia_max: { fecha: "08/01/2026", valor: 11274235 } },
+        { name: "BARBOSA GUERRA YOLANDA",     val:  90475293, dia_max: { fecha: "14/03/2026", valor: 25243445 } },
       ],
       riesgo: {
         clientes_persistentes: 92,
@@ -66,10 +67,11 @@
       dia_pico_fisico: { fecha: "19/02/2026", valor: 68906031 },
       efectivo_total: 2242590745,
       vh_efectivo: 27,
+      placa_max_dia: { placa: "PUN256", fecha: "20/03/2026", valor: 36850053 },
       top3_recaudo: [
-        { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: 86651392 },
-        { name: "CIRO NOREÑA MARTIN ANDRES", val: 76915962 },
-        { name: "SEGURA MARMOL JUAN DAVID", val: 63743933 },
+        { name: "CARDENAS VALENCIA SERGIO ANTONIO", val: 86651392, dia_max: { fecha: "18/03/2026", valor: 21693640 } },
+        { name: "CIRO NOREÑA MARTIN ANDRES",        val: 76915962, dia_max: { fecha: "06/04/2026", valor:  6641487 } },
+        { name: "SEGURA MARMOL JUAN DAVID",         val: 63743933, dia_max: { fecha: "05/01/2026", valor:  6443412 } },
       ],
       riesgo: {
         clientes_persistentes: 82,
@@ -93,10 +95,11 @@
       dia_pico_fisico: { fecha: "31/03/2026", valor: 78712120 },
       efectivo_total: 1311792888,
       vh_efectivo: 11,
+      placa_max_dia: { placa: "JPP275", fecha: "27/01/2026", valor: 29158183 },
       top3_recaudo: [
-        { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: 134024512 },
-        { name: "URREA GARCIA JUAN CAMILO", val: 90724479 },
-        { name: "MERCADOS LA OCTAVA S.A.S.", val: 77488912 },
+        { name: "INVERSIONES LA CENTRAL DE CLEMENCIA", val: 134024512, dia_max: { fecha: "27/02/2026", valor: 18941824 } },
+        { name: "URREA GARCIA JUAN CAMILO",            val:  90724479, dia_max: { fecha: "19/03/2026", valor:  8439830 } },
+        { name: "MERCADOS LA OCTAVA S.A.S.",           val:  77488912, dia_max: { fecha: "13/02/2026", valor: 26345482 } },
       ],
       riesgo: {
         clientes_persistentes: 50,
@@ -120,10 +123,11 @@
       dia_pico_fisico: { fecha: "28/02/2026", valor: 44844591 },
       efectivo_total: 586533953,
       vh_efectivo: 5,
+      placa_max_dia: { placa: "VDK973", fecha: "02/03/2026", valor: 44844591 },
       top3_recaudo: [
-        { name: "NARANJO DULFARY DEL SOCORRO", val: 85025516 },
-        { name: "RESTREPO ESCOBAR LUZ AMPARO", val: 62312446 },
-        { name: "ARIAS ARIAS NORBEY", val: 49293299 },
+        { name: "NARANJO DULFARY DEL SOCORRO", val: 85025516, dia_max: { fecha: "28/02/2026", valor: 42084239 } },
+        { name: "RESTREPO ESCOBAR LUZ AMPARO", val: 62312446, dia_max: { fecha: "06/04/2026", valor: 11468523 } },
+        { name: "ARIAS ARIAS NORBEY",          val: 49293299, dia_max: { fecha: "26/01/2026", valor: 17028735 } },
       ],
       riesgo: {
         clientes_persistentes: 24,
@@ -147,10 +151,11 @@
       dia_pico_fisico: { fecha: "09/03/2026", valor: 26275303 },
       efectivo_total: 220265766,
       vh_efectivo: 10,
+      placa_max_dia: { placa: "WCW168", fecha: "09/03/2026", valor: 26275303 },
       top3_recaudo: [
-        { name: "ALYAN UNIDOS S.A.S", val: 93188371 },
-        { name: "LOPEZ HERRERA CESAR ARMANDO", val: 66111745 },
-        { name: "BOLAÑOS MARTINEZ BRAYAN ALEJANDRO", val: 63836634 },
+        { name: "ALYAN UNIDOS S.A.S",                val: 93188371, dia_max: { fecha: "15/04/2026", valor: 20219698 } },
+        { name: "LOPEZ HERRERA CESAR ARMANDO",       val: 66111745, dia_max: { fecha: "16/03/2026", valor:  9713766 } },
+        { name: "BOLAÑOS MARTINEZ BRAYAN ALEJANDRO", val: 63836634, dia_max: { fecha: "13/04/2026", valor: 28176818 } },
       ],
       riesgo: {
         clientes_persistentes: 12,
@@ -222,10 +227,24 @@
     items.forEach(function (it, idx) {
       const li = document.createElement("li");
       li.className = "top3-item";
-      li.innerHTML =
-        '<span class="top3-rank">' + (idx + 1) + "</span>" +
-        '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
-        '<span class="top3-val" style="color:#F59E0B">' + escapeHtml(fmtCOPshort(it.val)) + "</span>";
+      // Si el item trae dia_max, layout en 2 filas (nombre+val arriba, día max abajo).
+      if (it.dia_max) {
+        li.classList.add("top3-item--stacked");
+        li.innerHTML =
+          '<div class="top3-row">' +
+            '<span class="top3-rank">' + (idx + 1) + "</span>" +
+            '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
+            '<span class="top3-val" style="color:#F59E0B">' + escapeHtml(fmtCOPshort(it.val)) + "</span>" +
+          "</div>" +
+          '<div class="top3-meta">Día max: ' +
+            escapeHtml(it.dia_max.fecha) + " · " + escapeHtml(fmtCOPshort(it.dia_max.valor)) +
+          "</div>";
+      } else {
+        li.innerHTML =
+          '<span class="top3-rank">' + (idx + 1) + "</span>" +
+          '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
+          '<span class="top3-val" style="color:#F59E0B">' + escapeHtml(fmtCOPshort(it.val)) + "</span>";
+      }
       ul.appendChild(li);
     });
   }
@@ -306,6 +325,18 @@
     }
 
     renderTop3(".gen-top3-recaudo", region.top3_recaudo);
+
+    // Placa con máximo efectivo en una sola jornada · por región
+    const pmd = region.placa_max_dia;
+    if (pmd) {
+      setText(".gen-placa-max-placa", pmd.placa);
+      setText(".gen-placa-max-fecha", pmd.fecha);
+      setText(".gen-placa-max-valor", fmtCOPshort(pmd.valor));
+    } else {
+      setText(".gen-placa-max-placa", "—");
+      setText(".gen-placa-max-fecha", "—");
+      setText(".gen-placa-max-valor", "—");
+    }
 
     // Métrica días-riesgo: clientes que tuvieron días con recaudo > $5M/día.
     // Headline = clientes persistentes (≥20% de sus días propios en riesgo)
