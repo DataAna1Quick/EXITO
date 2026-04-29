@@ -31,9 +31,9 @@
         { name: "Ramirez Jhon", val: "15 svc" },
       ],
       top3_recaudo: [
-        { name: "Rojas Agudelo Fernando", val: "$31.900.000" },
-        { name: "Perez Gonzalez Diana Girlesa", val: "$25.500.000" },
-        { name: "Perez Taborda Albeiro de Jesus", val: "$20.300.000" },
+        { name: "Rojas Agudelo Fernando", val: "$31.900.000", dia_max: "04/02/2026 · $12.080.566" },
+        { name: "Perez Gonzalez Diana Girlesa", val: "$25.500.000", dia_max: "05/02/2026 · $7.306.782" },
+        { name: "Perez Taborda Albeiro de Jesus", val: "$20.300.000", dia_max: "08/01/2026 · $11.240.510" },
       ],
     },
     {
@@ -56,9 +56,9 @@
         { name: "Hernandez Toro Ana Lucia", val: "13 svc" },
       ],
       top3_recaudo: [
-        { name: "Ciro Noreña Martin Andres", val: "$30.500.000" },
-        { name: "Supermercado Comercial SAS", val: "$17.300.000" },
-        { name: "Herrera Ortiz Albeiro", val: "$16.000.000" },
+        { name: "Ciro Noreña Martin Andres", val: "$30.500.000", dia_max: "06/04/2026 · $6.641.487" },
+        { name: "Supermercado Comercial SAS", val: "$17.300.000", dia_max: "22/01/2026 · $5.655.569" },
+        { name: "Herrera Ortiz Albeiro", val: "$16.000.000", dia_max: "28/01/2026 · $5.299.549" },
       ],
     },
     {
@@ -81,9 +81,9 @@
         { name: "Loaiza Arango Sorani", val: "16 svc" },
       ],
       top3_recaudo: [
-        { name: "Posada Ricardo", val: "$27.500.000" },
-        { name: "Ciro Noreña Nancy Carolina", val: "$18.600.000" },
-        { name: "Lopez Noreña Lina Marcela", val: "$14.200.000" },
+        { name: "Posada Ricardo", val: "$27.500.000", dia_max: "28/01/2026 · $7.004.736" },
+        { name: "Ciro Noreña Nancy Carolina", val: "$18.600.000", dia_max: "14/01/2026 · $6.700.482" },
+        { name: "Lopez Noreña Lina Marcela", val: "$14.200.000", dia_max: "13/03/2026 · $4.320.124" },
       ],
     },
     {
@@ -106,9 +106,9 @@
         { name: "Yineth Polania", val: "13 svc" },
       ],
       top3_recaudo: [
-        { name: "Castaño Wilson de Jesús", val: "$13.100.000" },
-        { name: "Thejais SAS", val: "$8.500.000" },
-        { name: "Arias Holguin Claudia Yaned", val: "$7.100.000" },
+        { name: "Castaño Wilson de Jesús", val: "$13.100.000", dia_max: "—" },
+        { name: "Thejais SAS", val: "$8.500.000", dia_max: "31/03/2026 · $3.025.848" },
+        { name: "Arias Holguin Claudia Yaned", val: "$7.100.000", dia_max: "24/03/2026 · $3.403.089" },
       ],
     },
     {
@@ -131,9 +131,9 @@
         { name: "Montoya Edgar Alberto", val: "8 svc" },
       ],
       top3_recaudo: [
-        { name: "Lescano Juan Pablo", val: "$29.400.000" },
-        { name: "Jhоana Henao Loaiza", val: "$17.700.000" },
-        { name: "Inversiones Diyanvima SAS", val: "$15.900.000" },
+        { name: "Lescano Juan Pablo", val: "$29.400.000", dia_max: "28/01/2026 · $13.619.876" },
+        { name: "Jhоana Henao Loaiza", val: "$17.700.000", dia_max: "09/03/2026 · $7.042.838" },
+        { name: "Inversiones Diyanvima SAS", val: "$15.900.000", dia_max: "14/01/2026 · $20.711.221" },
       ],
     },
     {
@@ -156,9 +156,9 @@
         { name: "Castaño Giraldo Mario de Jesus", val: "8 svc" },
       ],
       top3_recaudo: [
-        { name: "Gomez Julian", val: "$8.500.000" },
-        { name: "Salazar Alzate Efrain Onesimo", val: "$8.000.000" },
-        { name: "Lopez Velasquez Maria Jose", val: "$7.200.000" },
+        { name: "Gomez Julian", val: "$8.500.000", dia_max: "04/03/2026 · $3.454.831" },
+        { name: "Salazar Alzate Efrain Onesimo", val: "$8.000.000", dia_max: "16/01/2026 · $6.704.330" },
+        { name: "Lopez Velasquez Maria Jose", val: "$7.200.000", dia_max: "24/01/2026 · $15.768.120" },
       ],
     },
     {
@@ -181,9 +181,9 @@
         { name: "Duque Damian", val: "8 svc" },
       ],
       top3_recaudo: [
-        { name: "Garcia Daniel", val: "$17.100.000" },
-        { name: "Ramirez Quintero Juan David", val: "$12.900.000" },
-        { name: "Maloka Autoservicio S.A.S", val: "$12.600.000" },
+        { name: "Garcia Daniel", val: "$17.100.000", dia_max: "18/02/2026 · $3.657.628" },
+        { name: "Ramirez Quintero Juan David", val: "$12.900.000", dia_max: "27/04/2026 · $5.501.511" },
+        { name: "Maloka Autoservicio S.A.S", val: "$12.600.000", dia_max: "18/02/2026 · $12.572.972" },
       ],
     },
     {
@@ -206,9 +206,9 @@
         { name: "Cardona Orozco Henry", val: "10 svc" },
       ],
       top3_recaudo: [
-        { name: "Giraldo Marin Liliana Maria", val: "$44.500.000" },
-        { name: "Vélez Zapata Miguel Ángel", val: "$10.800.000" },
-        { name: "Ceballos Giraldo de Jesus", val: "$10.000.000" },
+        { name: "Giraldo Marin Liliana Maria", val: "$44.500.000", dia_max: "04/03/2026 · $15.056.004" },
+        { name: "Vélez Zapata Miguel Ángel", val: "$10.800.000", dia_max: "—" },
+        { name: "Ceballos Giraldo de Jesus", val: "$10.000.000", dia_max: "04/02/2026 · $8.706.000" },
       ],
     },
     {
@@ -231,9 +231,9 @@
         { name: "Valderrama Ramirez Juan Diego", val: "6 svc" },
       ],
       top3_recaudo: [
-        { name: "Valderrama Ramirez Juan Diego", val: "$26.200.000" },
-        { name: "Jesus Alberto Usuga Sanchez", val: "$12.300.000" },
-        { name: "Velasquez Atehortua Dannover de Jesús", val: "$10.400.000" },
+        { name: "Valderrama Ramirez Juan Diego", val: "$26.200.000", dia_max: "05/02/2026 · $11.104.498" },
+        { name: "Jesus Alberto Usuga Sanchez", val: "$12.300.000", dia_max: "08/01/2026 · $4.466.120" },
+        { name: "Velasquez Atehortua Dannover de Jesús", val: "$10.400.000", dia_max: "13/01/2026 · $3.972.197" },
       ],
     },
   ];
@@ -246,6 +246,14 @@
   // Filtros: pct_propio ≥ 20% · días_riesgo ≥ 2 · días_activos ≥ 3.
   // Total persistentes en Medellín = 12 clientes.
   // Calculado de RECAUDO_NACIONAL_LIMPIO.xlsx (REGIONAL = MEDELLIN, TIPO ∈ {Contado, Misurti, Contraentrega}).
+  // Placa con mayor recaudo en efectivo (Contado + Contraentrega + MISURTII)
+  // en una sola jornada · Medellín. Calculado de RECAUDO_NACIONAL_LIMPIO.xlsx.
+  const PLACA_MAX_DIA = {
+    placa: "PUN256",
+    fecha: "20/03/2026",
+    valor: 36850053,
+  };
+
   const RIESGO_CASH = {
     dias_operativos: 95,
     persistentes_total: 12,
@@ -290,12 +298,31 @@
       const li = document.createElement("li");
       li.className = "top3-item";
       const valStyle = isMoney ? ' style="color: #F59E0B"' : "";
-      li.innerHTML =
-        '<span class="top3-rank">' + (idx + 1) + "</span>" +
-        '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
-        '<span class="top3-val"' + valStyle + ">" + escapeHtml(it.val) + "</span>";
+      // Cuando hay dia_max: stack en 2 filas (nombre+valor arriba, dia max abajo).
+      if (it.dia_max) {
+        li.classList.add("top3-item--stacked");
+        li.innerHTML =
+          '<div class="top3-row">' +
+            '<span class="top3-rank">' + (idx + 1) + "</span>" +
+            '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
+            '<span class="top3-val"' + valStyle + ">" + escapeHtml(it.val) + "</span>" +
+          "</div>" +
+          '<div class="top3-meta">Día max: ' + escapeHtml(it.dia_max) + "</div>";
+      } else {
+        li.innerHTML =
+          '<span class="top3-rank">' + (idx + 1) + "</span>" +
+          '<span class="top3-name">' + escapeHtml(it.name) + "</span>" +
+          '<span class="top3-val"' + valStyle + ">" + escapeHtml(it.val) + "</span>";
+      }
       ul.appendChild(li);
     });
+  }
+
+  // Render del bloque "placa con max efectivo en un solo día" (estático).
+  function renderPlacaMaxDia() {
+    setText(".med-placa-max-placa", PLACA_MAX_DIA.placa);
+    setText(".med-placa-max-fecha", PLACA_MAX_DIA.fecha);
+    setText(".med-placa-max-valor", fmtCOPshort(PLACA_MAX_DIA.valor));
   }
 
   function escapeHtml(s) {
@@ -504,8 +531,9 @@
             updateCards(ZONAS_MEDELLIN[0]);
             highlightZona(Graphic, ZONAS_MEDELLIN[0]);
 
-            // Alerta cash-only (Medellín-wide, una sola vez en init)
+            // Alerta cash-only + placa max efectivo (Medellín-wide, init only)
             renderAlertaMedellin();
+            renderPlacaMaxDia();
           },
           function (err) {
             console.warn("[medellin_map] view.when error:", err);

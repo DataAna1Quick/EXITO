@@ -1436,6 +1436,23 @@
         color: var(--exito-slate);
         flex-shrink: 0;
       }
+      /* Variante stacked: 1ra fila nombre+valor, 2da fila día max */
+      .top3-item--stacked {
+        display: block;
+      }
+      .top3-item--stacked .top3-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .top3-item--stacked .top3-meta {
+        font-size: 9.5px;
+        color: #92400e;
+        font-weight: 600;
+        margin-top: 2px;
+        margin-left: 26px;
+        line-height: 1.3;
+      }
 
       /* ─── SLIDE G7 · MAPA INTERACTIVO PAIS + PANEL CARDS DINAMICO ───
          Layout 2 columnas igual a slide-13 Medellin pero con clases gen-*. */
