@@ -99,12 +99,18 @@ def main():
                  "pct": round(p_tot / s_tot * 100, 1) if s_tot else 0,
                  "brecha_pp": round(p_tot / s_tot * 100 - TARGET, 1) if s_tot else 0}
 
-    # Comparativo por regional (todo el período)
+    # Comparativo por regional (todo el período + desglose mensual)
     regiones = []
     for z, g in df.groupby("ZONA"):
         s, p = agg(g)
+        por_mes_r = []
+        for m in meses_keys:
+            ms, mp = agg(g[g["MESN"] == m])
+            por_mes_r.append({"mes": m, "abbr": MES_ABBR[MES_NUM[m]], "sol": ms, "pos": mp,
+                              "pct": round(mp / ms * 100) if ms else None})
         regiones.append({"zona": ZONA_DISPLAY.get(z, z.title()), "raw": z,
-                         "sol": s, "pos": p, "pct": round(p / s * 100, 1) if s else 0})
+                         "sol": s, "pos": p, "pct": round(p / s * 100, 1) if s else 0,
+                         "por_mes": por_mes_r})
     regiones.sort(key=lambda x: x["pct"], reverse=True)
     s_all, p_all = agg(df)
     red_total = {"sol": s_all, "pos": p_all, "pct": round(p_all / s_all * 100, 1) if s_all else 0}
@@ -120,6 +126,7 @@ def main():
         "meses": meses, "semanas": semanas,
         "medellin": {"por_mes": por_mes, "por_semana": por_sem, "total": med_total},
         "regiones": regiones, "red_total": red_total, "red_sin_medellin": red_sin_med,
+        "medellin_vs_red_pp": round(med_total["pct"] - red_sin_med, 1),
     }
 
     print("[2/3] Escribiendo salidas …")

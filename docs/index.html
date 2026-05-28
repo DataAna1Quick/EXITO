@@ -2787,6 +2787,7 @@
                   ¿Medellín es el único caso o hay un patrón regional?
                 </div>
                 <div
+                  id="coloc-s6-sub"
                   style="
                     font-size: 11px;
                     color: var(--exito-muted);
@@ -2813,10 +2814,11 @@
                   <div
                     class="kpi-value"
                     style="color: #27ae60; font-size: 28px"
+                    id="coloc-red-pct"
                   >
-                    <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->86,1%
+                    86,1%
                   </div>
-                  <div class="kpi-sub">excl. MDE: ~95,4%</div>
+                  <div class="kpi-sub" id="coloc-red-sub">excl. MDE: ~95,4%</div>
                 </div>
                 <div
                   class="kpi-card"
@@ -2830,6 +2832,7 @@
                   <div
                     class="kpi-value"
                     style="color: #f59e0b; font-size: 28px"
+                    id="coloc-mde-gap"
                   >
                     −28pp
                   </div>
@@ -2838,8 +2841,9 @@
               </div>
             </div>
 
-            <!-- Grid 5 regionales con sparkbars -->
+            <!-- Grid 5 regionales con sparkbars · dinámico desde colocacion_data.js -->
             <div
+              id="coloc-regional-grid"
               style="
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);

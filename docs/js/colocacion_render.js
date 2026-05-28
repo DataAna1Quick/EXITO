@@ -123,7 +123,40 @@
     card.innerHTML = title + svg;
   }
 
-  function render() { renderS2(); renderS3(); renderS4(); renderSparkline(); }
+  function renderRegionalGrid() {
+    var R = D.regiones;
+    // Subtítulo + KPIs
+    var mesLabel = D.meses.length ? (D.meses[0].abbr + "–" + D.meses[D.meses.length - 1].abbr + " 2026") : "";
+    set("coloc-s6-sub", R.length + " regionales · " + mesLabel + " · efectividad mensual e indicador del período");
+    txt("coloc-red-pct", pc(D.red_total.pct));
+    set("coloc-red-sub", "excl. MDE: ~" + pc(D.red_sin_medellin));
+    txt("coloc-mde-gap", (D.medellin_vs_red_pp > 0 ? "+" : "") + String(D.medellin_vs_red_pp).replace(".", ",") + "pp");
+
+    function barColor(p) { return p >= 95 ? "#1e8449" : (p >= 70 ? "#e67e22" : "#c0392b"); }
+    function topColor(p) { return p >= 90 ? "#27ae60" : (p >= 70 ? "#f59e0b" : "#c0392b"); }
+    var cards = R.map(function (r) {
+      var crit = r.raw === "MEDELLIN";
+      var bars = r.por_mes.map(function (x) {
+        var p = x.pct == null ? 0 : x.pct;
+        return '<div style="display:flex;align-items:center;gap:5px">' +
+          '<span style="font-size:8px;color:#888;width:20px">' + x.abbr + '</span>' +
+          '<div style="flex:1;height:13px;background:#fef3c7;border-radius:3px;overflow:hidden;position:relative">' +
+          '<div style="position:absolute;left:0;top:0;bottom:0;width:' + Math.min(100, p) + '%;background:' + barColor(p) + ';border-radius:3px"></div></div>' +
+          '<span style="font-size:9px;font-weight:700;color:' + barColor(p) + ';width:34px;text-align:right">' + (x.pct == null ? "—" : x.pct + "%") + '</span></div>';
+      }).join("");
+      return '<div style="background:var(--exito-light);border:1px solid var(--exito-border);border-top:3px solid ' + topColor(r.pct) +
+        ';border-radius:10px;padding:12px 14px">' +
+        '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:13px;font-weight:900;color:#1f2937;letter-spacing:.07em;text-transform:uppercase">' +
+        r.zona + (crit ? ' <span style="color:#c0392b">⚠</span>' : '') + '</div>' +
+        '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:32px;font-weight:900;color:' + topColor(r.pct) + ';line-height:1;margin:4px 0 2px">' + pc(r.pct) + '</div>' +
+        '<div style="font-size:8.5px;color:var(--exito-muted);margin-bottom:10px">' + r.sol + ' sol · ' + r.pos + ' pos</div>' +
+        '<div style="display:flex;flex-direction:column;gap:4px">' + bars + '</div></div>';
+    }).join("");
+    var grid = document.getElementById("coloc-regional-grid");
+    if (grid) { grid.style.gridTemplateColumns = "repeat(" + R.length + ",1fr)"; grid.innerHTML = cards; }
+  }
+
+  function render() { renderS2(); renderS3(); renderS4(); renderSparkline(); renderRegionalGrid(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", render);
   else render();
   window.ColocacionRender = render;
