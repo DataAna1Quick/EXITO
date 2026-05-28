@@ -1772,7 +1772,7 @@
                 <div>
                   <div class="kpi-label">Solicitados</div>
                   <div class="big-number">
-                    <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->636
+                    <span id="coloc-sol">636</span>
                     <span style="font-size: 28px; color: var(--exito-slate)"
                       >veh</span
                     >
@@ -1782,7 +1782,7 @@
                 <div>
                   <div class="kpi-label">Colocados</div>
                   <div class="big-number" style="color: #1f2937">
-                    <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->427
+                    <span id="coloc-pos">427</span>
                     <span style="font-size: 28px; color: var(--exito-slate)"
                       >placas</span
                     >
@@ -1791,10 +1791,10 @@
               </div>
               <div class="kpi-card" style="border-left: 4px solid #fbbf24">
                 <div class="kpi-label">Colocación promedio Q1</div>
-                <div class="kpi-value" style="font-size: 48px; color: #f59e0b">
-                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%
+                <div class="kpi-value" style="font-size: 48px; color: #f59e0b" id="coloc-prom-pct">
+                  67,1%
                 </div>
-                <div class="kpi-sub">Brecha de −27,9 pp vs. target 95%</div>
+                <div class="kpi-sub" id="coloc-prom-sub">Brecha de −27,9 pp vs. target 95%</div>
               </div>
 
               <!-- Tendencia mensual -->
@@ -1813,6 +1813,7 @@
                   Efectividad mensual · Posicionamiento Medellín
                 </div>
                 <div
+                  id="coloc-efect-grid"
                   style="
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
@@ -2100,10 +2101,10 @@
                   style="text-align: center; padding: 12px 20px"
                 >
                   <div class="kpi-label">Total período</div>
-                  <div class="kpi-value" style="color: #f59e0b">
-                    <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->67,1%
+                  <div class="kpi-value" style="color: #f59e0b" id="coloc-total-pct">
+                    67,1%
                   </div>
-                  <div class="kpi-sub">−27,9pp vs. target 95%</div>
+                  <div class="kpi-sub" id="coloc-total-sub">−27,9pp vs. target 95%</div>
                 </div>
               </div>
             </div>
@@ -2121,7 +2122,7 @@
                     <th>Lectura</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="coloc-mensual-tbody">
                   <tr>
                     <td><strong>Enero</strong></td>
                     <td>142</td>
@@ -2297,6 +2298,7 @@
                 Comparativo Q1 · Todas las regionales
               </div>
               <div
+                id="coloc-regional-chips"
                 style="
                   display: flex;
                   gap: 6px;
@@ -2393,6 +2395,7 @@
                 >
               </div>
               <div
+                id="coloc-regional-nota"
                 style="
                   font-size: 9px;
                   color: var(--exito-muted);
@@ -2438,7 +2441,7 @@
             </div>
 
             <div class="chart-container">
-              <div class="bar-chart" style="height: 260px">
+              <div class="bar-chart" style="height: 260px" id="coloc-semanal-bars">
                 <div class="target-line-label">TARGET 95%</div>
                 <!-- Bars S01–S17 -->
                 <div class="bar-group">
@@ -6517,10 +6520,12 @@
 
     <script src="js/dashboard_data.js"></script>
     <script src="js/loyalty_data.js"></script>
+    <script src="js/colocacion_data.js"></script>
     <script src="js/slides.js"></script>
     <script src="js/medellin_map.js"></script>
     <script src="js/general_map.js"></script>
     <script src="js/dashboard_dynamic.js"></script>
     <script src="js/loyalty_render.js"></script>
+    <script src="js/colocacion_render.js"></script>
   </body>
 </html>
