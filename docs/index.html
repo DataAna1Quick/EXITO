@@ -4249,16 +4249,19 @@
         <!-- ══════════════════════════════════════════════
      SLIDE 8 · LOYALTY CATEGORÍAS
 ════════════════════════════════════════════════ -->
-        <!-- TEMPORALMENTE OCULTO para opp Éxito-Surtimax 2026-04 -->
-        <div class="slide" id="slide-8" hidden style="display: none">
+        <!-- SLIDE 8 · FIDELIZACIÓN DE FLOTA (loyalty regional · dinámico desde Data_Exto_Loyalti.csv) -->
+        <div class="slide" id="slide-8">
           <div class="slide-header-bar"></div>
-          <div class="slide-content-full">
-            <div style="margin-bottom: 12px">
-              <div class="section-label">Indicador Loyalty v2 · Categorías</div>
-              <div class="slide-title" style="font-size: 26px">
-                Cinco niveles de Loyalty
-              </div>
+          <div class="slide-content-full" style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <div class="section-label">Fidelización de Flota · Loyalty por regional</div>
+              <div class="slide-title" style="font-size:24px">Fidelización de flota por regional</div>
+              <div style="font-size:11px;color:var(--exito-muted);margin-top:3px" id="loy-sub">—</div>
             </div>
+            <div id="loy-national"></div>
+            <div id="loy-regionales"></div>
+            <div id="loy-nota" style="font-size:10px;color:var(--exito-muted);line-height:1.5;background:var(--exito-light);padding:10px 14px;border-radius:6px;border:1px solid var(--exito-border)">—</div>
+            <div hidden>
             <div class="loyalty-grid">
               <!-- 01 -->
               <div class="loyalty-card lc-1">
@@ -4384,12 +4387,13 @@
               no es flota núcleo. Caso SAX583 (4 servicios, 4 meses) se
               clasifica como Apoyo recurrente, no como Fija.
             </div>
+            </div>
           </div>
           <div class="footer-bar">
             <span class="footer-text"
-              >Operación Éxito Antioquia · Indicador Loyalty v2 · Q1 2026</span
+              >Operación Éxito Antioquia · Fidelización de flota · ene–may 2026</span
             >
-            <span class="footer-right">3 / 7</span>
+            <span class="footer-right">Loyalty</span>
           </div>
         </div>
 
@@ -6512,9 +6516,11 @@
     </div>
 
     <script src="js/dashboard_data.js"></script>
+    <script src="js/loyalty_data.js"></script>
     <script src="js/slides.js"></script>
     <script src="js/medellin_map.js"></script>
     <script src="js/general_map.js"></script>
     <script src="js/dashboard_dynamic.js"></script>
+    <script src="js/loyalty_render.js"></script>
   </body>
 </html>
