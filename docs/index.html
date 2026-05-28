@@ -161,7 +161,7 @@
             <span class="footer-text"
               >Surtimax · Recaudo país · Reunión 2026-04-29</span
             >
-            <span class="footer-right">1 / 6</span>
+            <span class="footer-right">1 / 7</span>
           </div>
         </div>
 
@@ -179,6 +179,7 @@
                 Evolución mensual del recaudo por región
               </div>
               <div
+                id="gen-g2-sub"
                 style="
                   font-size: 11px;
                   color: var(--exito-muted);
@@ -192,6 +193,7 @@
 
             <!-- Banda compacta de KPIs país (absorbida del antiguo G2) -->
             <div
+              id="gen-kpi-band"
               style="
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
@@ -245,6 +247,7 @@
 
             <!-- Sparkbars por región (visualización principal) -->
             <div
+              id="gen-trend-grid"
               style="
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
@@ -403,7 +406,7 @@
             </div>
 
             <!-- Total país por mes (banda inferior) -->
-            <div class="trend-country">
+            <div class="trend-country" id="gen-trend-country">
               <div class="trend-country-label">Total país por mes</div>
               <div class="trend-country-bars">
                 <div class="trend-country-month">
@@ -446,7 +449,7 @@
             <span class="footer-text"
               >Surtimax · Tendencia mensual · ene–abr 2026</span
             >
-            <span class="footer-right">2 / 6</span>
+            <span class="footer-right">2 / 7</span>
           </div>
         </div>
 
@@ -459,6 +462,7 @@
               ¿Quiénes concentran el recaudo país?
             </div>
             <div
+              id="gen-g3-sub"
               style="
                 font-size: 11px;
                 color: var(--exito-muted);
@@ -470,6 +474,7 @@
             </div>
 
             <table
+              id="gen-top10-table"
               class="general-table"
               style="margin-top: 18px; font-size: 11px"
             >
@@ -975,7 +980,255 @@
               >Surtimax · Top 10 clientes país · evolución mensual y día
               pico</span
             >
-            <span class="footer-right">3 / 6</span>
+            <span class="footer-right">3 / 7</span>
+          </div>
+        </div>
+
+        <!-- SLIDE G4 · RECAUDO EN RIESGO · efectivo expuesto en flota (CONTADO + CONTRAENTREGA) -->
+        <div class="slide" id="slide-G4">
+          <div class="slide-header-bar"></div>
+          <div class="slide-content-full">
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 24px;
+                margin-bottom: 14px;
+              "
+            >
+              <div>
+                <div class="section-label" style="color: #f59e0b">
+                  Recaudo en riesgo · Efectivo expuesto en flota
+                </div>
+                <div class="slide-title" style="font-size: 26px">
+                  ¿Cuánto efectivo carga, en promedio, cada vehículo en ruta?
+                </div>
+                <div
+                  style="
+                    font-size: 11px;
+                    color: var(--exito-muted);
+                    margin-top: 3px;
+                  "
+                >
+                  Solo Contado + Contraentrega · ene–abr 2026 · efectivo físico
+                  que viaja con el conductor (descontado Crédito y Aliados que
+                  son recaudo a plazo)
+                </div>
+              </div>
+              <div
+                class="kpi-card"
+                style="
+                  text-align: center;
+                  padding: 10px 18px;
+                  flex-shrink: 0;
+                  border-left: 4px solid #f59e0b;
+                "
+              >
+                <div class="kpi-label">Total efectivo · país</div>
+                <div
+                  class="kpi-value"
+                  style="color: #f59e0b; font-size: 28px"
+                >
+                  $8.641 M
+                </div>
+                <div class="kpi-sub">35,7% del recaudo total</div>
+              </div>
+            </div>
+
+            <!-- Banda de 2 KPI grandes: ticket promedio + máximo expuesto -->
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+                margin-bottom: 16px;
+              "
+            >
+              <div
+                class="kpi-card"
+                style="
+                  border-left: 4px solid #27ae60;
+                  padding: 14px 18px;
+                "
+              >
+                <div class="kpi-label">
+                  Ticket promedio por único vehículo
+                </div>
+                <div
+                  class="kpi-value"
+                  style="font-size: 36px; color: #1e8449"
+                >
+                  $70.834.610
+                </div>
+                <div class="kpi-sub">
+                  $8.641 M / 122 vehículos con efectivo · Contado +
+                  Contraentrega · ene–abr 2026
+                </div>
+              </div>
+              <div
+                class="kpi-card"
+                style="
+                  border-left: 4px solid #c0392b;
+                  padding: 14px 18px;
+                  background: var(--exito-red-soft);
+                "
+              >
+                <div class="kpi-label" style="color: #92400e">
+                  Máximo recaudado por un solo vehículo
+                </div>
+                <div
+                  class="kpi-value"
+                  style="font-size: 36px; color: #c0392b"
+                >
+                  $531.330.224
+                </div>
+                <div class="kpi-sub" style="color: #92400e">
+                  Placa <strong>PUN256</strong> · Antioquia · mayor exposición
+                  individual del período
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabla por regional con efectivo, prom/placa, máx/placa, día pico -->
+            <table class="general-table" style="font-size: 11px">
+              <thead>
+                <tr>
+                  <th>Región</th>
+                  <th style="text-align: right">Vehículos con efectivo</th>
+                  <th style="text-align: right">Efectivo total</th>
+                  <th style="text-align: right">% del recaudo</th>
+                  <th style="text-align: right">
+                    Ticket promedio por vehículo
+                  </th>
+                  <th style="text-align: right">
+                    Máximo en un solo vehículo
+                  </th>
+                  <th style="text-align: center">
+                    Día con mayor recaudo físico
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Bogotá – Sabana</strong></td>
+                  <td style="text-align: right">70</td>
+                  <td style="text-align: right">
+                    <strong>$4.280,6 M</strong>
+                  </td>
+                  <td style="text-align: right">42%</td>
+                  <td style="text-align: right">$61,2 M</td>
+                  <td style="text-align: right">$502,5 M (BJA020)</td>
+                  <td style="text-align: center">
+                    26/03/2026 · $104,9 M
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Antioquia</strong></td>
+                  <td style="text-align: right">27</td>
+                  <td style="text-align: right">
+                    <strong>$2.242,6 M</strong>
+                  </td>
+                  <td style="text-align: right">40%</td>
+                  <td style="text-align: right">$83,1 M</td>
+                  <td style="text-align: right; color: #c0392b">
+                    <strong>$531,3 M (PUN256)</strong>
+                  </td>
+                  <td style="text-align: center">
+                    19/02/2026 · $68,9 M
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Costa Atlántica</strong></td>
+                  <td style="text-align: right">11</td>
+                  <td style="text-align: right">
+                    <strong>$1.311,8 M</strong>
+                  </td>
+                  <td style="text-align: right">29%</td>
+                  <td style="text-align: right">$119,3 M</td>
+                  <td style="text-align: right">$286,2 M (JPP275)</td>
+                  <td style="text-align: center">
+                    31/03/2026 · $78,7 M
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Eje Cafetero</strong></td>
+                  <td style="text-align: right">5</td>
+                  <td style="text-align: right">
+                    <strong>$586,5 M</strong>
+                  </td>
+                  <td style="text-align: right">27%</td>
+                  <td style="text-align: right">$117,3 M</td>
+                  <td style="text-align: right">$409,7 M (VDK973)</td>
+                  <td style="text-align: center">
+                    28/02/2026 · $44,8 M
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Valle del Cauca</strong></td>
+                  <td style="text-align: right">10</td>
+                  <td style="text-align: right">
+                    <strong>$220,3 M</strong>
+                  </td>
+                  <td style="text-align: right">13%</td>
+                  <td style="text-align: right">$22,0 M</td>
+                  <td style="text-align: right">$54,5 M (TJW625)</td>
+                  <td style="text-align: center">
+                    09/03/2026 · $26,3 M
+                  </td>
+                </tr>
+                <tr
+                  style="
+                    border-top: 2px solid var(--exito-border);
+                    font-weight: 700;
+                    background: var(--exito-light);
+                  "
+                >
+                  <td>País</td>
+                  <td style="text-align: right">122</td>
+                  <td style="text-align: right">$8.641,8 M</td>
+                  <td style="text-align: right">35,7%</td>
+                  <td style="text-align: right">$70,8 M</td>
+                  <td style="text-align: right">$531,3 M</td>
+                  <td style="text-align: center">
+                    20/03/2026 · $176,0 M
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Insight box con framing de riesgo (sin mencionar Quick Pay) -->
+            <div
+              style="
+                margin-top: 14px;
+                font-size: 11px;
+                color: var(--exito-slate);
+                background: var(--exito-red-soft);
+                padding: 12px 16px;
+                border-radius: 6px;
+                border-left: 4px solid #c0392b;
+                line-height: 1.55;
+              "
+            >
+              <strong style="color: #c0392b"
+                >Lectura clave · Riesgo latente del recaudo físico:</strong
+              >
+              122 vehículos cargan, en promedio, $70,8 M en efectivo a lo largo
+              del período; un solo vehículo (PUN256, Antioquia) acumula
+              <strong>$531,3 M</strong> en 4 meses. El día más expuesto del
+              país (20/03/2026) movió <strong>$176 M</strong> físicos en una
+              sola jornada operativa. Este es el dinero que viaja con el
+              conductor en ruta — la misma exposición que ya estamos viendo en
+              Antioquia, donde la concentración por placa supera a cualquier
+              otra regional.
+            </div>
+          </div>
+          <div class="footer-bar">
+            <span class="footer-text"
+              >Surtimax · Recaudo en riesgo · Contado + Contraentrega ·
+              ene–abr 2026</span
+            >
+            <span class="footer-right">4 / 7</span>
           </div>
         </div>
 
@@ -1017,17 +1270,18 @@
               >
                 <div class="kpi-label">Promedio país</div>
                 <div
+                  id="gen-g5-prom"
                   class="kpi-value"
                   style="color: var(--exito-dark); font-size: 32px"
                 >
                   70,5%
                 </div>
-                <div class="kpi-sub">12.055 sin riesgo / 17.176</div>
+                <div class="kpi-sub" id="gen-g5-prom-sub">12.055 sin riesgo / 17.176</div>
               </div>
             </div>
 
             <!-- Ranking visual con barras horizontales -->
-            <div class="risk-rank">
+            <div class="risk-rank" id="gen-risk-rank">
               <div class="risk-row risk-row--good">
                 <div class="risk-region">Bogotá-Sabana</div>
                 <div class="risk-bar-track">
@@ -1097,7 +1351,7 @@
           </div>
           <div class="footer-bar">
             <span class="footer-text">Surtimax · Efectividad comparativa</span>
-            <span class="footer-right">4 / 6</span>
+            <span class="footer-right">5 / 7</span>
           </div>
         </div>
 
@@ -1175,39 +1429,40 @@
                     </div>
                     <div class="zona-card-sub">/ días operativos región</div>
                   </div>
+                  <div
+                    class="zona-card gen-card"
+                    style="
+                      border-left: 4px solid #c0392b;
+                      background: var(--exito-red-soft);
+                    "
+                  >
+                    <div class="zona-card-label" style="color: #92400e">
+                      Día con mayor recaudo físico
+                    </div>
+                    <div
+                      class="zona-card-value gen-pico-valor"
+                      style="color: #c0392b; font-size: 24px"
+                    >
+                      —
+                    </div>
+                    <div
+                      class="zona-card-sub gen-pico-fecha"
+                      style="color: #92400e; font-weight: 700"
+                    >
+                      —
+                    </div>
+                    <div
+                      class="zona-card-sub gen-pico-sub"
+                      style="margin-top: 4px"
+                    >
+                      —
+                    </div>
+                  </div>
                   <div class="zona-card gen-card gen-top3-card">
                     <div class="zona-card-label">
                       Top 3 clientes · valor recaudado
                     </div>
                     <ul class="top3-list gen-top3-recaudo"></ul>
-                    <!-- Mini-tabla recaudo físico · jornada crítica · región -->
-                    <div class="top3-extra">
-                      <div class="top3-extra-label">
-                        Recaudo físico · jornada crítica
-                      </div>
-                      <table class="top3-extra-table">
-                        <tbody>
-                          <tr>
-                            <td>Día con max recaudo físico</td>
-                            <td>
-                              <span class="gen-pico-fecha">—</span>
-                              ·
-                              <strong class="gen-pico-valor">—</strong>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Placa (vh) max efectivo en un día</td>
-                            <td>
-                              <strong class="gen-placa-max-placa">—</strong>
-                              ·
-                              <span class="gen-placa-max-fecha">—</span>
-                              ·
-                              <span class="gen-placa-max-valor">—</span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
                   </div>
                   <div class="gen-card gen-alert-card">
                     <div class="gen-alert-header">
@@ -1236,7 +1491,7 @@
             <span class="footer-text"
               >Surtimax · Mapa interactivo país · 5 regiones</span
             >
-            <span class="footer-right">5 / 6</span>
+            <span class="footer-right">6 / 7</span>
           </div>
         </div>
 
@@ -1371,7 +1626,7 @@
             <span class="footer-text"
               >Quick Pay · cierre comercial · Surtimax · Quick Help</span
             >
-            <span class="footer-right">6 / 6</span>
+            <span class="footer-right">7 / 7</span>
           </div>
         </div>
       </section>
@@ -2062,7 +2317,7 @@
                     font-size: 10px;
                     font-weight: 700;
                   "
-                  >Cali 92,3%</span
+                  >Cali 98,4%</span
                 >
                 <span
                   style="
@@ -2076,7 +2331,7 @@
                     font-size: 10px;
                     font-weight: 700;
                   "
-                  >Costa 83,2%</span
+                  >Costa 86,6%</span
                 >
                 <span
                   style="
@@ -2104,7 +2359,7 @@
                     font-size: 10px;
                     font-weight: 700;
                   "
-                  >Funza 94,5%</span
+                  >Funza 100,9%</span
                 >
                 <span
                   style="
@@ -2145,7 +2400,7 @@
                 "
               >
                 Target 95% · Medellín es la única regional crítica · brecha
-                −25pp vs. red excluyendo Medellín (92,5%)
+                −29pp vs. red excluyendo Medellín (~95,4%)
               </div>
             </div>
           </div>
@@ -2558,7 +2813,7 @@
                   >
                     <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->86,1%
                   </div>
-                  <div class="kpi-sub">excl. MDE: 92,5%</div>
+                  <div class="kpi-sub">excl. MDE: ~95,4%</div>
                 </div>
                 <div
                   class="kpi-card"
@@ -2573,7 +2828,7 @@
                     class="kpi-value"
                     style="color: #f59e0b; font-size: 28px"
                   >
-                    −25pp
+                    −28pp
                   </div>
                   <div class="kpi-sub">única regional crítica</div>
                 </div>
@@ -2620,7 +2875,7 @@
                     margin: 4px 0 2px;
                   "
                 >
-                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->92,3%
+                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->98,4%
                 </div>
                 <div
                   style="
@@ -2815,7 +3070,7 @@
                     margin: 4px 0 2px;
                   "
                 >
-                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->83,2%
+                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->86,6%
                 </div>
                 <div
                   style="
@@ -3205,7 +3460,7 @@
                     margin: 4px 0 2px;
                   "
                 >
-                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->94,5%
+                  <!-- COLOCACION_NACIONAL.xlsx 2026-04 -->100,9%
                 </div>
                 <div
                   style="
@@ -3608,16 +3863,16 @@
                 >Total red Q1</span
               >
               <span style="font-size: 11px; color: var(--exito-muted)"
-                >Ene <strong style="color: #27ae60">89,8%</strong></span
+                >Ene <strong style="color: #27ae60">93,2%</strong></span
               >
               <span style="font-size: 11px; color: var(--exito-muted)"
-                >Feb <strong style="color: #27ae60">97,6%</strong></span
+                >Feb <strong style="color: #27ae60">98,4%</strong></span
               >
               <span style="font-size: 11px; color: var(--exito-muted)"
-                >Mar <strong style="color: #e67e22">85,3%</strong></span
+                >Mar <strong style="color: #27ae60">92,3%</strong></span
               >
               <span style="font-size: 11px; color: var(--exito-muted)"
-                >Abr <strong style="color: #f59e0b">75,0%</strong></span
+                >Abr <strong style="color: #e67e22">84,2%</strong></span
               >
               <span
                 style="
@@ -4867,6 +5122,23 @@
                     <div class="zona-card-value med-recaudo-valor">—</div>
                     <div class="zona-card-sub med-recaudo-sub">—</div>
                   </div>
+                  <div
+                    class="zona-card med-card"
+                    style="
+                      border-left: 4px solid #c0392b;
+                      background: var(--exito-red-soft);
+                    "
+                  >
+                    <div class="zona-card-label" style="color: #92400e">
+                      Día con mayor recaudo físico
+                    </div>
+                    <div
+                      class="zona-card-value med-pico-fisico"
+                      style="color: #c0392b; font-size: 18px; line-height: 1.25"
+                    >
+                      —
+                    </div>
+                  </div>
                   <div class="zona-card med-card">
                     <div class="zona-card-label">Tipo de recaudo en riesgo</div>
                     <div class="distrib-bar">
@@ -4911,53 +5183,6 @@
                       Top 3 clientes · valor recaudado
                     </div>
                     <ul class="top3-list med-top3-recaudo"></ul>
-                    <!-- Mini-tabla recaudo físico · jornada crítica -->
-                    <div class="top3-extra">
-                      <div class="top3-extra-label">
-                        Recaudo físico · jornada crítica
-                      </div>
-                      <table class="top3-extra-table">
-                        <tbody>
-                          <tr>
-                            <td>Día con max recaudo físico</td>
-                            <td>
-                              <strong class="med-pico-fisico">—</strong>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Placa (vh) max efectivo en un día</td>
-                            <td>
-                              <strong class="med-placa-max-placa">—</strong>
-                              ·
-                              <span class="med-placa-max-fecha">—</span>
-                              ·
-                              <span class="med-placa-max-valor">—</span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <!-- Alerta cash-only Medellín (compartida en todas las zonas) -->
-                  <div class="gen-card gen-alert-card med-card">
-                    <div class="gen-alert-header">
-                      <span class="gen-alert-icon" aria-hidden="true">⚠</span>
-                      <div>
-                        <div class="gen-alert-title">
-                          ALERTA · Días en alto riesgo de efectivo · Antioquia
-                        </div>
-                        <div class="gen-alert-subtitle">
-                          Clientes con días &gt; $5.000.000 en
-                          <strong>Contado + Contraentrega</strong> ·
-                          exposición recurrente del conductor en ruta
-                        </div>
-                      </div>
-                    </div>
-                    <div class="gen-alert-callout">
-                      <div class="gen-alert-headline med-alert-headline">—</div>
-                      <div class="gen-alert-sub med-alert-sub">—</div>
-                    </div>
-                    <ul class="gen-alert-list med-alert-list"></ul>
                   </div>
                 </div>
               </div>
@@ -6286,8 +6511,10 @@
       <div id="dot-nav"></div>
     </div>
 
+    <script src="js/dashboard_data.js"></script>
     <script src="js/slides.js"></script>
     <script src="js/medellin_map.js"></script>
     <script src="js/general_map.js"></script>
+    <script src="js/dashboard_dynamic.js"></script>
   </body>
 </html>
