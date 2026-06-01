@@ -5068,18 +5068,18 @@
             <div class="dark-cover-right">
               <div class="dark-kpi">
                 <div class="dark-kpi-label">Período</div>
-                <div class="dark-kpi-value" style="font-size: 22px">
+                <div class="dark-kpi-value" style="font-size: 22px" id="med-s12-periodo">
                   Ene – Abr 2026
                 </div>
               </div>
               <div class="dark-kpi">
                 <div class="dark-kpi-label">Servicios totales</div>
-                <div class="dark-kpi-value">3.246</div>
+                <div class="dark-kpi-value" id="med-s12-servicios">3.246</div>
               </div>
               <div class="dark-kpi">
                 <div class="dark-kpi-label">Efectivo expuesto</div>
-                <div class="dark-kpi-value" style="color: #fbbf24; font-size: 24px">$1,500,000,000</div>
-                <div class="dark-kpi-sub">COP · Contado + Contraentrega</div>
+                <div class="dark-kpi-value" style="color: #fbbf24; font-size: 24px" id="med-s12-efectivo">$1,500,000,000</div>
+                <div class="dark-kpi-sub" id="med-s12-efectivo-sub">COP · Contado + Contraentrega</div>
               </div>
             </div>
           </div>
@@ -5240,7 +5240,7 @@
                     <th>Días &gt;$15.000.000</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="med-placas-tbody">
                   <tr>
                     <td><strong>PUN256</strong></td>
                     <td><span class="risk-tag risk-critico">Crítico</span></td>
@@ -5408,11 +5408,12 @@
                 Clasificación según máximos, P90 y días en zona crítica
                 (&gt;$8.000.000)
               </div>
-              <div style="font-size: 11px; color: #64748b; margin-top: 3px">
+              <div id="med-s16-sub" style="font-size: 11px; color: #64748b; margin-top: 3px">
                 321 días operativos · clasificación por umbrales de recaudo diario · ene–abr 2026
               </div>
             </div>
 
+            <div id="med-distrib">
             <div class="risk-row">
               <div
                 class="risk-level-badge"
@@ -5612,6 +5613,7 @@
                 50 días (15,6%) superan $8.000.000 — representan el
                 <strong>43,7% del recaudo total</strong> del período
               </div>
+            </div>
             </div>
           </div>
           <div class="footer-bar">
@@ -6526,11 +6528,13 @@
     <script src="js/dashboard_data.js"></script>
     <script src="js/loyalty_data.js"></script>
     <script src="js/colocacion_data.js"></script>
+    <script src="js/medellin_data.js"></script>
     <script src="js/slides.js"></script>
     <script src="js/medellin_map.js"></script>
     <script src="js/general_map.js"></script>
     <script src="js/dashboard_dynamic.js"></script>
     <script src="js/loyalty_render.js"></script>
     <script src="js/colocacion_render.js"></script>
+    <script src="js/medellin_render.js"></script>
   </body>
 </html>
